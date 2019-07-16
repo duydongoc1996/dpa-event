@@ -11,7 +11,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "forever start -c -w 'yarn dev' ./"
+    "deploy": "forever start -c 'yarn dev' ./ -w"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
