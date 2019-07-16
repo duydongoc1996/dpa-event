@@ -12,10 +12,12 @@
           )
             div.award-item-container
               div.award-decoration-left
+                b-img(src="~/assets/award-decoration-left.png")
               div.award-detail
                 p.award-name Best in ICO
                 p.award-description test test
               div.award-decoration-right
+                b-img(src="~/assets/award-decoration-right.png")
       div.award-btn-container
         b-button(squared variant="outline-light") NOMINATE &nbsp;
           fa(icon="arrow-right")
@@ -35,7 +37,7 @@ export default {
 
 <style lang="sass">
 .wrapper-award
-  background-image: url('https://picsum.photos/1024/480/?image=15')
+  background-image: url('~assets/3.png')
   background-repeat: no-repeat
   background-size: cover
   width: 100%
@@ -43,7 +45,7 @@ export default {
     margin: 0 auto
     width: 992px
     text-align: center
-    padding: 50px 0
+    padding: 100px 0
     .award-header
       .award-heading
         color: #cec230
@@ -56,14 +58,27 @@ export default {
         .award-item-container
           background-color: rgba(1,1,1,0.4)
           padding: 20px 0
+          height: 160px
           .award-detail
+            display: block
+            float: left
+            height: fit-content
+            width: 60%
             .award-name
               color: #cec230
             .award-description
               color: white
               margin: 0
           .award-decoration-left
+            display: block
+            float: left
+            height: fit-content
+            width: 20%
           .award-decoration-right
+            display: block
+            float: left
+            height: fit-content
+            width: 20%
     .award-btn-container
       button
         margin: 20px

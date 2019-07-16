@@ -11,6 +11,7 @@
     section.section-awardcategory
       SectionAwardCategory
     section.section-judges
+      SectionJudges
     section.section-sponsors
     section.section-partners
     section.section-venue
@@ -23,13 +24,15 @@ import SectionLogo from '~/components/SectionLogo'
 import SectionIntro from '~/components/SectionIntro'
 import SectionSchedule from '~/components/SectionSchedule'
 import SectionAwardCategory from '~/components/SectionAwardCategory'
+import SectionJudges from '~/components/SectionJudges'
 export default {
   components: {
     SectionHeader,
     SectionLogo,
     SectionIntro,
     SectionSchedule,
-    SectionAwardCategory
+    SectionAwardCategory,
+    SectionJudges
   }
 }
 </script>

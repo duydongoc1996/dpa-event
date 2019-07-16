@@ -42,11 +42,12 @@ export default {
   .wrapper-intro-inner
     padding: 0
     .wrapper-countdown
-      height: 607px
+      height: 800px
       background-color: grey
     .wrapper-description
-      height: fit-content
+      height: 800px
       background-color: white
+      padding-top: 50px
       .wrapper-description-inner
         padding: 50px
         max-width: 50em

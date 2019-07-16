@@ -84,7 +84,8 @@ export default {
 </script>
 <style lang="sass" scoped>
 .wrapper-countdown
-
+  background-image: url('~assets/countdown-background.png')
+  background-size: cover
 .countdown-container
   top: 50%
   left: 50%

@@ -73,7 +73,7 @@ export default {
 
 <style lang="sass">
 .wrapper-schedule
-  background-image: url('https://picsum.photos/1024/480/?image=10')
+  background-image: url('~assets/2.png')
   background-repeat: no-repeat
   background-size: cover
   width: 100%

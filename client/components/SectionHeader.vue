@@ -37,7 +37,7 @@
         img-height="480"
       )
         b-carousel-slide(
-          img-src="https://picsum.photos/1024/480/?image=12"
+          img-src="~/assets/Background.png"
         )
           p.wrapper-caption.caption-big DECENTRALIZE
             br
