@@ -8,7 +8,9 @@
           b-row(
           )
             b-col.part-item-container(
-              sm="3"
+              sm="6"
+              md="4"
+              lg="3"
               v-for="x in 8"
               :key="x"
             )
@@ -32,6 +34,8 @@ export default {
   .wrapper-partner-inner
     padding: 50px 0
     width: 992px
+    @media only screen and (max-width: 992px)
+      width: 100%
     margin: auto
     .part-header
       text-align: center

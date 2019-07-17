@@ -1,23 +1,32 @@
 <template lang="pug">
   div.wrapper-footer
     div.wrapper-footer-inner
-      b-container
+      b-container(fluid)
         b-row
           b-col.footer-col(
-            sm="6"
+            sm="12"
+            lg="6"
+            order-sm="4"
+            order-lg="1"
           )
             div.footer-brand
               b-img(src="~/assets/DPA_logo.webp", alt="alt")
               p.footer-copyright COPYRIGHT @DPA ALL RIGHTS RESERVED
           b-col.footer-col(
-            sm="2"
+            sm="4"
+            lg="2"
+            order-sm="1"
+            order-lg="2"
           )
             div.footer-contact
               p
                 strong CONTACT US
               p hello@dpawards.com
           b-col.footer-col(
-            sm="2"
+            sm="4"
+            lg="2"
+            order-sm="2"
+            order-lg="3"
           )
             div.footer-sitemap
               p
@@ -33,7 +42,10 @@
               p
                 a(href="#") Vote
           b-col.footer-col(
-            sm="2"
+            sm="4"
+            lg="2"
+            order-sm="3"
+            order-lg="4"
           )
             div.footer-social
               p
@@ -71,9 +83,14 @@ export default {
     .footer-col
       padding: 10px
       .footer-brand
+        @media only screen and (max-width: 992px)
+          text-align: center
+          padding-top: 30px
+          border-top: 1px solid grey
         img
         .footer-copyright
           padding: 10px 0
+          font-size: 12px
       .footer-contact
       .footer-sitemap
         p

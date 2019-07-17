@@ -86,6 +86,7 @@ export default {
 .wrapper-countdown
   background-image: url('~assets/countdown-background.png')
   background-size: cover
+  background-position: center center
 .countdown-container
   top: 50%
   left: 50%
@@ -95,6 +96,10 @@ export default {
   width: fit-content
   background-color: rgba(1,1,1,0.5)
   padding: 40px
+  @media only screen and (max-width: 992px)
+    padding: 40px 10px
+  @media only screen and (max-width: 768px)
+    padding: 40px
   span
     color: white
   .countdown-header

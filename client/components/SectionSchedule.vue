@@ -8,14 +8,21 @@
         div.sche-item(
           v-for="(item,index) in items"
         )
-          b-container.sche-content
+          b-container.sche-content(fluid)
             b-row
-              b-col(sm="3")
+              b-col(
+                sm="5"
+                lg="3"
+              )
                 div.sche-time
                   span {{ item.time }}
-              b-col(sm="9")
+              b-col(
+                sm="7"
+                lg="9"
+              )
                 div.sche-detail
-                  p.sche-name {{ item.name }}
+                  p.sche-name
+                    strong {{ item.name }}
                   p.sche-action {{ item.action }}
                   p.sche-description {{ item.description }}
           div.sche-divider(
@@ -93,6 +100,8 @@ export default {
       background-color: rgba(255,255,255,0.4)
       margin: 0 auto
       padding: 30px 0
+      @media only screen and (max-width: 992px)
+        width: 100%
       .sche-item
         color: white
         padding: 30px
@@ -107,6 +116,8 @@ export default {
             text-align: center
           .sche-detail
             line-height: 1
+            @media only screen and (max-width: 576px)
+              margin: 20px
             .sche-name
               font-size: 20px
               font-weight: 500

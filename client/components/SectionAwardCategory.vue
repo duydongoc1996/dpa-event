@@ -5,20 +5,23 @@
         p.award-heading AWARDS CATEGORY
         p.award-description All fo the winners of prize winners will be granted the exclusive rights to use the DPA marks on their marketing materials such as websites, publications, products and so on.
       div.award-list
-        b-row()
-          b-col.award-item(
-            sm="4"
-            v-for="x in 11"
-            :key="x"
-          )
-            div.award-item-container
-              div.award-decoration-left
-                b-img(src="~/assets/award-decoration-left.png")
-              div.award-detail
-                p.award-name Best in ICO
-                p.award-description test test
-              div.award-decoration-right
-                b-img(src="~/assets/award-decoration-right.png")
+        b-container(fluid)
+          b-row()
+            b-col.award-item(
+              sm="6"
+              md="6"
+              lg="4"
+              v-for="x in 11"
+              :key="x"
+            )
+              div.award-item-container
+                div.award-decoration-left
+                  b-img(src="~/assets/award-decoration-left.png")
+                div.award-detail
+                  p.award-name Best in ICO
+                  p.award-description test test
+                div.award-decoration-right
+                  b-img(src="~/assets/award-decoration-right.png")
       div.award-btn-container
         b-button(squared variant="outline-light") NOMINATE &nbsp;
           fa(icon="arrow-right")
@@ -45,6 +48,10 @@ export default {
   .wrapper-award-inner
     margin: 0 auto
     width: 992px
+    @media only screen and (max-width: 992px)
+      width: 80%
+    @media only screen and (max-width: 768px)
+      width: 90%
     text-align: center
     padding: 100px 0
     .award-header

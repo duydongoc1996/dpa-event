@@ -3,13 +3,17 @@
     b-container.wrapper-intro-inner(fluid)
       b-row(no-gutters)
         b-col(
-          sm="4"
+          sm="12"
+          md="12"
+          lg="4"
         )
           div.wrapper-countdown
             div.countdown
               Countdown
         b-col(
-          sm="8"
+          sm="12"
+          md="12"
+          lg="8"
         )
           div.wrapper-description
             div.wrapper-description-inner
@@ -41,16 +45,19 @@ export default {
 .wrapper-intro
   .wrapper-intro-inner
     padding: 0
+    height: max-content
     .wrapper-countdown
       height: 800px
       background-color: grey
     .wrapper-description
-      height: 800px
+      height: 100%
       background-color: white
       padding-top: 50px
       .wrapper-description-inner
         padding: 50px
         max-width: 50em
+        text-align: justify
+        text-justify: inter-word
         .des-heading
           color: #cec230
           font-size: 30px
@@ -62,5 +69,6 @@ export default {
           border-color: #cec230
           margin-right: 10px
           width: 200px
+          margin-top: 10px
 
 </style>

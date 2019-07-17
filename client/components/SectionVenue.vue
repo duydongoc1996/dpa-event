@@ -1,10 +1,11 @@
 <template lang="pug">
   div.wrapper-venue
     div.wrapper-venue-inner
-      b-container
+      b-container(fluid)
         b-row
           b-col(
-            sm="4"
+            sm="12"
+            md="4"
           )
             div.ven-header
               p.ven-heading VENUE
@@ -13,7 +14,8 @@
               b-button(squared) GOOGLE MAP &nbsp;
                 fa(icon="arrow-right")
           b-col(
-            sm="8"
+            sm="12"
+            md="8"
           )
             div.ven-map(
               v-html="gmap"
@@ -49,4 +51,6 @@ export default {
       background-color: white
       width: 100%
       height: 100%
+      @media only screen and (max-width: 768px)
+        margin-top: 20px
 </style>

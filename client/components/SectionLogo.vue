@@ -1,11 +1,12 @@
 <template lang="pug">
   div.wrapper-logo
-    b-container.wrapper-logo-inner
+    b-container.wrapper-logo-inner(fluid)
       b-row(
         align-v="center"
       )
         b-col(
-          sm="5"
+          sm="4"
+          lg="5"
         )
           div.list-logo
             span.text HOST
@@ -14,12 +15,14 @@
             b-img.logo-econotimes(src="https://static.wixstatic.com/media/24cbfa_a1c6f2d96e0246e78d9f27d9a4b7ab65~mv2.png/v1/fill/w_318,h_41,al_c,q_80,usm_0.66_1.00_0.01/Logo_EonoTimes.webp")
         b-col(
           sm="4"
+          lg="4"
         )
           div.list-logo
             span.text ORGANIZER
             b-img.logo-purpleswan(src="https://static.wixstatic.com/media/24cbfa_fa40e33dee4640f78f8eb8a43759f191~mv2.png/v1/fill/w_291,h_42,al_c,q_80,usm_0.66_1.00_0.01/PURPLE%20SWAN%20LOGO_gold.webp")
         b-col(
-          sm="3"
+          sm="4"
+          lg="3"
         )
           div.list-logo
             span.text MARKETER
@@ -44,6 +47,7 @@ export default {
     .list-logo
       color: #cec230
       margin: 0 auto
+      text-align: center
       .logo-tokenpost
         height: 30px
       .logo-econotimes

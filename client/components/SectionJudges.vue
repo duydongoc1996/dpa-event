@@ -4,21 +4,24 @@
       div.jud-header
         p.jud-heading JUDGES
       div.jud-body
-        b-row
-          b-col.gutter-15(
-            sm="3"
-            v-for="x in 12"
-            :key="x"
-          )
-            div.jud-item
-              div.jud-avatar(
-                :style="{ backgroundImage: 'url('+ require('assets/judge.png') + ')' } "
-              )
-              div.jud-detail
-                p.jud-name
-                  strong Lisa Cook
-                p.jud-jobtitle Operation director
-                p.jud-companyname Purple Swan
+        b-container
+          b-row
+            b-col.gutter-15(
+              sm="6"
+              md="6"
+              lg="3"
+              v-for="x in 12"
+              :key="x"
+            )
+              div.jud-item
+                div.jud-avatar(
+                  :style="{ backgroundImage: 'url('+ require('assets/judge.png') + ')' } "
+                )
+                div.jud-detail
+                  p.jud-name
+                    strong Lisa Cook
+                  p.jud-jobtitle Operation director
+                  p.jud-companyname Purple Swan
 </template>
 
 <script>
@@ -36,6 +39,10 @@ export default {
   .wrapper-judges-inner
     padding: 100px 0
     width: 992px
+    @media only screen and (max-width: 992px)
+      width: 70%
+    @media only screen and (max-width: 768px)
+      width: 80%
     margin: 0 auto
     .jud-header
       text-align: center
@@ -52,8 +59,11 @@ export default {
         .jud-avatar
           position: relative
           height: 230px
+          @media only screen and (max-width: 992px)
+            height: 300px
           background-position: center top
           background-repeat: no-repeat
+          background-size: cover
           overflow: hidden
         .jud-avatar::after
           position: absolute
