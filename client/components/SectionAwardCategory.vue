@@ -9,6 +9,7 @@
           b-col.award-item(
             sm="4"
             v-for="x in 11"
+            :key="x"
           )
             div.award-item-container
               div.award-decoration-left
@@ -82,4 +83,5 @@ export default {
     .award-btn-container
       button
         margin: 20px
+        width: 200px
 </style>

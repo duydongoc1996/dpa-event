@@ -44,7 +44,7 @@
             span PEOPLE'S AWARDS 2019
           p.wrapper-caption.caption-description Celebrate your hard word and contribution to the block chain industry
           b-button(variant="outline-light")
-            span NOMINATE &nbsp;&nbsp;
+            span NOMINATE &nbsp;
             fa(icon="arrow-right")
         b-carousel-slide(
           caption="Second Slide"
@@ -105,6 +105,8 @@ export default {
         padding: 3px 15px
 .carousel
   z-index: 1
+  button
+    width: 200px
   .carousel-item
     .carousel-caption
       top: 30%

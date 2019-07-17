@@ -8,6 +8,7 @@
           b-col.gutter-15(
             sm="3"
             v-for="x in 12"
+            :key="x"
           )
             div.jud-item
               div.jud-avatar(
@@ -31,9 +32,9 @@ export default {
 
 <style lang="sass">
 .wrapper-judges
-  background-color: grey
+  background-color: #2c2c2c
   .wrapper-judges-inner
-    padding: 50px 0
+    padding: 100px 0
     width: 992px
     margin: 0 auto
     .jud-header

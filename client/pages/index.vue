@@ -13,9 +13,13 @@
     section.section-judges
       SectionJudges
     section.section-sponsors
+      SectionSponsors
     section.section-partners
+      SectionPartners
     section.section-venue
+      SectionVenue
     section.section-footer
+      SectionFooter
 </template>
 
 <script>
@@ -25,6 +29,10 @@ import SectionIntro from '~/components/SectionIntro'
 import SectionSchedule from '~/components/SectionSchedule'
 import SectionAwardCategory from '~/components/SectionAwardCategory'
 import SectionJudges from '~/components/SectionJudges'
+import SectionSponsors from '~/components/SectionSponsors'
+import SectionPartners from '~/components/SectionPartners'
+import SectionVenue from '~/components/SectionVenue'
+import SectionFooter from '~/components/SectionFooter'
 export default {
   components: {
     SectionHeader,
@@ -32,7 +40,11 @@ export default {
     SectionIntro,
     SectionSchedule,
     SectionAwardCategory,
-    SectionJudges
+    SectionJudges,
+    SectionSponsors,
+    SectionPartners,
+    SectionVenue,
+    SectionFooter
   }
 }
 </script>
