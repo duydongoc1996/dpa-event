@@ -5,6 +5,7 @@
         align-v="center"
       )
         b-col(
+          cols="12"
           sm="4"
           lg="5"
         )
@@ -14,6 +15,7 @@
             span &nbsp;
             b-img.logo-econotimes(src="https://static.wixstatic.com/media/24cbfa_a1c6f2d96e0246e78d9f27d9a4b7ab65~mv2.png/v1/fill/w_318,h_41,al_c,q_80,usm_0.66_1.00_0.01/Logo_EonoTimes.webp")
         b-col(
+          cols="12"
           sm="4"
           lg="4"
         )
@@ -21,6 +23,7 @@
             span.text ORGANIZER
             b-img.logo-purpleswan(src="https://static.wixstatic.com/media/24cbfa_fa40e33dee4640f78f8eb8a43759f191~mv2.png/v1/fill/w_291,h_42,al_c,q_80,usm_0.66_1.00_0.01/PURPLE%20SWAN%20LOGO_gold.webp")
         b-col(
+          cols="12"
           sm="4"
           lg="3"
         )
@@ -58,8 +61,4 @@ export default {
         height: 30px
       .text::after
         content:  " | "
-      @media only screen and (max-width: 992px)
-        width: 8em
-        .text::after
-          content: ""
 </style>

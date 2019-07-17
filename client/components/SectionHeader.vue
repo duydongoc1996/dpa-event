@@ -43,7 +43,7 @@
             br
             span PEOPLE'S AWARDS 2019
           p.wrapper-caption.caption-description Celebrate your hard word and contribution to the block chain industry
-          b-button(variant="outline-light")
+          b-button.nominate-btn(variant="outline-light")
             span NOMINATE &nbsp;
             fa(icon="arrow-right")
         b-carousel-slide(
@@ -105,8 +105,10 @@ export default {
         padding: 3px 15px
 .carousel
   z-index: 1
-  button
+  .nominate-btn
     width: 200px
+    @media only screen and (max-width: 576px)
+      display: none
   .carousel-item
     .carousel-caption
       top: 30%
@@ -117,10 +119,14 @@ export default {
         font-size: 50px
         @media only screen and (max-width: 992px)
           font-size: 30px
+        @media only screen and (max-width: 768px)
+          display: 24px
       .caption-description
         position: relative
         width: 20em
         margin: 1em auto
+        @media only screen and (max-width: 576px)
+          display: none
   .carousel-indicators
     bottom: 25%
     .active

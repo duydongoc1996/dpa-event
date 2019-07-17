@@ -6,7 +6,7 @@
           b-col.footer-col(
             sm="12"
             lg="6"
-            order-sm="4"
+            order="4"
             order-lg="1"
           )
             div.footer-brand
@@ -15,7 +15,7 @@
           b-col.footer-col(
             sm="4"
             lg="2"
-            order-sm="1"
+            order="1"
             order-lg="2"
           )
             div.footer-contact
@@ -25,7 +25,7 @@
           b-col.footer-col(
             sm="4"
             lg="2"
-            order-sm="2"
+            order="2"
             order-lg="3"
           )
             div.footer-sitemap
@@ -44,7 +44,7 @@
           b-col.footer-col(
             sm="4"
             lg="2"
-            order-sm="3"
+            order="3"
             order-lg="4"
           )
             div.footer-social
