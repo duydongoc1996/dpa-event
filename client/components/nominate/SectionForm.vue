@@ -241,9 +241,9 @@
                   required
                 )
                 b-button.add-link-media
-                  fa(icon="plus-square" size="lg")
+                  fa(icon="plus-square")
                 div.link-icon
-                  fa(icon="link" size="md")
+                  fa(icon="link")
             b-col(
               cols="12"
             )
@@ -254,25 +254,39 @@
               )
                 b-form-file(
                   id="image"
+                  placeholder=""
                   required
                 )
+                div.image-icon
+                  fa(icon="image")
             b-col(
               cols="12"
             )
               b-form-group(
                 label="Do you know this person personally? - It's okay even if you do not"
               )
-                b-form-radio(
+                b-form-checkbox(
+                  v-model="isknow"
                   button
-                ) Yes
-                b-form-radio(
+                  button-variant="outline-light"
+                  :class="isknow ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
+                )
+                  fa(icon="check-circle")
+                  span &nbsp; Yes
+                b-form-checkbox(
+                  v-model="isknow"
                   button
-                ) No
+                  button-variant="outline-light"
+                  :class="(!isknow) ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
+                )
+                  fa(icon="check-circle")
+                  span &nbsp; No
             b-col(
               cols="12"
             )
               div.submit-button
-                b-button(squared variant="warning") SUBMIT
+                b-button(squared) SUBMIT &nbsp;
+                  fa(icon="arrow-right")
 </template>
 <script>
 export default {
@@ -285,6 +299,11 @@ export default {
         { value: null, text: '-select-' },
         { value: 'Mr', text: 'Mr' },
         { value: 'Mrs', text: 'Mrs' }
+      ],
+      isknow: false,
+      optionsKnow: [
+        { value: true, text: 'Yes' },
+        { value: false, text: 'No' }
       ]
     }
   }
@@ -346,5 +365,37 @@ export default {
       height: 15px
       left: 30px
       bottom: 30px
-
+    .custom-file-label
+      padding-left: 3em
+      &:after
+        display: none
+    .image-icon
+      position: absolute
+      display: block
+      width: 15px
+      height: 15px
+      left: 30px
+      bottom: 30px
+      z-index: 1
+    .checkbox-isknow
+      display: block
+      float: left
+      padding: 0 5px
+      .btn
+        color: #ced4da
+        border-color: #ced4da
+        text-align: left
+        border-radius: 0
+        padding: 10px 40px
+    .isknow-checked
+      .btn
+        color: #cec230
+    .submit-button
+      border-top: 2px solid #cec230
+      text-align: center
+      padding-top: 50px
+      margin-top: 50px
+      .btn
+        background-color: #cec230
+        border-color: #cec230
 </style>

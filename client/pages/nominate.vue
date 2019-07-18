@@ -7,17 +7,20 @@
     section.section-voting-form
       SectionForm
     section.section-footer
+      SectionFooter
 </template>
 
 <script>
 import Menu from '~/components/Menu'
 import SectionHeader from '~/components/nominate/SectionHeader'
 import SectionForm from '~/components/nominate/SectionForm'
+import SectionFooter from '~/components/SectionFooter'
 export default {
   components: {
     Menu,
     SectionHeader,
-    SectionForm
+    SectionForm,
+    SectionFooter
   },
   data() {
     return {}
