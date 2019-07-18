@@ -240,6 +240,10 @@
                   type="text"
                   required
                 )
+                b-button.add-link-media
+                  fa(icon="plus-square" size="lg")
+                div.link-icon
+                  fa(icon="link" size="md")
             b-col(
               cols="12"
             )
@@ -325,5 +329,22 @@ export default {
       &:focus
         border-color: #cec230
         box-shadow: 0 0 0 0.2rem rgba(206, 194, 48, 0.25)
+    .add-link-media
+      color: #cec230
+      background-color: transparent
+      border: none
+      position: absolute
+      right: 15px
+      bottom: 16px
+      &:hover
+        color: green
+    .link-icon
+      position: absolute
+      display: block
+      transform: rotate(45deg)
+      width: 15px
+      height: 15px
+      left: 30px
+      bottom: 30px
 
 </style>
