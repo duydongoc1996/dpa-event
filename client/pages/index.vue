@@ -1,5 +1,7 @@
 <template lang="pug">
   div.page-index
+    section.section-menu
+      Menu
     section.section-header
       SectionHeader
     section.section-logo
@@ -23,18 +25,20 @@
 </template>
 
 <script>
-import SectionHeader from '~/components/SectionHeader'
-import SectionLogo from '~/components/SectionLogo'
-import SectionIntro from '~/components/SectionIntro'
-import SectionSchedule from '~/components/SectionSchedule'
-import SectionAwardCategory from '~/components/SectionAwardCategory'
-import SectionJudges from '~/components/SectionJudges'
-import SectionSponsors from '~/components/SectionSponsors'
-import SectionPartners from '~/components/SectionPartners'
-import SectionVenue from '~/components/SectionVenue'
+import Menu from '~/components/Menu'
+import SectionHeader from '~/components/home/SectionHeader'
+import SectionLogo from '~/components/home/SectionLogo'
+import SectionIntro from '~/components/home/SectionIntro'
+import SectionSchedule from '~/components/home/SectionSchedule'
+import SectionAwardCategory from '~/components/home/SectionAwardCategory'
+import SectionJudges from '~/components/home/SectionJudges'
+import SectionSponsors from '~/components/home/SectionSponsors'
+import SectionPartners from '~/components/home/SectionPartners'
+import SectionVenue from '~/components/home/SectionVenue'
 import SectionFooter from '~/components/SectionFooter'
 export default {
   components: {
+    Menu,
     SectionHeader,
     SectionLogo,
     SectionIntro,
