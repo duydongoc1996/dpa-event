@@ -367,8 +367,10 @@ export default {
       bottom: 30px
     .custom-file-label
       padding-left: 3em
+      border-radius: 0
       &:after
         display: none
+    .custom-file-input
     .image-icon
       position: absolute
       display: block

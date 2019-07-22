@@ -76,6 +76,7 @@ export default {
 
 <style lang="sass">
 .wrapper-footer
+  background-color: black
   .wrapper-footer-inner
     padding-top: 100px
     padidng-bottom: 50px
