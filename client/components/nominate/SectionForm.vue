@@ -203,7 +203,7 @@
                   required
                 )
             b-col(
-              cols="6"
+              cols="12"
             )
               b-form-group(
                 label="Award category"
@@ -232,18 +232,27 @@
             )
               b-form-group(
                 label="Please provide links to online video or audio featuring the nominee."
-                label-for="linkmedia"
                 label-class="required-input"
               )
-                b-form-input(
-                  id="linkmedia"
-                  type="text"
-                  required
+                div.linkmedia-container(
+                  v-for="x in numLinkMedia"
+                  :key="x"
                 )
-                b-button.add-link-media
-                  fa(icon="plus-square")
-                div.link-icon
-                  fa(icon="link")
+                  div.link-icon
+                    fa(icon="link")
+                  b-form-input.link-input(
+                    type="text"
+                    required
+                  )
+                  b-button.link-add-btn(
+                    @click="addLinkMedia"
+                  )
+                    fa(icon="plus-square")
+                  b-button.link-remove-btn(
+                    v-if="x == numLinkMedia && x != 1"
+                    @click="removeLinkMedia"
+                  )
+                    fa(icon="backspace")
             b-col(
               cols="12"
             )
@@ -285,7 +294,9 @@
               cols="12"
             )
               div.submit-button
-                b-button(squared) SUBMIT &nbsp;
+                b-button(
+                  squared
+                ) SUBMIT &nbsp;
                   fa(icon="arrow-right")
 </template>
 <script>
@@ -304,7 +315,16 @@ export default {
       optionsKnow: [
         { value: true, text: 'Yes' },
         { value: false, text: 'No' }
-      ]
+      ],
+      numLinkMedia: 1
+    }
+  },
+  methods: {
+    addLinkMedia() {
+      this.numLinkMedia += 1
+    },
+    removeLinkMedia() {
+      this.numLinkMedia -= 1
     }
   }
 }
@@ -348,23 +368,37 @@ export default {
       &:focus
         border-color: #cec230
         box-shadow: 0 0 0 0.2rem rgba(206, 194, 48, 0.25)
-    .add-link-media
-      color: #cec230
-      background-color: transparent
-      border: none
-      position: absolute
-      right: 15px
-      bottom: 16px
-      &:hover
-        color: green
-    .link-icon
-      position: absolute
-      display: block
-      transform: rotate(45deg)
-      width: 15px
-      height: 15px
-      left: 30px
-      bottom: 30px
+    .linkmedia-container
+      position: relative
+      margin: 5px 0
+      .link-add-btn
+        display: block
+        position: absolute
+        color: #cec230
+        background-color: transparent
+        border: none
+        right: 0
+        bottom: 0
+        &:hover
+          color: green
+      .link-remove-btn
+        display: block
+        position: absolute
+        color: red
+        background-color: transparent
+        border: none
+        right: 2rem
+        bottom: 0
+        &:hover
+          color: green
+      .link-icon
+        display: block
+        position: absolute
+        transform: rotate(45deg) translateY(-50%)
+        left: 0
+        bottom: 0
+      .link-input
+        padding-left: 2rem
     .custom-file-label
       padding-left: 3em
       border-radius: 0

@@ -134,12 +134,21 @@
                         v-if="agree"
                       )
                   div.submit-btn
-                    b-button(squared) SUBMIT &nbsp;
+                    b-button(
+                      squared
+                      @click="$emit('update:submitted', true)"
+                    ) SUBMIT &nbsp;
                       fa(icon="arrow-right")
 </template>
 <script>
 export default {
   name: 'SectionSponsorshipForm',
+  props: {
+    submitted: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       agree: false
@@ -208,8 +217,8 @@ export default {
             position: absolute
             left: 0
             top: 0
-            width: 1.2rem
-            height: 1.2rem
+            width: 1.1rem
+            height: 1.1rem
             border: 1px solid #d2d2d2
             border-radius: 4px
             .agree-checkbox-checked
@@ -218,8 +227,7 @@ export default {
               border-radius: 3px
               width: 0.8rem
               height: 0.8rem
-              margin-top: 0.1rem
-              margin-left: 0.1rem
+              margin: 0.1rem
           .custom-control-label
             &:before
               display: none

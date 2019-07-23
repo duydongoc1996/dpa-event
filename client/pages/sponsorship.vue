@@ -4,26 +4,34 @@
       Menu
     section.section-header
       SectionHeader
-    section.section-info
-      SectionInfo
-    section.section-price-table(
-      v-if="!showSelection"
+    div(
+      v-if="!showSubmit"
     )
-      SectionPriceTable(
-        :checked.sync="sponsorType"
-        @update:checked="changeView"
+      section.section-info
+        SectionInfo
+      section.section-price-table(
+        v-if="!showSelection"
       )
-    section.section-price-selection(
-      v-if="showSelection"
-    )
-      SectionPriceSelection(
-        :checked="sponsorType"
+        SectionPriceTable(
+          :checked.sync="sponsorType"
+          @update:checked="changeView"
+        )
+      section.section-price-selection(
+        v-if="showSelection"
       )
-    section.section-sponsorship-form(
-      v-if="showSelection"
+        SectionPriceSelection(
+          :checked="sponsorType"
+        )
+      section.section-sponsorship-form(
+        v-if="showSelection"
+      )
+        SectionSponsorshipForm(
+          @update:submitted="changeSubmitView"
+        )
+    section.section-submit-success(
+      v-if="showSubmit"
     )
-      SectionSponsorshipForm
-    section.section-submit-success
+      SectionSubmitSuccess
     section.section-footer
       SectionFooter
 </template>
@@ -34,6 +42,7 @@ import SectionInfo from '~/components/sponsorship/SectionInfo'
 import SectionPriceTable from '~/components/sponsorship/SectionPriceTable'
 import SectionPriceSelection from '~/components/sponsorship/SectionPriceSelection'
 import SectionSponsorshipForm from '~/components/sponsorship/SectionSponsorshipForm'
+import SectionSubmitSuccess from '~/components/sponsorship/SectionSubmitSuccess'
 import SectionFooter from '~/components/SectionFooter'
 export default {
   components: {
@@ -43,17 +52,22 @@ export default {
     SectionPriceTable,
     SectionPriceSelection,
     SectionSponsorshipForm,
+    SectionSubmitSuccess,
     SectionFooter
   },
   data() {
     return {
       sponsorType: null,
-      showSelection: false
+      showSelection: false,
+      showSubmit: false
     }
   },
   methods: {
     changeView() {
       this.showSelection = true
+    },
+    changeSubmitView() {
+      this.showSubmit = true
     }
   }
 }

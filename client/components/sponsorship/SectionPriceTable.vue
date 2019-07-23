@@ -13,6 +13,10 @@
             name="sponsorType"
             value="premier"
           )
+            div.select-checkbox
+              div.select-checkbox-checked(
+                v-if="check == 'premier'"
+              )
             strong {{ fields.premier.label }}
         template(slot="HEAD_gold" slot-scope="data")
           b-form-checkbox(
@@ -20,6 +24,10 @@
             name="sponsorType"
             value="gold"
           )
+            div.select-checkbox
+              div.select-checkbox-checked(
+                v-if="check == 'gold'"
+              )
             strong {{ fields.gold.label }}
         template(slot="HEAD_partnership" slot-scope="data")
           b-form-checkbox(
@@ -27,6 +35,10 @@
             name="sponsorType"
             value="partnership"
           )
+            div.select-checkbox
+              div.select-checkbox-checked(
+                v-if="check == 'partnership'"
+              )
             strong {{ fields.partnership.label }}
         template(slot="HEAD_nomination" slot-scope="data")
           b-form-checkbox(
@@ -34,6 +46,10 @@
             name="sponsorType"
             value="nomination"
           )
+            div.select-checkbox
+              div.select-checkbox-checked(
+                v-if="check == 'nomination'"
+              )
             strong {{ fields.nomination.label }}
       b-button.purchase-btn(
         squared
@@ -107,4 +123,27 @@ export default {
       background-color: #cec230
       border-color: #cec230
       margin-bottom: 50px
+    .custom-checkbox
+      padding: 0
+      .custom-control-label
+        width: 100%
+        &:before
+          display: none
+        &:after
+          display: none
+    .select-checkbox
+      position: absolute
+      left: 0
+      top: 0
+      width: 1.1rem
+      height: 1.1rem
+      border: 1px solid #d2d2d2
+      border-radius: 4px
+      .select-checkbox-checked
+        background-color: #cec230
+        border-color: #cec230
+        border-radius: 3px
+        width: 0.8rem
+        height: 0.8rem
+        margin: 0.1rem
 </style>
