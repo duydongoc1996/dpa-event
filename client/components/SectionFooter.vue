@@ -32,15 +32,15 @@
               p
                 strong SITE MAP
               p
-                a(href="#") Home
+                nuxt-link(to="/") Home
               p
-                a(href="#") Sponsorship
+                nuxt-link(to="/sponsorship") Sponsorship
               p
-                a(href="#") Attend
+                nuxt-link(to="/attend") Attend
               p
-                a(href="#") Nominate
+                nuxt-link(to="/nominate") Nominate
               p
-                a(href="#") Vote
+                nuxt-link(to="/vote") Vote
           b-col.footer-col(
             sm="4"
             lg="2"

@@ -6,11 +6,11 @@ div.wrapper-menu
       type="dark"
       variant="transparent"
     )
-      b-navbar-brand.ml-auto.logo(href="#")
-        b-img(
-          src="~/assets/DPA_logo.webp"
-
-        )
+      b-navbar-brand.ml-auto.logo
+        nuxt-link(to="/")
+          b-img(
+            src="~/assets/DPA_logo.webp"
+          )
       b-navbar-toggle(target="nav-collapse")
       b-collapse(id="nav-collapse" is-nav)
         b-navbar-nav.mx-auto

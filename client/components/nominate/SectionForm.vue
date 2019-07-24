@@ -422,7 +422,6 @@ export default {
       formBody.set('vote_links_articles', '')
       formBody.set('vote_is_know', this.formData.isKnow)
       formBody.append('image', this.formData.avatar)
-      this.$log.debug(formBody)
       this.$axios({
         method: 'post',
         url: process.env.baseUrl + '/vote/create',
