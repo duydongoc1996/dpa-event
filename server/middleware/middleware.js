@@ -37,10 +37,11 @@ const checkToken = (req, res, next) => {
 
 const uploadImage = async (req, res, next) => {
   // Handle upload image
+  console.log(req.body)
   if (req.files == null || Object.keys(req.files).length == 0 || req.files.image == null) {
     return res.json({
-      success: true,
-      message: 'Missing attached image'
+      success: false,
+      message: 'Missing attached image',
     })
   }
   let imageName = ''

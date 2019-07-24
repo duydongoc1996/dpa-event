@@ -81,6 +81,6 @@
 //   .then(console.log)
 //   .catch(console.log);
 
-const categoryName = 'war war'
-const sanitizeName = categoryName.replace(/( .)|(\b.)/gi, x => x.toUpperCase())
-console.log(sanitizeName)
+// const categoryName = 'war war'
+// const sanitizeName = categoryName.replace(/( .)|(\b.)/gi, x => x.toUpperCase())
+// console.log(sanitizeName)

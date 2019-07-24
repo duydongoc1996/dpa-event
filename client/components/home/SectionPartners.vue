@@ -2,7 +2,8 @@
   div.wrapper-partners
     div.wrapper-partner-inner
       div.part-header
-        p.part-heading PARTNERS
+        p.part-heading
+          strong PARTNERS
       div.part-body
         b-container(fluid)
           b-row(

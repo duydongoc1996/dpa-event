@@ -2,7 +2,8 @@
   div.wrapper-sponsers
     div.wrapper-sponsor-inner
       div.spo-header
-        p.spo-heading SPONSORS
+        p.spo-heading
+          strong SPONSORS
       div.spo-body
         b-container(fluid)
           b-row(

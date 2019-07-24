@@ -28,12 +28,12 @@ module.exports = class VoteHandler {
       if (!data.vote_award_category) return Promise.reject('Missing voting award category')
       if (!data.vote_about_speaker) return Promise.reject('Missing voting about speaker')
       if (!data.vote_links_media) return Promise.reject('Missing voting links media')
-      if (!data.vote_links_articles) return Promise.reject('Missing voting links articles')
+      // if (!data.vote_links_articles) return Promise.reject('Missing voting links articles')
       // --//--Avatar
       if (!data.fileName) return Promise.reject('Missing avatar')
 
       if (!data.vote_is_know) return Promise.reject('Missing voting know personally')
-      if (!data.uid) return Promise.reject('Missing uid')
+      // if (!data.uid) return Promise.reject('Missing uid')
 
       // Prepare data
       const nominatorInfo = {
@@ -61,27 +61,29 @@ module.exports = class VoteHandler {
         nationality: data.for_nationality,
         avatar: data.fileName
       }
-      // Verify firebase phone number
-      const validPhoneNumber = await admin.auth().getUser(data.uid)
-        .then(function (userRecord) {
-          return {
-            success: true,
-            uid: userRecord.uid
-          }
-        })
-        .catch(function (error) {
-          return false
-        })
-      if (!validPhoneNumber) return Promise.reject('This phone number has not been verified')
-      // Delete phone number in firebase
-      const deleteUid = await admin.auth().deleteUser(validPhoneNumber.uid)
-        .then(function () {
-          return true
-        })
-        .catch(function (error) {
-          console.error('Error deleting user:', error)
-          return false
-        })
+
+      // // Verify firebase phone number
+      // const validPhoneNumber = await admin.auth().getUser(data.uid)
+      //   .then(function (userRecord) {
+      //     return {
+      //       success: true,
+      //       uid: userRecord.uid
+      //     }
+      //   })
+      //   .catch(function (error) {
+      //     return false
+      //   })
+      // if (!validPhoneNumber) return Promise.reject('This phone number has not been verified')
+      // // Delete phone number in firebase
+      // const deleteUid = await admin.auth().deleteUser(validPhoneNumber.uid)
+      //   .then(function () {
+      //     return true
+      //   })
+      //   .catch(function (error) {
+      //     console.error('Error deleting user:', error)
+      //     return false
+      //   })
+
       // create award category
       const category = await Voting.createAwardCategory(awardCategory)
       if (!category.success) return Promise.reject(category)

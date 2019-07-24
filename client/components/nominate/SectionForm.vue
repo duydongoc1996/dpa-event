@@ -2,6 +2,7 @@
   div.wrapper-form
     div.wrapper-form-inner
       b-form(
+        @submit="onSubmit"
       )
         b-container(fluid)
           b-row
@@ -22,6 +23,7 @@
                   id="by_firstname"
                   type="text"
                   required
+                  v-model="formData.byFirstName"
                 )
             b-col(
               cols="6"
@@ -35,6 +37,7 @@
                   id="by_lastname"
                   type="text"
                   required
+                  v-model="formData.byLastName"
                 )
             b-col(
               cols="6"
@@ -48,6 +51,7 @@
                   id="by_email"
                   type="text"
                   required
+                  v-model="formData.byEmail"
                 )
             b-col(
               cols="6"
@@ -61,13 +65,14 @@
                   id="by_phone"
                   type="text"
                   required
+                  v-model="formData.byPhone"
                 )
           b-row
             b-col(
               cols="12"
             )
               p.form-title
-                strong ABOUT THE NOMINEE
+                strong.test ABOUT THE NOMINEE
             b-col(
               cols="6"
             )
@@ -79,8 +84,8 @@
                   id="self"
                   button
                   button-variant="outline-light"
-                  v-model="isself"
-                  :class="isself ? 'self-checkbox self-checked' : 'self-checkbox'"
+                  v-model="formData.isSelf"
+                  :class="formData.isSelf ? 'self-checkbox self-checked' : 'self-checkbox'"
                 )
                   fa(icon="check-circle")
                   span &nbsp; I am nominating myself
@@ -96,7 +101,7 @@
                   id="prefix"
                   place-holder="-select-"
                   required
-                  v-model="prefix"
+                  v-model="formData.prefix"
                   :options="optionsPrefix"
                 )
             b-col(
@@ -111,6 +116,7 @@
                   id="firstname"
                   type="text"
                   required
+                  v-model="formData.firstName"
                 )
             b-col(
               cols="6"
@@ -124,6 +130,7 @@
                   id="lastname"
                   type="text"
                   required
+                  v-model="formData.lastName"
                 )
             b-col(
               cols="6"
@@ -137,6 +144,7 @@
                   id="companyname"
                   type="text"
                   required
+                  v-model="formData.companyName"
                 )
             b-col(
               cols="6"
@@ -150,6 +158,7 @@
                   id="jobtitle"
                   type="text"
                   required
+                  v-model="formData.jobTitle"
                 )
             b-col(
               cols="6"
@@ -163,6 +172,7 @@
                   id="companywebsite"
                   type="text"
                   required
+                  v-model="formData.companyWebsite"
                 )
             b-col(
               cols="6"
@@ -176,6 +186,7 @@
                   id="phone"
                   type="text"
                   required
+                  v-model="formData.phone"
                 )
             b-col(
               cols="6"
@@ -189,6 +200,7 @@
                   id="email"
                   type="text"
                   required
+                  v-model="formData.email"
                 )
             b-col(
               cols="6"
@@ -201,6 +213,8 @@
                 b-form-select(
                   id="nationality"
                   required
+                  :options="optionsNationality"
+                  v-model="formData.nationality"
                 )
             b-col(
               cols="12"
@@ -213,6 +227,8 @@
                 b-form-select(
                   id="awardcategory"
                   required
+                  :options="optionsAwardCategory"
+                  v-model="formData.awardCategory"
                 )
             b-col(
               cols="12"
@@ -226,6 +242,7 @@
                   id="aboutspeaker"
                   rows="5"
                   required
+                  v-model="formData.aboutSpeaker"
                 )
             b-col(
               cols="12"
@@ -235,7 +252,7 @@
                 label-class="required-input"
               )
                 div.linkmedia-container(
-                  v-for="x in numLinkMedia"
+                  v-for="x in linksMediaArray.length"
                   :key="x"
                 )
                   div.link-icon
@@ -243,13 +260,14 @@
                   b-form-input.link-input(
                     type="text"
                     required
+                    v-model="linksMediaArray[x-1]"
                   )
                   b-button.link-add-btn(
                     @click="addLinkMedia"
                   )
                     fa(icon="plus-square")
                   b-button.link-remove-btn(
-                    v-if="x == numLinkMedia && x != 1"
+                    v-if="x == linksMediaArray.length && x != 1"
                     @click="removeLinkMedia"
                   )
                     fa(icon="backspace")
@@ -265,6 +283,8 @@
                   id="image"
                   placeholder=""
                   required
+                  v-model="formData.avatar"
+                  accept=".jpg, .png, .gif"
                 )
                 div.image-icon
                   fa(icon="image")
@@ -275,18 +295,18 @@
                 label="Do you know this person personally? - It's okay even if you do not"
               )
                 b-form-checkbox(
-                  v-model="isknow"
+                  v-model="formData.isKnow"
                   button
                   button-variant="outline-light"
-                  :class="isknow ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
+                  :class="formData.isKnow ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
                 )
                   fa(icon="check-circle")
                   span &nbsp; Yes
                 b-form-checkbox(
-                  v-model="isknow"
+                  v-model="formData.isKnow"
                   button
                   button-variant="outline-light"
-                  :class="(!isknow) ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
+                  :class="(!formData.isKnow) ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
                 )
                   fa(icon="check-circle")
                   span &nbsp; No
@@ -296,6 +316,7 @@
               div.submit-button
                 b-button(
                   squared
+                  type="submit"
                 ) SUBMIT &nbsp;
                   fa(icon="arrow-right")
 </template>
@@ -304,27 +325,88 @@ export default {
   name: 'SectionForm',
   data() {
     return {
-      isself: false,
-      prefix: null,
+      formData: {
+        byFirstName: null, // nominator
+        byLastName: null,
+        byEmail: null,
+        byPhone: null,
+        isSelf: false, // nominee
+        prefix: null,
+        firstName: null,
+        lastName: null,
+        companyName: null,
+        jobTitle: null,
+        companyWebsite: null,
+        phone: null,
+        email: null,
+        nationality: null,
+        awardCategory: null,
+        aboutSpeaker: null,
+        linksMedia: null,
+        avatar: null,
+        isKnow: false
+      },
+      linksMediaArray: [null],
       optionsPrefix: [
         { value: null, text: '-select-' },
         { value: 'Mr', text: 'Mr' },
         { value: 'Mrs', text: 'Mrs' }
       ],
-      isknow: false,
       optionsKnow: [
         { value: true, text: 'Yes' },
         { value: false, text: 'No' }
+      ],
+      optionsNationality: [
+        { value: 'korea', text: 'Korea' }
+      ],
+      optionsAwardCategory: [
+        { value: 'math', text: 'Math' }
       ],
       numLinkMedia: 1
     }
   },
   methods: {
     addLinkMedia() {
-      this.numLinkMedia += 1
+      this.linksMediaArray.push(null)
     },
     removeLinkMedia() {
-      this.numLinkMedia -= 1
+      this.linksMediaArray.pop()
+    },
+    onSubmit(e) {
+      e.preventDefault()
+      // Join links media
+      this.formData.linksMedia = this.linksMediaArray.join(',')
+      // Prepare data to submit
+      const formBody = new FormData()
+      formBody.set('by_first_name', this.formData.byFirstName)
+      formBody.set('by_last_name', this.formData.byLastName)
+      formBody.set('by_email', this.formData.byEmail)
+      formBody.set('by_phone_number', this.formData.byPhone)
+      formBody.set('for_self', this.formData.isSelf)
+      formBody.set('for_prefix', this.formData.prefix)
+      formBody.set('for_first_name', this.formData.firstName)
+      formBody.set('for_last_name', this.formData.lastName)
+      formBody.set('for_company_name', this.formData.companyName)
+      formBody.set('for_job_title', this.formData.jobTitle)
+      formBody.set('for_company_website', this.formData.companyWebsite)
+      formBody.set('for_phone_number', this.formData.phone)
+      formBody.set('for_email', this.formData.email)
+      formBody.set('for_nationality', this.formData.nationality)
+      formBody.set('vote_award_category', this.formData.awardCategory)
+      formBody.set('vote_about_speaker', this.formData.aboutSpeaker)
+      formBody.set('vote_links_media', this.formData.linksMedia)
+      formBody.set('vote_links_articles', '')
+      formBody.set('vote_is_know', this.formData.isKnow)
+      formBody.append('image', this.formData.avatar)
+      this.$log.debug(formBody)
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/vote/create',
+        data: formBody,
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }).then(x => this.$log.debug(x)).catch(x => this.$log.debug(x))
     }
   }
 }
@@ -399,6 +481,7 @@ export default {
         bottom: 0
       .link-input
         padding-left: 2rem
+        background-color: white !important
     .custom-file-label
       padding-left: 3em
       border-radius: 0
@@ -434,4 +517,6 @@ export default {
       .btn
         background-color: #cec230
         border-color: #cec230
+    label
+      font-weight: bold
 </style>

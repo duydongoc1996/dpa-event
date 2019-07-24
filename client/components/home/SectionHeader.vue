@@ -11,9 +11,10 @@
         b-carousel-slide(
           img-src="~/assets/Background.png"
         )
-          p.wrapper-caption.caption-big DECENTRALIZED
-            br
-            span PEOPLE'S AWARDS 2019
+          p.wrapper-caption.caption-big
+            strong DECENTRALIZED
+              br
+              span PEOPLE'S AWARDS 2019
           p.wrapper-caption.caption-description Celebrate your hard word and contribution to the block chain industry
           b-button.nominate-btn(variant="outline-light")
             span NOMINATE &nbsp;

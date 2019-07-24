@@ -2,7 +2,8 @@
   div.wrapper-schedule
     div.wrapper-schedule-inner
       div.sche-header
-        p.sche-heading SCHEDULE
+        p.sche-heading
+          strong SCHEDULE
         p.sche-date February 20th, 2019 19:00 - 22:00
       div.sche-list
         div.sche-item(
@@ -87,6 +88,7 @@ export default {
   .wrapper-schedule-inner
     width: 100%
     padding: 50px 0
+    background-color: rgba(0,0,0,0.5)
     .sche-header
       text-align: center
       padding-bottom: 20px

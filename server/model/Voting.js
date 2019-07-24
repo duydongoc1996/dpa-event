@@ -46,7 +46,6 @@ module.exports = class Voting {
       voteInfo.nationality
     ])
       .then(([rows, fields]) => {
-        console.log('test: ', rows)
         return {
           success: true,
           message: 'Created vote successful'

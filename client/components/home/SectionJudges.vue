@@ -2,7 +2,8 @@
   div.wrapper-judges
     div.wrapper-judges-inner
       div.jud-header
-        p.jud-heading JUDGES
+        p.jud-heading
+          strong JUDGES
       div.jud-body
         b-container
           b-row
@@ -78,6 +79,7 @@ export default {
           background-color: white
           padding-bottom: 30px
           .jud-name
+            font-size: 20px
           .jud-jobtitle
             line-height: 1
             margin: 0

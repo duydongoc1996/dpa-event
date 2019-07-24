@@ -1,0 +1,33 @@
+/* Font: FrankRuhLibre */
+@font-face {
+  font-family: FrankRuhLibre;
+  src: url(~assets/font/FrankRuhlLibre-Light.ttf)
+}
+@font-face {
+  font-family: FrankRuhLibre;
+  src: url(~assets/font/FrankRuhlLibre-Black.ttf);
+  font-weight: bold;
+}
+/* Font: NotoSansCJKkr */
+@font-face {
+  font-family: NotoSansCJKkr;
+  src: url(~assets/font/NotoSansCJKkr-Regular.otf)
+}
+@font-face {
+  font-family: NotoSansCJKkr;
+  src: url(~assets/font/NotoSansCJKkr-Bold.otf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Quark;
+  src: url(~assets/font/Quark-Light.otf);
+}
+@font-face {
+  font-family: Quark;
+  src: url(~assets/font/Quark-Bold.otf);
+  font-weight: bold;
+}
+/* Setup Default font */
+body {
+  font-family: Quark
+}

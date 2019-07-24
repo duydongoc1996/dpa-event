@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/css/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -37,6 +38,7 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/axios',
     ['nuxt-log', {
       isEnabled: true,
       logLevel: 'debug'
@@ -55,6 +57,12 @@ export default {
       ]
     }]
   ],
+  axios: {
+    // proxyHeaders: false
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:8000'
+  },
   /*
   ** Build configuration
   */

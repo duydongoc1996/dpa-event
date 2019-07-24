@@ -17,7 +17,7 @@ export default {
 
 <style lang="sass" scoped>
 .wrapper-header
-  background-image: url(~assets/nominate-background.png)
+  background-image: url(~assets/attend-background.png)
   background-size: cover
   background-position: center center
   height: 500px
