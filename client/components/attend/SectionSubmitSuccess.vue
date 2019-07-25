@@ -2,9 +2,8 @@
   div.wrapper-submit
     div.wrapper-submit-inner
       div.submit-image
-        b-img(src="~/assets/nominate-success.png" alt="sponsorship image")
-      p.submit-description Your nomination application for Decentralized People's Awards 2019 has been successfully submitted.
-      p.submit-description We have sent a copy of your application to your email and we will send the notification email to the nominee(s) you have nominated shortly. Thank you!
+        b-img(src="~/assets/attend-success.png" alt="sponsorship image")
+      p.submit-description Confirmation email will be sent shortly. Looking forward to seeing you at the venue!
       nuxt-link(to="/")
         div.goback-btn
           span Go back to home &nbsp;

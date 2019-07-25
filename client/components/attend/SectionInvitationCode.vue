@@ -3,15 +3,20 @@
     div.wrapper-code-inner
       p.code-heading Type in your invitation code in the box
       div.code-form
-        b-input.code-input(
-          v-model="invitationCode"
+        b-form(
+          @submit="validateInvitationCode"
         )
-        b-button.code-submit(
-          squared
-          block
-          @click="$emit('update:code', invitationCode)"
-        ) SUBMIT &nbsp;
-          fa(icon="arrow-right")
+          b-input.code-input(
+            v-model="invitationCode"
+            maxLength="15"
+            required
+          )
+          b-button.code-submit(
+            squared
+            block
+            type="submit"
+          ) SUBMIT &nbsp;
+            fa(icon="arrow-right")
 </template>
 <script>
 export default {
@@ -25,6 +30,12 @@ export default {
   data() {
     return {
       invitationCode: ''
+    }
+  },
+  methods: {
+    validateInvitationCode(e) {
+      e.preventDefault()
+      this.$emit('update:code', this.invitationCode.toUpperCase())
     }
   }
 }
@@ -51,6 +62,7 @@ export default {
       max-width: 25em
       margin: 0 auto
       .code-input
+        text-align: center
         &:focus
           border-color: #cec230
           box-shadow: 0 0 0 0.2rem rgba(206, 194, 48, 0.25)
