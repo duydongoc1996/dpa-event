@@ -61,7 +61,7 @@ export default {
     // proxyHeaders: false
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:8000'
+    baseUrl: process.env.BASE_URL || 'http://142.93.32.205:3002'
   },
   /*
   ** Build configuration

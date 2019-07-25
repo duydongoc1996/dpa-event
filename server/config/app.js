@@ -3,7 +3,7 @@ module.exports = {
     host: 'localhost',
     user: 'root',
     database: 'event',
-    password: '12345678',
+    password: 'HelloWorld2016@',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
