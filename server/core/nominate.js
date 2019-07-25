@@ -1,9 +1,10 @@
 const firebase = require('firebase-admin')
-const Voting = require('../model/Voting')
-const admin = firebase.initializeApp()
+const Nominate = require('../model/Nominate')
+const Mailing = require('../model/Mailing')
+// const admin = firebase.initializeApp()
 
-module.exports = class VoteHandler {
-  static createVoting(req, res) {
+module.exports = class NominateHandler {
+  static createNominate(req, res) {
     const data = req.body;
 
     (async () => {
@@ -85,21 +86,25 @@ module.exports = class VoteHandler {
       //   })
 
       // create award category
-      const category = await Voting.createAwardCategory(awardCategory)
+      const category = await Nominate.createAwardCategory(awardCategory)
       if (!category.success) return Promise.reject(category)
 
       // create nominator
-      const nominator = await Voting.createNominator(nominatorInfo)
+      const nominator = await Nominate.createNominator(nominatorInfo)
       if (!nominator.success) return Promise.reject(nominator.message)
 
       // create vote
       voteInfo.fk_award_category = category.categoryId
       voteInfo.fk_nominator = nominator.nominatorId
-      const vote = await Voting.createVote(voteInfo)
+      const vote = await Nominate.createNominee(voteInfo)
       if (!vote.success) return Promise.reject(vote.message)
 
       // Response
       res.json(vote)
+
+      //Sendmail 
+      const mailBody = Mailing.getMailTemplate_2('nominate, phone=' + voteInfo.phone);
+      Mailing.sendMail(voteInfo.email, 'Nominate success', mailBody, nominatorInfo.email);
     })()
       .catch((err) => {
         res.json({
@@ -110,7 +115,7 @@ module.exports = class VoteHandler {
   }
 
   static getAllAwardCategory(req, res) {
-    Voting.getAllAwardCategory()
+    Nominate.getAllAwardCategory()
       .then((categories) => {
         res.json(categories)
       })
@@ -128,7 +133,7 @@ module.exports = class VoteHandler {
       // validate input
       if (!data.categoryName) return Promise.reject('Missing award category name')
       // create
-      const response = await Voting.createAwardCategory(data.categoryName)
+      const response = await Nominate.createAwardCategory(data.categoryName)
       if (!response.success) return Promise.reject(response.message)
       // response
       res.json(response)

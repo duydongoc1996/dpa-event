@@ -14,16 +14,20 @@ module.exports = class Mailing {
     })
   }
 
-  static getEmailMessage(fullName, code) {
-    return 'Hello ' + fullName + ', your code is ' + code + ' . '
+  static getMailTemplate_1(fullName, code) {
+    return 'Hello ' + fullName + ', your code is ' + code + ' . ';
+  }
+  static getMailTemplate_2(message) {
+    return message;
   }
 
-  static mailOptions(to, subject, body) {
+  static mailOptions(to, subject, body, cc) {
     return {
       // should be replaced with real recipient's account
       to: to,
       subject: subject,
-      html: body
+      html: body,
+      cc: cc
     }
   }
 
@@ -31,13 +35,10 @@ module.exports = class Mailing {
    * Send an email to Receiver
    * @param {String} to Receiver
    * @param {String} subject Mail subject
-   * @param {String} fullName
-   * @param {String} code
+   * @param {String} body
    */
-  static async sendMail(to, fullName, code) {
-    const subject = 'Welcome to event'
-    const body = this.getEmailMessage(fullName, code)
-    const mailOptions = this.mailOptions(to, subject, body)
+  static async sendMail(to, subject, body, cc) {
+    const mailOptions = this.mailOptions(to, subject, body, cc)
     return await this.transporter().sendMail(mailOptions).then((info) => {
       if (info) {
         return {

@@ -1,11 +1,10 @@
 const mysql = require('../store/MySQLService')
 
-module.exports = class Voting {
-  static async createVote(voteInfo) {
-    console.log('voteinfo: \n', voteInfo)
+module.exports = class Nominate {
+  static async createNominee(voteInfo) {
     // create vote
     return await mysql.promise.query(`
-      INSERT INTO vote (
+      INSERT INTO nominee (
         fk_nominator,
         fk_award_category,
         about_speaker,
@@ -48,7 +47,7 @@ module.exports = class Voting {
       .then(([rows, fields]) => {
         return {
           success: true,
-          message: 'Created vote successful'
+          message: 'Nominate successful'
         }
       })
       .catch((err) => {
@@ -91,7 +90,7 @@ module.exports = class Voting {
       .then(([rows, fields]) => {
         return {
           success: true,
-          message: 'Updated nominator successful',
+          message: 'Created nominator successful',
           nominatorId: rows.insertId
         }
       })

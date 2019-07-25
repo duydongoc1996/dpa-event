@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 
 // Load Handler
-const VoteHandler = require('../core/voting')
+const NominateHandler = require('../core/nominate')
 const SponsorHandler = require('../core/sponsor')
 const JudgesHandler = require('../core/judges')
 const CodeHandler = require('../core/code')
@@ -74,7 +74,7 @@ module.exports = function (app) {
   app.post('/partner/remove/:partnerId', middleware.checkToken, PartnerHandler.removePartner)
 
   // Voting Routes
-  app.post('/vote/create', middleware.uploadImage, VoteHandler.createVoting)
-  app.get('/vote/categories', VoteHandler.getAllAwardCategory)
-  app.post('/vote/category/create', middleware.checkToken, VoteHandler.createAwardCategory)
+  app.post('/vote/create', middleware.uploadImage, NominateHandler.createNominate)
+  app.get('/vote/categories', NominateHandler.getAllAwardCategory)
+  app.post('/vote/category/create', middleware.checkToken, NominateHandler.createAwardCategory)
 }

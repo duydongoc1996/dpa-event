@@ -323,6 +323,12 @@
 <script>
 export default {
   name: 'SectionForm',
+  props: {
+    submitted: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       formData: {
@@ -429,7 +435,10 @@ export default {
         headers: {
           'content-type': 'multipart/form-data'
         }
-      }).then(x => this.$log.debug(x)).catch(x => this.$log.debug(x))
+      }).then((x) => {
+        this.$log.debug(x)
+        if (x.data.success) this.$emit('update:submitted', true)
+      }).catch(x => this.$log.debug(x))
     }
   }
 }
