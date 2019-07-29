@@ -4,7 +4,7 @@
       div.sche-header
         p.sche-heading
           strong SCHEDULE
-        p.sche-date February 20th, 2019 19:00 - 22:00
+        p.sche-date December 20th, 2019 19:00 - 22:00
       div.sche-list
         div.sche-item(
           v-for="(item,index) in items"
@@ -23,9 +23,9 @@
               )
                 div.sche-detail
                   p.sche-name
-                    strong {{ item.name }}
-                  p.sche-action {{ item.action }}
-                  p.sche-description {{ item.description }}
+                    strong {{ item.event }}
+                  p.sche-action {{ item.title }}
+                  p.sche-description {{ item.speaker }}
           div.sche-divider(
             v-if="index < items.length -1"
           )
@@ -36,45 +36,17 @@ export default {
   name: 'SectionSchedule',
   data() {
     return {
-      items: [
-        {
-          time: '5:30 PM - 6:50PM',
-          name: 'REGISTRATION',
-          action: 'OPENING & WELCOME SPEECH',
-          description: 'Sonny Kwon, TokenPost'
-        },
-        {
-          time: '5:30 PM - 6:50PM',
-          name: 'REGISTRATION',
-          action: 'OPENING & WELCOME SPEECH',
-          description: 'Sonny Kwon, TokenPost'
-        },
-        {
-          time: '5:30 PM - 6:50PM',
-          name: 'REGISTRATION',
-          action: 'OPENING & WELCOME SPEECH',
-          description: 'Sonny Kwon, TokenPost'
-        },
-        {
-          time: '5:30 PM - 6:50PM',
-          name: 'REGISTRATION',
-          action: 'OPENING & WELCOME SPEECH',
-          description: 'Sonny Kwon, TokenPost'
-        },
-        {
-          time: '5:30 PM - 6:50PM',
-          name: 'REGISTRATION',
-          action: 'OPENING & WELCOME SPEECH',
-          description: 'Sonny Kwon, TokenPost'
-        },
-        {
-          time: '5:30 PM - 6:50PM',
-          name: 'REGISTRATION',
-          action: 'OPENING & WELCOME SPEECH',
-          description: 'Sonny Kwon, TokenPost'
-        }
-      ]
+      items: null
     }
+  },
+  mounted() {
+    // Get list schedule
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/schedules'
+    }).then((res) => {
+      this.items = res.data
+    }).catch(err => this.$log.debug(err))
   }
 }
 </script>

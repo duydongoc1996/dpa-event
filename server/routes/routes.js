@@ -11,6 +11,7 @@ const JudgesHandler = require('../core/judges')
 const CodeHandler = require('../core/code')
 const BookingHandler = require('../core/booking')
 const PartnerHandler = require('../core/partner')
+const ScheduleHandler = require('../core/schedule')
 
 module.exports = function (app) {
   // Middleware setup
@@ -23,10 +24,10 @@ module.exports = function (app) {
   }))
 
   // Routes & Handlers AUTHORIZE
-  app.get('/', (req, res) => {
+  app.get('/', middleware.checkToken, (req, res) => {
     res.json({
       success: true,
-      message: 'Index page'
+      message: 'Authenticated'
     })
   })
   app.post('/login', handlers.login)
@@ -74,7 +75,22 @@ module.exports = function (app) {
   app.post('/partner/remove/:partnerId', middleware.checkToken, PartnerHandler.removePartner)
 
   // Voting Routes
-  app.post('/vote/create', middleware.uploadImage, NominateHandler.createNominate)
-  app.get('/vote/categories', NominateHandler.getAllAwardCategory)
-  app.post('/vote/category/create', middleware.checkToken, NominateHandler.createAwardCategory)
+  app.post('/nominate/create', middleware.uploadImage, NominateHandler.createNominate)
+  app.get('/nominate/categories', NominateHandler.getAllAwardCategory)
+  app.param(['categoryId'], (req,res,next,value) => {
+    req.body.categoryId = value
+    next()
+  })
+  app.post('/nominate/category/create', middleware.checkToken, NominateHandler.createAwardCategory)
+  app.post('/nominate/category/remove/:categoryId', middleware.checkToken, NominateHandler.deleteAwardCategory)
+
+  //Schedule
+  app.get('/schedules', ScheduleHandler.getAllSchedule)
+  app.post('/schedule', middleware.checkToken, ScheduleHandler.createSchedule)
+  app.param(['scheduleId'], (req,res,next,value) => {
+    req.body.scheduleId = value
+    next()
+  })
+  app.post('/schedule/remove/:scheduleId', middleware.checkToken, ScheduleHandler.deleteSchedule)
+  app.post('/schedule/order/:scheduleId', middleware.checkToken, ScheduleHandler.orderSchedule)
 }

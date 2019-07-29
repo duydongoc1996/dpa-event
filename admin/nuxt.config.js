@@ -1,7 +1,7 @@
 
 export default {
   server: {
-    port: 3000
+    port: 3002
   },
   mode: 'spa',
   /*
@@ -39,9 +39,10 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/axios',
     ['nuxt-log', {
       isEnabled: true,
       logLevel: 'debug'
@@ -60,8 +61,11 @@ export default {
       ]
     }]
   ],
+  /*
+  ** Axios module configuration
+  ** See https://axios.nuxtjs.org/options
+  */
   axios: {
-    // proxyHeaders: false
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:8000'

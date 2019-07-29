@@ -15,10 +15,11 @@
             strong DECENTRALIZED
               br
               span PEOPLE'S AWARDS 2019
-          p.wrapper-caption.caption-description Celebrate your hard word and contribution to the block chain industry
-          b-button.nominate-btn(variant="outline-light")
-            span NOMINATE &nbsp;
-            fa(icon="arrow-right")
+          p.wrapper-caption.caption-description Celebrate your hard work and contribution to the blockchain industry
+          nuxt-link.nominate-btn(to="/nominate")
+            div.white-button
+              strong NOMINATE &nbsp;
+              fa(icon="arrow-right")
         b-carousel-slide(
           caption="Second Slide"
           img-src="https://picsum.photos/1024/480/?image=10"
@@ -48,9 +49,9 @@ export default {
 .carousel
   z-index: 1
   .nominate-btn
-    width: 200px
-    @media only screen and (max-width: 576px)
-      display: none
+    text-align: center
+    .white-button
+      margin: 0 auto
   .carousel-item
     .carousel-caption
       top: 30%
@@ -70,7 +71,7 @@ export default {
         @media only screen and (max-width: 576px)
           display: none
   .carousel-indicators
-    bottom: 25%
+    bottom: 100px
     .active
       background-color: yellow
     @media only screen and (max-width: 992px)
