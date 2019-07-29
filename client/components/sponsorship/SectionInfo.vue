@@ -2,7 +2,8 @@
   div.wrapper-info
     div.wrapper-info-inner
       div.info-header
-        p.info-heading Sponsorship oppotunities
+        p.info-heading
+          strong Sponsorship oppotunities
         p.info-description Sponsor the Awards benefit directly from the event's promotional activities in return.
         p.info-inquiry
           strong Have gotten any inquiry?

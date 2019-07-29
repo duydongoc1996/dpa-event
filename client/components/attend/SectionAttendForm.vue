@@ -6,138 +6,154 @@
         p.attend-location Imperial Palace Hotel Seoul, Selena Hall (7F), December 20, 2019 | 4:00 PM - 9:00 PM
       div.attend-body
         div.attend-form
-          b-container(fluid)
-            b-row
-              b-col(cols="12")
-                div.attend-code
-                  p.title INVITATION CODE
-                  p.code {{ invitationCode }}
-              b-col(cols="12")
-                p.form-title ATTENDEE INFORMATION
-              b-col(cols="6")
-                b-form-group(
-                  label="Prefix"
-                  label-for="prefix"
-                  label-class="required-input"
-                )
-                  b-form-select(
-                    id="prefix"
-                    required
+          b-form(
+            @submit="onSubmit"
+          )
+            b-container(fluid)
+              b-row
+                b-col(cols="12")
+                  div.attend-code
+                    p.title INVITATION CODE
+                    p.code {{ form.code }}
+                b-col(cols="12")
+                  p.form-title ATTENDEE INFORMATION
+                b-col(cols="6")
+                  b-form-group(
+                    label="Prefix"
+                    label-for="prefix"
+                    label-class="required-input"
                   )
-              b-col(cols="6")
-                b-form-group(
-                  label="Company name"
-                  label-for="companyname"
-                  label-class="required-input"
-                )
-                  b-form-input(
-                    id="companyname"
-                    type="text"
-                    required
-                  )
-              b-col(cols="6")
-                b-form-group(
-                  label="Job title"
-                  label-for="jobtitle"
-                  label-class="required-input"
-                )
-                  b-form-input(
-                    id="jobtitle"
-                    type="text"
-                    required
-                  )
-              b-col(cols="6")
-                b-form-group(
-                  label="Nationality"
-                  label-for="nationality"
-                  label-class="required-input"
-                )
-                  b-form-select(
-                    id="nationality"
-                    required
-                  )
-              b-col(cols="6")
-                b-form-group(
-                  label="First name"
-                  label-for="firstname"
-                  label-class="required-input"
-                )
-                  b-form-input(
-                    id="firstname"
-                    type="text"
-                    required
-                  )
-              b-col(cols="6")
-                b-form-group(
-                  label="Last name"
-                  label-for="lastname"
-                  label-class="required-input"
-                )
-                  b-form-input(
-                    id="lastname"
-                    type="text"
-                    required
-                  )
-              b-col(cols="6")
-                b-form-group(
-                  label="Email address"
-                  label-for="email"
-                  label-class="required-input"
-                )
-                  b-form-input(
-                    id="email"
-                    type="text"
-                    required
-                  )
-              b-col(cols="6")
-                b-form-group(
-                  label="Cell phone"
-                  label-for="phone"
-                  label-class="required-input"
-                )
-                  b-form-input(
-                    id="phone"
-                    type="text"
-                    required
-                  )
-              b-col(cols="12")
-                p.form-title POLICY
-              b-col(cols="12")
-                div.policy-container
-                  div.policy-box(
-                    v-for="content in policyContent"
-                    :key="content.key"
-                  )
-                    div.select-header
-                      b-form-checkbox(
-                        v-model="selectedPolicy"
-                        :value="content.key"
-                      )
-                        div.select-content
-                          strong {{ content.title }}
-                          div.updown-angle
-                            fa(:icon="(selectedPolicy == content.key) ? 'angle-up' : 'angle-down'")
-                    b-collapse(
-                      id="policy-dd"
-                      :visible="(selectedPolicy == content.key)"
+                    b-form-select(
+                      id="prefix"
+                      required
+                      :options="optionsPrefix"
+                      v-model="form.prefix"
                     )
-                      div.collapse-content {{ content.text }}
-                  div.agree-container
-                    b-form-checkbox(
-                      v-model="agree"
-                      :value="true"
+                b-col(cols="6")
+                  b-form-group(
+                    label="Company name"
+                    label-for="companyname"
+                    label-class="required-input"
+                  )
+                    b-form-input(
+                      id="companyname"
+                      type="text"
+                      required
+                      v-model="form.companyName"
                     )
-                      div.select-checkbox
-                        div.select-checkbox-checked(
-                          v-if="agree"
+                b-col(cols="6")
+                  b-form-group(
+                    label="Job title"
+                    label-for="jobtitle"
+                    label-class="required-input"
+                  )
+                    b-form-input(
+                      id="jobtitle"
+                      type="text"
+                      required
+                      v-model="form.jobTitle"
+                    )
+                b-col(cols="6")
+                  b-form-group(
+                    label="Nationality"
+                    label-for="nationality"
+                    label-class="required-input"
+                  )
+                    b-form-select(
+                      id="nationality"
+                      required
+                      :options="optionsNationality"
+                      v-model="form.nationality"
+                    )
+                b-col(cols="6")
+                  b-form-group(
+                    label="First name"
+                    label-for="firstname"
+                    label-class="required-input"
+                  )
+                    b-form-input(
+                      id="firstname"
+                      type="text"
+                      required
+                      v-model="form.firstName"
+                    )
+                b-col(cols="6")
+                  b-form-group(
+                    label="Last name"
+                    label-for="lastname"
+                    label-class="required-input"
+                  )
+                    b-form-input(
+                      id="lastname"
+                      type="text"
+                      required
+                      v-model="form.lastName"
+                    )
+                b-col(cols="6")
+                  b-form-group(
+                    label="Email address"
+                    label-for="email"
+                    label-class="required-input"
+                  )
+                    b-form-input(
+                      id="email"
+                      type="email"
+                      required
+                      v-model="form.email"
+                    )
+                b-col(cols="6")
+                  b-form-group(
+                    label="Cell phone"
+                    label-for="phone"
+                    label-class="required-input"
+                  )
+                    b-form-input(
+                      id="phone"
+                      type="text"
+                      required
+                      v-model="form.phone"
+                    )
+                b-col(cols="12")
+                  p.form-title POLICY
+                b-col(cols="12")
+                  div.policy-container
+                    div.policy-box(
+                      v-for="content in policyContent"
+                      :key="content.key"
+                    )
+                      div.select-header
+                        b-form-checkbox(
+                          v-model="selectedPolicy"
+                          :value="content.key"
                         )
-                      div.agree-content I have read all the policies &amp; clauses above and I agree.
-              b-col(cols="12")
-                div.submit-container
-                  b-button(
-                    squared
-                  ) SUBMIT &nbsp;
-                    fa(icon="arrow-right")
+                          div.select-content
+                            strong {{ content.title }}
+                            div.updown-angle
+                              fa(:icon="(selectedPolicy == content.key) ? 'angle-up' : 'angle-down'")
+                      b-collapse(
+                        id="policy-dd"
+                        :visible="(selectedPolicy == content.key)"
+                      )
+                        div.collapse-content {{ content.text }}
+                    div.agree-container
+                      b-form-checkbox(
+                        v-model="agree"
+                        :value="true"
+                      )
+                        div.select-checkbox
+                          div.select-checkbox-checked(
+                            v-if="agree"
+                            required
+                          )
+                        div.agree-content I have read all the policies &amp; clauses above and I agree.
+                b-col(cols="12")
+                  div.submit-container
+                    b-button(
+                      squared
+                      type="submit"
+                      :disabled="!agree"
+                    ) SUBMIT &nbsp;
+                      fa(icon="arrow-right")
 </template>
 <script>
 export default {
@@ -146,13 +162,27 @@ export default {
     code: {
       type: String,
       default: null
+    },
+    submitted: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
+      form: {
+        code: this.code,
+        prefix: null,
+        companyName: null,
+        jobTitle: null,
+        nationality: null,
+        firstName: null,
+        lastName: null,
+        email: null,
+        phone: null
+      },
       selectedPolicy: 1,
       agree: false,
-      invitationCode: this.code,
       policyContent: [
         {
           key: 1,
@@ -179,7 +209,33 @@ export default {
           title: 'USe of likeness',
           text: 'The decentralized ....'
         }
+      ],
+      listNationality: [
+        'Afghan', 'Albanian', 'Algerian', 'American', 'Andorran', 'Angolan', 'Antiguans', 'Argentinean', 'Armenian', 'Australian', 'Austrian', 'Azerbaijani', 'Bahamian', 'Bahraini', 'Bangladeshi', 'Barbadian', 'Barbudans', 'Batswana', 'Belarusian', 'Belgian', 'Belizean', 'Beninese', 'Bhutanese', 'Bolivian', 'Bosnian', 'Brazilian', 'British', 'Bruneian', 'Bulgarian', 'Burkinabe', 'Burmese', 'Burundian', 'Cambodian', 'Cameroonian', 'Canadian', 'Cape Verdean', 'Central African', 'Chadian', 'Chilean', 'Chinese', 'Colombian', 'Comoran', 'Congolese', 'Costa Rican', 'Croatian', 'Cuban', 'Cypriot', 'Czech', 'Danish', 'Djibouti', 'Dominican', 'Dutch', 'East Timorese', 'Ecuadorean', 'Egyptian', 'Emirian', 'Equatorial Guinean', 'Eritrean', 'Estonian', 'Ethiopian', 'Fijian', 'Filipino', 'Finnish', 'French', 'Gabonese', 'Gambian', 'Georgian', 'German', 'Ghanaian', 'Greek', 'Grenadian', 'Guatemalan', 'Guinea-Bissauan', 'Guinean', 'Guyanese', 'Haitian', 'Herzegovinian', 'Honduran', 'Hungarian', 'I-Kiribati', 'Icelander', 'Indian', 'Indonesian', 'Iranian', 'Iraqi', 'Irish', 'Israeli', 'Italian', 'Ivorian', 'Jamaican', 'Japanese', 'Jordanian', 'Kazakhstani', 'Kenyan', 'Kittian and Nevisian', 'Kuwaiti', 'Kyrgyz', 'Laotian', 'Latvian', 'Lebanese', 'Liberian', 'Libyan', 'Liechtensteiner', 'Lithuanian', 'Luxembourger', 'Macedonian', 'Malagasy', 'Malawian', 'Malaysian', 'Maldivan', 'Malian', 'Maltese', 'Marshallese', 'Mauritanian', 'Mauritian', 'Mexican', 'Micronesian', 'Moldovan', 'Monacan', 'Mongolian', 'Moroccan', 'Mosotho', 'Motswana', 'Mozambican', 'Namibian', 'Nauruan', 'Nepalese', 'New Zealander', 'Nicaraguan', 'Nigerian', 'Nigerien', 'North Korean', 'Northern Irish', 'Norwegian', 'Omani', 'Pakistani', 'Palauan', 'Panamanian', 'Papua New Guinean', 'Paraguayan', 'Peruvian', 'Polish', 'Portuguese', 'Qatari', 'Romanian', 'Russian', 'Rwandan', 'Saint Lucian', 'Salvadoran', 'Samoan', 'San Marinese', 'Sao Tomean', 'Saudi', 'Scottish', 'Senegalese', 'Serbian', 'Seychellois', 'Sierra Leonean', 'Singaporean', 'Slovakian', 'Slovenian', 'Solomon Islander', 'Somali', 'South African', 'South Korean', 'Spanish', 'Sri Lankan', 'Sudanese', 'Surinamer', 'Swazi', 'Swedish', 'Swiss', 'Syrian', 'Taiwanese', 'Tajik', 'Tanzanian', 'Thai', 'Togolese', 'Tongan', 'Trinidadian/Tobagonian', 'Tunisian', 'Turkish', 'Tuvaluan', 'Ugandan', 'Ukrainian', 'Uruguayan', 'Uzbekistani', 'Venezuelan', 'Vietnamese', 'Welsh', 'Yemenite', 'Zambian', 'Zimbabwean'
+      ],
+      optionsNationality: [
+        { value: null, text: '-select-' }
+      ],
+      optionsPrefix: [
+        { value: null, text: '-select-' },
+        { value: 'Mr', text: 'Mr' },
+        { value: 'Mrs', text: 'Mrs' }
       ]
+    }
+  },
+  mounted() {
+    // Prepare nationality
+    this.listNationality.forEach((x) => {
+      this.optionsNationality.push(
+        { value: x.toLowerCase(), text: x }
+      )
+    })
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
+      this.$log.debug(this.form)
+      this.$emit('update:submitted', true)
     }
   }
 }
@@ -218,9 +274,11 @@ export default {
             border: 2px solid green
             padding: 10px
             max-width: 20em
+            min-height: 2.5em
         .form-title
           font-size: 30px
         .required-input
+          font-weight: bold
           &:after
             content: '*'
             color: red

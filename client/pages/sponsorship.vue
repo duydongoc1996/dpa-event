@@ -27,6 +27,7 @@
       )
         SectionSponsorshipForm(
           @update:submitted="changeSubmitView"
+          :sponsorshipType="sponsorType"
         )
     section.section-submit-success(
       v-if="showSubmit"

@@ -3,13 +3,13 @@
     div.wrapper-submit-inner
       p.submit-heading Sponsorship oppotunities
       div.submit-image
-        b-img(src="" alt="sponsorship image")
+        b-img(src="~/assets/sponsorship-success.png" alt="sponsorship image")
       p.submit-description You have submitted a sponsorship participation application for the Decentralized People's Awards 2019.
       p.submit-description We have sent a copy of your application to your email, and the organizer will contact you shortly after reviewing your application. Thank you!
-      b-button.goback-btn(
-        squared
-      ) Go back to home &nbsp;
-        fa(icon="arrow-right")
+      nuxt-link(to="/")
+        div.goback-btn
+          span Go back to home &nbsp;
+          fa(icon="arrow-right")
 </template>
 <script>
 export default {
@@ -33,13 +33,15 @@ export default {
         color: #cec230
         font-size: 30px
       .submit-image
-        margin: 0 auto
-        width: 300px
-        height: 300px
-        border: 1px solid grey
+        margin: 30px auto
       .submit-description
         margin: 0
       .goback-btn
+        margin: 10px auto
+        display: block
+        color: white
+        width: 10em
+        padding: 10px
         background-color: #cec230
         border-color: #cec230
 </style>

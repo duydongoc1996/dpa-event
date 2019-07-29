@@ -2,14 +2,17 @@
   div.wrapper-sponsor-form
     div.wrapper-sponsor-form-inner
       div.form-header
-        p.form-heading Sponsorship participation application
+        p.form-heading
+          strong Sponsorship participation application
         p.form-description This is a sponsorship application for the Decentralized People's Awards Korea 2019 held by Token Post from Dec.20th in Seoul, South Korea
         p.form-description This infomation you provide in this form will be used to better serve you throughout the event.
         p.form-description Please review your response for any typos, spelling errors and unintended misinfomation
         p.form-description BEFORE submitting your application. The event organizers are not obligated to correct the errors,
         p.form-description and what is submitted here will be what goes on every material releases and distributed during the event.
       div.form-body
-        b-form
+        b-form(
+          @submit="onSubmit"
+        )
           b-container(fluid)
             b-row
               b-col(
@@ -24,6 +27,7 @@
                     id="companyname"
                     type="text"
                     required
+                    v-model="form.companyName"
                   )
               b-col(
                 cols="6"
@@ -37,6 +41,7 @@
                     id="fullname"
                     type="text"
                     required
+                    v-model="form.fullName"
                   )
               b-col(
                 cols="6"
@@ -50,6 +55,7 @@
                     id="companywebsite"
                     type="text"
                     required
+                    v-model="form.companyWebsite"
                   )
               b-col(
                 cols="6"
@@ -61,8 +67,9 @@
                 )
                   b-form-input(
                     id="email"
-                    type="text"
+                    type="email"
                     required
+                    v-model="form.email"
                   )
               b-col(
                 cols="6"
@@ -76,6 +83,7 @@
                     id="telegramid"
                     type="text"
                     required
+                    v-model="form.telegramId"
                   )
               b-col(
                 cols="6"
@@ -89,6 +97,7 @@
                     id="jobtitle"
                     type="text"
                     required
+                    v-model="form.jobTitle"
                   )
               b-col(
                 cols="12"
@@ -102,6 +111,7 @@
                     id="companydescription"
                     required
                     rows="5"
+                    v-model="form.companyDescription"
                   )
               b-col(
                 cols="12"
@@ -115,6 +125,8 @@
                     id="companylogo"
                     placeholder="Attach your company's logo as an Ai file or any other printable file (high resolution)"
                     required
+                    accept=".jpg, .png, .gif"
+                    v-model="form.companyLogo"
                   )
                   div.image-icon
                     fa(icon="image")
@@ -136,7 +148,8 @@
                   div.submit-btn
                     b-button(
                       squared
-                      @click="$emit('update:submitted', true)"
+                      :disabled="!agree"
+                      type="submit"
                     ) SUBMIT &nbsp;
                       fa(icon="arrow-right")
 </template>
@@ -147,11 +160,33 @@ export default {
     submitted: {
       type: Boolean,
       default: false
+    },
+    sponsorshipType: {
+      type: String,
+      default: null
     }
   },
   data() {
     return {
+      form: {
+        type: this.sponsorshipType,
+        companyName: null,
+        fullName: null,
+        companyWebsite: null,
+        email: null,
+        telegramId: null,
+        jobTitle: null,
+        companyDescription: null,
+        companyLogo: null
+      },
       agree: false
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
+      this.$log.debug(this.form)
+      this.$emit('update:submitted', true)
     }
   }
 }
@@ -176,6 +211,7 @@ export default {
     .form-body
       padding: 30px 0
       .required-input
+        font-weight: bold
         &:after
           content: '*'
           color: red
