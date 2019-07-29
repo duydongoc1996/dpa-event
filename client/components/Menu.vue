@@ -24,23 +24,33 @@ div.wrapper-menu
             nuxt-link(to="/nominate") Nominate
           b-nav-item
             nuxt-link(to="/vote") Vote
-        b-navbar-nav.ml-auto.language
-          b-nav-item
+        b-navbar-nav.ml-auto
+          b-nav-item.insight(
+            :href="(language == 'en') ? 'https://tokenpost.com/insights' : 'https://www.tokenpost.kr/insights'"
+          )
+              div.insight-btn
+                strong Insight
+          b-nav-item.language
             label(for="dd-language") LANGUAGE &nbsp;
-            b-dropdown.dd-language(
+            b-form-select.dd-language(
               id="dd-language"
-              text="EN"
               variant="outline-light"
+              :options="optionsLanguage"
+              v-model="language"
             )
-              b-dropdown-item EN
-              b-dropdown-item KR
 </template>
 
 <script>
 export default {
   name: 'Menu',
   data() {
-    return {}
+    return {
+      language: 'en',
+      optionsLanguage: [
+        { value: 'en', text: 'EN' },
+        { value: 'kr', text: 'KR' }
+      ]
+    }
   }
 }
 </script>
@@ -74,14 +84,25 @@ export default {
               text-decoration: none
             .nuxt-link-exact-active
               border-bottom: 2px solid white
+      .insight
+        a
+          border-bottom: none !important
+        .insight-btn
+          background-color: #cec230
+          border-color: #cec230
+          padding: 5px 20px
       .language
         margin-left: 0 !important
-        .dropdown
-          .dropdown-toggle
-            border-radius: 20px
-            padding: 3px 15px
-          .dropdown-menu
-            min-width: 4em
-            .dropdown-item
-              color: black !important
+        margin: auto
+        .dd-language
+          width: 4em
+          border-radius: 2em
+          background-color: transparent
+          color: white
+          background: url(~assets/angledown.png) no-repeat right 0.75rem center/8px 10px
+          option
+            color: black
+          &:focus
+            border-color: #cec230
+            box-shadow: 0 0 0 0.2rem rgba(206, 194, 48, 0.25)
 </style>

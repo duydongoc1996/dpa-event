@@ -21,7 +21,7 @@
             div.footer-contact
               p
                 strong CONTACT US
-              p hello@dpawards.com
+              p info@purpleswan.io
           b-col.footer-col(
             sm="4"
             lg="2"

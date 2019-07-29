@@ -86,6 +86,7 @@
                   button-variant="outline-light"
                   v-model="formData.isSelf"
                   :class="formData.isSelf ? 'self-checkbox self-checked' : 'self-checkbox'"
+                  @change="beforeChangeIsSelf"
                 )
                   fa(icon="check-circle")
                   span &nbsp; I am nominating myself
@@ -180,7 +181,7 @@
               b-form-group(
                 label="Cell phone"
                 label-for="phone"
-                label-class="required-input"
+                :label-class="(this.formData.isSelf) ? 'required-input' : 'none-required'"
               )
                 b-form-input(
                   id="phone"
@@ -234,7 +235,7 @@
               cols="12"
             )
               b-form-group(
-                label="Tell us about the speaker. Why are you nominating this person?"
+                label="Tell us about the nominee. Why are you nominating this person?"
                 label-for="aboutspeaker"
                 label-class="required-input"
               )
@@ -356,7 +357,7 @@ export default {
       optionsPrefix: [
         { value: null, text: '-select-' },
         { value: 'Mr', text: 'Mr' },
-        { value: 'Mrs', text: 'Mrs' }
+        { value: 'Ms', text: 'Ms' }
       ],
       optionsKnow: [
         { value: true, text: 'Yes' },
@@ -396,6 +397,14 @@ export default {
     })
   },
   methods: {
+    beforeChangeIsSelf() {
+      if (!this.formData.isSelf) {
+        this.formData.firstName = this.formData.byFirstName
+        this.formData.lastName = this.formData.byLastName
+        this.formData.phone = this.formData.byPhone
+        this.formData.email = this.formData.byEmail
+      }
+    },
     addLinkMedia() {
       this.linksMediaArray.push(null)
     },

@@ -22,7 +22,8 @@ module.exports = class Nominate {
         job_title,
         phone,
         email,
-        nationality
+        nationality,
+        other_category
       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `, [
       voteInfo.fk_nominator,
@@ -42,7 +43,8 @@ module.exports = class Nominate {
       voteInfo.job_title,
       voteInfo.phone,
       voteInfo.email,
-      voteInfo.nationality
+      voteInfo.nationality,
+      voteInfo.other_category
     ])
       .then(([rows, fields]) => {
         return {
@@ -106,21 +108,18 @@ module.exports = class Nominate {
    * Create new Award category
    * @param {String} categoryName
    */
-  static async createAwardCategory(categoryName) {
-    // Check exist
-    const exist = await this.existAwardCategory(categoryName)
-    if (exist.existed) {
-      return {
-        success: true,
-        message: 'Award category existed',
-        categoryId: exist.categoryId
-      }
-    }
+  static async createAwardCategory(categoryName,level,parent,description) {
+    
     // Sanitize category name
     const sanitizeName = categoryName.replace(/( .)|(\b.)/gi, x => x.toUpperCase())
     return await mysql.promise.query(`
-      INSERT INTO award_category(name) VALUES (?)
-    `, [sanitizeName])
+      INSERT INTO award_category(
+        name,
+        level,
+        parent,
+        description
+      ) VALUES (?,?,?,?)
+    `, [sanitizeName,level,parent,description])
       .then(([rows, fields]) => {
         return {
           success: true,
@@ -176,6 +175,25 @@ module.exports = class Nominate {
         return {
           success: true,
           message: 'Updated award category status successful'
+        }
+      })
+      .catch((err) => {
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
+  static async deleteAwardCategory(categoryId) {
+    return await mysql.promise.query(`
+      DELETE FROM award_category
+      WHERE id = ?
+    `, [categoryId])
+      .then(([rows, fields]) => {
+        return {
+          success: true,
+          message: 'Delete award category successful'
         }
       })
       .catch((err) => {

@@ -21,13 +21,23 @@
                 strong DECENTRALIZED PEOPLE'S AWARDS 2019
               p.des-date
                 strong DECEMBER 20, 2019 | 16:00 - 21:00
-              p.des-text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              p.des-text It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+              p.des-text
+                strong DPA
+              p.des-text
+                strong Recognition on chain.
+              p.des-text Celebrate your hard work and contribution to the blockchain industry. TokenPost is a leading provider of news on distributed ledger technology and strives to keep readers abreast of the latest trends and technology developments in the blockchain industry. We provide unbiased and up-to-date information from numerous sources to deliver well-balanced and objective news with a creative and novel perspective.
+              p.des-text As a vital outlet for information sharing and learning, TokenPost is opening a new chapter in the blockchain media sector by serving the public and enthusiasts, going beyond the limited role of just another news provider in the blockchain sphere.
+              p.des-text As part of this effort, TokenPost will host Decentralized People’s Awards Korea 2019 (DPA) to celebrate the achievements of companies and individuals who have contributed to the development and innovation of the blockchain technology. As a follow up to Blockchain Open Forum 2018, the largest blockchain conference of 2018 in South Korea, DPA will become a household name for blockchain awards.
+              p.des-text DPA will focus on identifying and bringing to light individuals and enterprises that have helped advance our society by innovating and implementing the blockchain technology in their fields. Noteworthy projects and pioneers will be selected and voted for by the people as the decentralized voice. Joined by the most sought after experts and entrepreneurs in the current blockchain scene, Decentralized People’s Award 2019 will also provide a special opportunity to network and promote further discussion into the future of the blockchain technology.
               div.wrapper-button
-                b-button.custom-button(squared) ATTEND &nbsp;
-                  fa(icon="arrow-right")
-                b-button.custom-button(squared) NOMINATE &nbsp;
-                  fa(icon="arrow-right")
+                nuxt-link(to="/attend")
+                  div.yellow-button
+                    strong ATTEND &nbsp;
+                    fa(icon="arrow-right")
+                nuxt-link(to="/nominate")
+                  div.yellow-button
+                    strong NOMINATE &nbsp;
+                    fa(icon="arrow-right")
 </template>
 
 <script>
@@ -54,9 +64,8 @@ export default {
     .wrapper-description
       height: 100%
       background-color: white
-      padding-top: 50px
       .wrapper-description-inner
-        padding: 50px
+        padding: 30px 50px
         max-width: 50em
         text-align: justify
         text-justify: inter-word
@@ -64,12 +73,10 @@ export default {
           color: #cec230
           font-size: 30px
         .des-date
-        .custom-button
-          color: white
-          background-color: #cec230
-          border-color: #cec230
-          margin-right: 10px
-          width: 200px
-          margin-top: 10px
-
+        .wrapper-button
+          .yellow-button
+            text-align: center
+            margin-right: 10px
+            width: 200px
+            float: left
 </style>

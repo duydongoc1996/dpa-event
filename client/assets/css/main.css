@@ -37,3 +37,31 @@ a:hover {
 .btn.disabled, .btn:disabled {
   cursor: not-allowed;
 }
+a .white-button, a.yellow-button {
+  padding: 5px 20px;
+  text-align: center;
+  max-width: 15em;
+  display: inline-block;
+  
+}
+a .white-button {
+  border: 1px solid white;
+  color: white;
+  border-radius: 3px;
+  background-color: transparent;
+}
+a .yellow-button {
+  background-color: #cec230;
+  border: 1px solid #cec230;
+  color: white;
+  border-radius: 0px;
+  padding: 10px 20px;
+}
+a .white-button:hover {
+  background-color: white;
+  color: black;
+}
+a .yellow-button:hover {
+  background-color: white;
+  color: #cec230;
+}

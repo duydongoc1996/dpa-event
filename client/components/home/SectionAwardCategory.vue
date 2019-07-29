@@ -5,7 +5,7 @@
         div.award-header
           p.award-heading
             strong AWARDS CATEGORY
-          p.award-description All fo the winners of prize winners will be granted the exclusive rights to use the DPA marks on their marketing materials such as websites, publications, products and so on.
+          p.award-description All of the winners will be granted the exclusive right to use the DPA mark on their marketing materials such as websites, publications, products and so on.
         div.award-list
           b-container(fluid)
             b-row()
@@ -13,30 +13,45 @@
                 sm="6"
                 md="6"
                 lg="4"
-                v-for="x in 11"
-                :key="x"
+                v-for="x in listCategory"
+                :key="x.id"
               )
                 div.award-item-container
                   div.award-decoration-left
                     b-img(src="~/assets/award-decoration-left.png")
                   div.award-detail
                     p.award-name
-                      strong Best in ICO
-                    p.award-description test test
+                      strong {{ x.name }}
+                    p.award-description {{ x.description }}
                   div.award-decoration-right
                     b-img(src="~/assets/award-decoration-right.png")
         div.award-btn-container
-          b-button(squared variant="outline-light") NOMINATE &nbsp;
-            fa(icon="arrow-right")
-          b-button(squared variant="outline-light") VOTE &nbsp;
-            fa(icon="arrow-right")
+          nuxt-link(to="/nominate")
+            div.white-button
+              strong NOMINATE &nbsp;
+              fa(icon="arrow-right")
+          nuxt-link(to="/vote")
+            div.white-button
+              strong VOTE &nbsp;
+              fa(icon="arrow-right")
 </template>
 
 <script>
 export default {
   name: 'SectionAwardCategory',
   data() {
-    return {}
+    return {
+      listCategory: null
+    }
+  },
+  mounted() {
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/nominate/categories'
+    }).then((res) => {
+      this.listCategory = res.data.filter(x => x.level === 1)
+      this.$log.debug(this.listCategory)
+    })
   }
 }
 </script>
@@ -101,7 +116,8 @@ export default {
             height: fit-content
             width: 20%
     .award-btn-container
-      button
-        margin: 20px
+      .white-button
         width: 200px
+        margin-left: 10px
+        border-radius: 0
 </style>

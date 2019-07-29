@@ -29,7 +29,7 @@ module.exports = class NominateHandler {
       if (!data.vote_award_category) return Promise.reject('Missing voting award category')
       if (!data.vote_about_speaker) return Promise.reject('Missing voting about speaker')
       if (!data.vote_links_media) return Promise.reject('Missing voting links media')
-      // if (!data.vote_links_articles) return Promise.reject('Missing voting links articles')
+      
       // --//--Avatar
       if (!data.fileName) return Promise.reject('Missing avatar')
 
@@ -60,41 +60,16 @@ module.exports = class NominateHandler {
         phone: data.for_phone_number,
         email: data.for_email,
         nationality: data.for_nationality,
-        avatar: data.fileName
+        avatar: data.fileName,
+        other_category: data.other_category
       }
-
-      // // Verify firebase phone number
-      // const validPhoneNumber = await admin.auth().getUser(data.uid)
-      //   .then(function (userRecord) {
-      //     return {
-      //       success: true,
-      //       uid: userRecord.uid
-      //     }
-      //   })
-      //   .catch(function (error) {
-      //     return false
-      //   })
-      // if (!validPhoneNumber) return Promise.reject('This phone number has not been verified')
-      // // Delete phone number in firebase
-      // const deleteUid = await admin.auth().deleteUser(validPhoneNumber.uid)
-      //   .then(function () {
-      //     return true
-      //   })
-      //   .catch(function (error) {
-      //     console.error('Error deleting user:', error)
-      //     return false
-      //   })
-
-      // create award category
-      const category = await Nominate.createAwardCategory(awardCategory)
-      if (!category.success) return Promise.reject(category)
 
       // create nominator
       const nominator = await Nominate.createNominator(nominatorInfo)
       if (!nominator.success) return Promise.reject(nominator.message)
 
       // create vote
-      voteInfo.fk_award_category = category.categoryId
+      voteInfo.fk_award_category = awardCategory
       voteInfo.fk_nominator = nominator.nominatorId
       const vote = await Nominate.createNominee(voteInfo)
       if (!vote.success) return Promise.reject(vote.message)
@@ -132,8 +107,31 @@ module.exports = class NominateHandler {
       const data = req.body
       // validate input
       if (!data.categoryName) return Promise.reject('Missing award category name')
+      if (!data.level) return Promise.reject('Missing award category level')
+      if (data.parent == null) data.parent = 0;
+      if (!data.description) data.description = '';
+      console.log(data)
       // create
-      const response = await Nominate.createAwardCategory(data.categoryName)
+      const response = await Nominate.createAwardCategory(data.categoryName, parseInt(data.level),parseInt(data.parent),data.description)
+      if (!response.success) return Promise.reject(response.message)
+      // response
+      res.json(response)
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static deleteAwardCategory(req, res) {
+    (async () => {
+      const data = req.body
+      // validate input
+      if (!data.categoryId) return Promise.reject('Missing award category id')
+      // create
+      const response = await Nominate.deleteAwardCategory(req.body.categoryId)
       if (!response.success) return Promise.reject(response.message)
       // response
       res.json(response)
