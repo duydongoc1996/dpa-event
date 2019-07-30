@@ -495,6 +495,14 @@ export default {
       e.preventDefault()
       // Join links media
       this.formData.linksMedia = this.linksMediaArray.join(',')
+      // Get award category
+      if (this.selectCategory.lv3 !== null) {
+        this.formData.awardCategory = this.selectCategory.lv3
+      } else if (this.selectCategory.lv2 !== null) {
+        this.formData.awardCategory = this.selectCategory.lv2
+      } else {
+        this.formData.awardCategory = this.selectCategory.lv3
+      }
       // Prepare data to submit
       const formBody = new FormData()
       formBody.set('by_first_name', this.formData.byFirstName)
@@ -516,6 +524,7 @@ export default {
       formBody.set('vote_links_media', this.formData.linksMedia)
       formBody.set('vote_links_articles', '')
       formBody.set('vote_is_know', this.formData.isKnow)
+      formBody.set('other_category', this.formData.otherCategory)
       formBody.append('image', this.formData.avatar)
       this.$axios({
         method: 'post',
