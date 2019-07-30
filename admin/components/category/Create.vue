@@ -83,7 +83,7 @@ export default {
         method: 'post',
         url: process.env.baseUrl + '/nominate/category/create',
         headers: {
-          Authorization: 'Bearer ' + localStorage.token
+          Authorization: 'Bearer ' + sessionStorage.token
         },
         data: {
           categoryName: this.form.name,

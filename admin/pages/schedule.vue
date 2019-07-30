@@ -2,7 +2,7 @@
   div.page-schedule
     h1 &gt;&gt; Schedule &lt;&lt;
     hr
-    b-container()
+    b-container(fluid)
       b-row
         b-col(cols="12")
           div
@@ -14,12 +14,13 @@
                 :items="schedules"
               )
             hr
-        b-col(cols="6")
+        b-col(cols="4")
           Create
           hr
-        b-col(cols="6")
+        b-col(cols="4")
           Delete
           hr
+        b-col(cols="4")
           Order
           hr
 </template>

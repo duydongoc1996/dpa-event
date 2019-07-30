@@ -10,7 +10,7 @@ export default {
     return {}
   },
   mounted() {
-    if (!localStorage.token) {
+    if (!sessionStorage.token) {
       window.location.href = '/login'
       return
     }
@@ -18,7 +18,7 @@ export default {
       method: 'get',
       url: process.env.baseUrl + '/',
       headers: {
-        Authorization: 'Bearer ' + localStorage.token
+        Authorization: 'Bearer ' + sessionStorage.token
       }
     }).then((res) => {
       if (!res.data.success) {

@@ -47,7 +47,7 @@ export default {
         method: 'post',
         url: process.env.baseUrl + '/schedule/order/' + this.id,
         headers: {
-          Authorization: 'Bearer ' + localStorage.token
+          Authorization: 'Bearer ' + sessionStorage.token
         },
         data: {
           order: this.order

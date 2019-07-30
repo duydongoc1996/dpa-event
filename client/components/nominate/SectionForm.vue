@@ -225,11 +225,49 @@
                 label-for="awardcategroy"
                 label-class="required-input"
               )
-                b-form-select(
-                  id="awardcategory"
+                b-container.no-padding(
+                  fluid
+                )
+                  b-row()
+                    b-col(cols="6")
+                      b-form-select(
+                        id="awardcategory"
+                        required
+                        :options="optionsAwardCategoryLv1"
+                        v-model="selectCategory.lv1"
+                        @change="updateLv2"
+                      )
+                    b-col(cols="6")
+                      b-form-select(
+                        id="awardcategory2"
+                        required
+                        :options="optionsAwardCategoryLv2"
+                        v-model="selectCategory.lv2"
+                        @change="updateLv3"
+                        v-if="optionsAwardCategoryLv2.length > 1"
+                      )
+                    b-col(cols="12")
+                      b-form-select(
+                        id="awardcategory3"
+                        required
+                        :options="optionsAwardCategoryLv3"
+                        v-model="selectCategory.lv3"
+                        v-if="optionsAwardCategoryLv3.length > 1"
+                      )
+            b-col(
+              cols="12"
+            )
+              b-form-group(
+                label="If you have chosen 'Other', which award category do you think is appropriate for the nominee?"
+                label-for="other"
+                label-class="required-input"
+                v-if="listOtherCategoties.indexOf(selectCategory.lv1) > -1 || listOtherCategoties.indexOf(selectCategory.lv2) > -1 || listOtherCategoties.indexOf(selectCategory.lv3) > -1"
+              )
+                b-form-input(
+                  id="other"
+                  type="text"
                   required
-                  :options="optionsAwardCategory"
-                  v-model="formData.awardCategory"
+                  v-model="formData.otherCategory"
                 )
             b-col(
               cols="12"
@@ -351,7 +389,8 @@ export default {
         aboutSpeaker: null,
         linksMedia: null,
         avatar: null,
-        isKnow: false
+        isKnow: false,
+        otherCategory: null
       },
       linksMediaArray: [null],
       optionsPrefix: [
@@ -369,21 +408,42 @@ export default {
       optionsNationality: [
         { value: null, text: '-select-' }
       ],
-      optionsAwardCategory: [
+      optionsAwardCategoryLv1: [
         { value: null, text: '-select-' }
       ],
-      numLinkMedia: 1
+      optionsAwardCategoryLv2: [
+        { value: null, text: '-select-' }
+      ],
+      optionsAwardCategoryLv3: [
+        { value: null, text: '-select-' }
+      ],
+      defaultOptions: [
+        { value: null, text: '-select-' }
+      ],
+      numLinkMedia: 1,
+      listCategories: null,
+      selectCategory: {
+        lv1: null,
+        lv2: null,
+        lv3: null
+      },
+      listOtherCategoties: []
     }
   },
   mounted() {
     const that = this
-    this.$axios.get(process.env.baseUrl + '/vote/categories')
+    this.$axios.get(process.env.baseUrl + '/nominate/categories')
       .then((res) => {
-        const categories = res.data
-        categories.forEach(function (cate) {
-          that.optionsAwardCategory.push(
-            { value: cate.name.toLowerCase(), text: cate.name }
-          )
+        this.listCategories = res.data
+        this.listCategories.forEach(function (cate) {
+          if (cate.level === 1) {
+            that.optionsAwardCategoryLv1.push(
+              { value: cate.id, text: cate.name }
+            )
+          }
+          if (cate.name.toLowerCase() === 'others') {
+            that.listOtherCategoties.push(cate.id)
+          }
         })
       })
       .catch((err) => {
@@ -397,6 +457,26 @@ export default {
     })
   },
   methods: {
+    findChildCategory(parentId) {
+      return this.listCategories.filter(x => x.parent === parentId)
+    },
+    createOptions(categories) {
+      return categories.map((x) => {
+        return {
+          value: x.id,
+          text: x.name
+        }
+      })
+    },
+    updateLv2() {
+      this.optionsAwardCategoryLv2 = this.defaultOptions.concat(this.createOptions(this.findChildCategory(this.selectCategory.lv1)))
+      this.selectCategory.lv2 = null
+      this.optionsAwardCategoryLv3 = this.defaultOptions
+    },
+    updateLv3() {
+      this.optionsAwardCategoryLv3 = this.defaultOptions.concat(this.createOptions(this.findChildCategory(this.selectCategory.lv2)))
+      this.selectCategory.lv3 = null
+    },
     beforeChangeIsSelf() {
       if (!this.formData.isSelf) {
         this.formData.firstName = this.formData.byFirstName
@@ -439,7 +519,7 @@ export default {
       formBody.append('image', this.formData.avatar)
       this.$axios({
         method: 'post',
-        url: process.env.baseUrl + '/vote/create',
+        url: process.env.baseUrl + '/nominate/create',
         data: formBody,
         headers: {
           'content-type': 'multipart/form-data'
@@ -560,4 +640,6 @@ export default {
         border-color: #cec230
     label
       font-weight: bold
+  .no-padding
+    padding: 0
 </style>

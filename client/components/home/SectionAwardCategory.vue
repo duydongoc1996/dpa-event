@@ -50,7 +50,6 @@ export default {
       url: process.env.baseUrl + '/nominate/categories'
     }).then((res) => {
       this.listCategory = res.data.filter(x => x.level === 1)
-      this.$log.debug(this.listCategory)
     })
   }
 }

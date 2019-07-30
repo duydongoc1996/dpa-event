@@ -53,7 +53,7 @@ export default {
         }
       }).then((res) => {
         this.$log.info(res.data)
-        if (res.data.success) localStorage.setItem('token', res.data.token)
+        if (res.data.success) sessionStorage.setItem('token', res.data.token)
         window.location.href = '/'
       }).catch((err) => {
         this.$log.error(err)

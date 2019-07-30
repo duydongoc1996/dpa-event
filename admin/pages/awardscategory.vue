@@ -2,7 +2,7 @@
   div.page-schedule
     h1 &gt;&gt; Awards Category &lt;&lt;
     hr
-    b-container(fluid)
+    b-container
       b-row
         b-col(cols="12")
           div

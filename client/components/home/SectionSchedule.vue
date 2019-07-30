@@ -45,7 +45,7 @@ export default {
       method: 'get',
       url: process.env.baseUrl + '/schedules'
     }).then((res) => {
-      this.items = res.data
+      this.items = res.data.sort((x, y) => x.order - y.order)
     }).catch(err => this.$log.debug(err))
   }
 }

@@ -36,7 +36,7 @@ export default {
         method: 'post',
         url: process.env.baseUrl + '/schedule/remove/' + this.id,
         headers: {
-          Authorization: 'Bearer ' + localStorage.token
+          Authorization: 'Bearer ' + sessionStorage.token
         }
       }).then((res) => {
         if (!alert(res.data.message)) window.location.reload()

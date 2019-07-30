@@ -70,7 +70,7 @@ export default {
         method: 'post',
         url: process.env.baseUrl + '/schedule',
         headers: {
-          Authorization: 'Bearer ' + localStorage.token
+          Authorization: 'Bearer ' + sessionStorage.token
         },
         data: {
           event: this.event,
