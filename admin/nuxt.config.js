@@ -68,7 +68,7 @@ export default {
   axios: {
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:8000'
+    baseUrl: process.env.BASE_URL || 'http://142.93.32.205:8000'
   },
   /*
   ** Build configuration
