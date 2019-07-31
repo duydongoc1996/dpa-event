@@ -8,10 +8,10 @@
           div
             h3 List Awards Category
             b-table(
-                striped
-                hover
-                :items="categories"
-              )
+              striped
+              hover
+              :items="categories"
+            )
             hr
         b-col(cols="4")
           Create
@@ -33,7 +33,7 @@ export default {
       categories: null
     }
   },
-  created() {
+  mounted() {
     // Get list schedule
     this.$axios({
       method: 'get',

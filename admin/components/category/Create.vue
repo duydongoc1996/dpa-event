@@ -20,7 +20,7 @@
       )
         b-form-select(
           id="level"
-          type="text"
+          @change="updateOptionsParent"
           :options="optionsLevel"
           required
           v-model="form.level"
@@ -29,10 +29,10 @@
         label="Parent category ID"
         label-for="parent"
       )
-        b-form-input(
+        b-form-select(
           id="parent"
-          type="text"
           v-model="form.parent"
+          :options="optionsParent"
         )
       b-form-group(
         label="Description"
@@ -53,30 +53,45 @@
 <script>
 export default {
   name: 'Create',
-  props: {
-    categories: {
-      type: Array,
-      default: null
-    }
-  },
   data() {
     return {
-
       form: {
         name: null,
-        level: 1,
+        level: null,
         parent: null,
         description: null
       },
       optionsLevel: [
+        { value: null, text: '-select-' },
         { value: '1', text: '1::Main category' },
         { value: '2', text: '2::Sub category' },
         { value: '3', text: '3::Category item' }
       ],
-      optionsParent: null
+      defaultOptions: [{ value: null, text: '-select-' }],
+      optionsParent: [{ value: null, text: '-select-' }],
+      categories: null
     }
   },
+  mounted() {
+    // Get list schedule
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/nominate/categories'
+    }).then((res) => {
+      this.categories = res.data
+      this.optionsParent = this.defaultOptions
+    }).catch(err => this.$log.debug(err))
+  },
   methods: {
+    updateOptionsParent(e) {
+      const cateInLevel = this.categories.filter(x => x.level === parseInt(e))
+      this.$log.debug(cateInLevel)
+      const cateOptions = cateInLevel.map((x) => {
+        return { value: x.id, text: 'ID:: ' + x.id + ' - ' + x.name }
+      })
+      this.optionsParent = this.defaultOptions.concat(cateOptions)
+      this.form.parent = null
+    },
     onSubmit(e) {
       e.preventDefault()
       this.$axios({
