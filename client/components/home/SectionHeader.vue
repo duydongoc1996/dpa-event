@@ -4,7 +4,7 @@
       b-carousel(
         id="carousel-no-animation"
         indicators
-        :interval="400000"
+        :interval="4000000"
         img-width="1024"
         img-height="480"
       )
@@ -20,14 +20,6 @@
             div.white-button
               strong NOMINATE &nbsp;
               fa(icon="arrow-right")
-        b-carousel-slide(
-          caption="Second Slide"
-          img-src="https://picsum.photos/1024/480/?image=10"
-        )
-        b-carousel-slide(
-          caption="Third Slide"
-          img-src="https://picsum.photos/1024/480/?image=22"
-        )
       div.scroll
         div.icon-scroll
           fa(icon="circle")
