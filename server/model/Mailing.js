@@ -1,4 +1,5 @@
 const nodeMailer = require('nodemailer')
+const config = require('../config/app')
 
 module.exports = class Mailing {
   static transporter() {
@@ -8,8 +9,8 @@ module.exports = class Mailing {
       secure: true,
       auth: {
         // should be replaced with real sender's account
-        user: 'duy.do@fdssoft.com',
-        pass: 'meongu1996'
+        user: config.email.user,
+        pass: config.email.pass
       }
     })
   }

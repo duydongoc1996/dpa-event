@@ -8,5 +8,9 @@ module.exports = {
     connectionLimit: 10,
     queueLimit: 0
   },
-  secret: 'worldisfullofdevelopers'
+  secret: 'worldisfullofdevelopers',
+  email: {
+    user: 'duy.do@fdssoft.com',
+    pass: 'meongu1996'
+  }
 }
