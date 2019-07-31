@@ -92,15 +92,18 @@ export default {
           background-color: rgba(1,1,1,0.4)
           padding: 20px 0
           height: 160px
+          border-radius: 10px
           .award-detail
             display: block
             float: left
             height: fit-content
             width: 60%
+            padding-top: 30px
             .award-name
               color: #cec230
               font-family: FrankRuhLibre
-              font-size: 36px
+              font-size: 20px
+              margin: 0
             .award-description
               color: white
               margin: 0
