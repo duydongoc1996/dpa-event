@@ -10,7 +10,7 @@ module.exports = {
   },
   secret: 'worldisfullofdevelopers',
   email: {
-    user: 'duy.do@fdssoft.com',
-    pass: 'meongu1996'
+    user: 'info@purpleswan.io',
+    pass: `it'spurpleswantime!12`
   }
 }

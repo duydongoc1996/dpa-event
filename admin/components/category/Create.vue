@@ -85,7 +85,6 @@ export default {
   methods: {
     updateOptionsParent(e) {
       const cateInLevel = this.categories.filter(x => x.level === parseInt(e) - 1)
-      this.$log.debug(cateInLevel)
       const cateOptions = cateInLevel.map((x) => {
         return { value: x.id, text: 'ID:: ' + x.id + ' - ' + x.name }
       })
