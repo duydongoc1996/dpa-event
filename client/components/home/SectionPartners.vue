@@ -30,12 +30,13 @@
             )
               div.part-item
                 div.part-logo
-                  b-img(
-                    src="~/assets/logo/PUBLISH logo.png"
-                    alt="alt"
-                    fluid-grow
-                    center
-                  )
+                  a(href="https://publishsoft.io/")
+                    b-img(
+                      src="~/assets/logo/PUBLISH logo.png"
+                      alt="alt"
+                      fluid-grow
+                      center
+                    )
             b-col.part-item-container(
               cols="4"
               sm="4"
@@ -44,12 +45,13 @@
             )
               div.part-item
                 div.part-logo
-                  b-img(
-                    src="~/assets/logo/Kchain logo.png"
-                    alt="alt"
-                    fluid-grow
-                    center
-                  )
+                  a(href="https://www.kchain.kr/")
+                    b-img(
+                      src="~/assets/logo/Kchain logo.png"
+                      alt="alt"
+                      fluid-grow
+                      center
+                    )
 </template>
 <script>
 export default {

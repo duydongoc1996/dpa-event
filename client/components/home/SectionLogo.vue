@@ -11,15 +11,17 @@
           div.list-logo
             span.text
               strong HOST
-            b-img.logo-tokenpost(
-              src="~/assets/logo/TokenPost logo.png"
-              fluid
-            )
+            a(href="http://tokenpost.com/")
+              b-img.logo-tokenpost(
+                src="~/assets/logo/TokenPost logo.png"
+                fluid
+              )
             span &nbsp;
-            b-img.logo-econotimes(
-              src="~/assets/logo/Econotimes logo.png"
-              fluid
-            )
+            a(href="https://www.econotimes.com/")
+              b-img.logo-econotimes(
+                src="~/assets/logo/Econotimes logo.png"
+                fluid
+              )
         b-col(
           cols="12"
           sm="4"
@@ -27,10 +29,11 @@
           div.list-logo
             span.text
               strong ORGANIZER
-            b-img.logo-purpleswan(
-              src="~/assets/logo/PURPLE SWAN LOGO_gold.png"
-              fluid
-            )
+            a(href="https://purpleswan.io/")
+              b-img.logo-purpleswan(
+                src="~/assets/logo/PURPLE SWAN LOGO_gold.png"
+                fluid
+              )
         b-col(
           cols="12"
           sm="4"
@@ -38,7 +41,8 @@
           div.list-logo
             span.text
               strong MARKETER
-            b-img.logo-adel(src="~/assets/logo/Adel_logo_v1.png" fluid)
+            a(href="https://www.adelcompany.com/")
+              b-img.logo-adel(src="~/assets/logo/Adel_logo_v1.png" fluid)
 </template>
 
 <script>
