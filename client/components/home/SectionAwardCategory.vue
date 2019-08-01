@@ -32,6 +32,7 @@
               fa(icon="arrow-right")
           nuxt-link(
             to="/vote"
+            v-if="false"
           )
             div.white-button
               strong VOTE &nbsp;

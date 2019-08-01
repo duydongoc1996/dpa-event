@@ -111,7 +111,7 @@ export default {
             .text
       .line
         position: absolute
-        border: 5px solid blue
+        border: 5px solid #447095
         top: 80px
         left: 0
         width: 100%

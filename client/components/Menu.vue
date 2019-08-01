@@ -27,7 +27,7 @@ div.wrapper-menu
           b-nav-item
             nuxt-link(to="/nominate")
               strong Nominate
-          b-nav-item(v-if="false")
+          b-nav-item
             nuxt-link(to="/vote")
               strong Vote
         b-navbar-nav.ml-auto

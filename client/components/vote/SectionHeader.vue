@@ -4,6 +4,7 @@
       div.nom-header
         p.nom-heading
           strong VOTE
+        p.comming-soon comming soon
 </template>
 
 <script>
@@ -17,19 +18,20 @@ export default {
 
 <style lang="sass" scoped>
 .wrapper-header
-  background-image: url(~assets/attend-background.png)
-  background-size: cover
-  background-position: center center
-  height: 500px
+  background-color: black
   .wrapper-header-inner
     width: 100%
     height: 100%
+    position: relative
     background-color: rgba(0,0,0,0.4)
     .nom-header
       position: relative
       text-align: center
-      top: 40%
+      padding-top: 300px
       .nom-heading
         color: white
         font-size: 30px
+      .comming-soon
+        color: white
+        font-size: 24px
 </style>
