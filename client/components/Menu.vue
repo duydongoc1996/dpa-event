@@ -9,21 +9,27 @@ div.wrapper-menu
       b-navbar-brand.ml-auto.logo
         nuxt-link(to="/")
           b-img(
-            src="~/assets/DPA_logo.webp"
+            src="~/assets/logo/DPA logo_white text.png"
+            width="200"
           )
       b-navbar-toggle(target="nav-collapse")
       b-collapse(id="nav-collapse" is-nav)
         b-navbar-nav.mx-auto
           b-nav-item
-            nuxt-link(to="/") Home
+            nuxt-link(to="/")
+              strong Home
           b-nav-item
-            nuxt-link(to="/sponsorship") Sponsorship
+            nuxt-link(to="/sponsorship")
+              strong Sponsorship
           b-nav-item
-            nuxt-link(to="/attend") Attend
+            nuxt-link(to="/attend")
+              strong Attend
           b-nav-item
-            nuxt-link(to="/nominate") Nominate
-          b-nav-item
-            nuxt-link(to="/vote") Vote
+            nuxt-link(to="/nominate")
+              strong Nominate
+          b-nav-item(v-if="false")
+            nuxt-link(to="/vote")
+              strong Vote
         b-navbar-nav.ml-auto
           b-nav-item.insight(
             :href="(language == 'en') ? 'https://tokenpost.com/insights' : 'https://www.tokenpost.kr/insights'"
@@ -76,6 +82,7 @@ export default {
       .navbar-nav
         .nav-item
           padding: 20px 15px
+          font-size: 1.2rem
           .nav-link
             color: white
             a

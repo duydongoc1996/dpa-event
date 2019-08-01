@@ -10,23 +10,23 @@
           div.list-logo
             span.text
               strong HOST
-            b-img.logo-tokenpost(src="https://static.wixstatic.com/media/24cbfa_c94eb8c56707444f9e4b72f7074efe35~mv2.png/v1/fill/w_282,h_69,al_c,lg_1,q_80/tokenpost_logo.webp")
+            b-img.logo-tokenpost(src="~/assets/logo/TokenPost logo.png")
             span &nbsp;
-            b-img.logo-econotimes(src="https://static.wixstatic.com/media/24cbfa_a1c6f2d96e0246e78d9f27d9a4b7ab65~mv2.png/v1/fill/w_318,h_41,al_c,q_80,usm_0.66_1.00_0.01/Logo_EonoTimes.webp")
+            b-img.logo-econotimes(src="~/assets/logo/Econotimes logo.png")
         b-col(
           cols="4"
         )
           div.list-logo
             span.text
               strong ORGANIZER
-            b-img.logo-purpleswan(src="https://static.wixstatic.com/media/24cbfa_fa40e33dee4640f78f8eb8a43759f191~mv2.png/v1/fill/w_291,h_42,al_c,q_80,usm_0.66_1.00_0.01/PURPLE%20SWAN%20LOGO_gold.webp")
+            b-img.logo-purpleswan(src="~/assets/logo/PURPLE SWAN LOGO_gold.png")
         b-col(
           cols="4"
         )
           div.list-logo
             span.text
               strong MARKETER
-            b-img.logo-adel(src="https://static.wixstatic.com/media/24cbfa_e1d50474167b4e4a8a8e42fe6495a451~mv2.png/v1/crop/x_497,y_160,w_1003,h_586/fill/w_155,h_88,al_c,q_80,usm_0.66_1.00_0.01/horizontal_on_transparent_by_logaster_pn.webp")
+            b-img.logo-adel(src="~/assets/logo/Adel_logo_v1.png")
 </template>
 
 <script>
@@ -40,7 +40,7 @@ export default {
 
 <style lang="sass">
 .wrapper-logo
-  background-color: #1e1e1e
+  background-color: #111
   .wrapper-logo-inner
     .row
       min-height: 100px
@@ -51,11 +51,11 @@ export default {
       .logo-tokenpost
         height: 30px
       .logo-econotimes
-        height: 15px
+        height: 18px
       .logo-purpleswan
         height: 20px
       .logo-adel
-        height: 30px
+        height: 70px
       .text::after
         content:  " | "
 </style>

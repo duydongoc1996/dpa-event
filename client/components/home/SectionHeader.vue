@@ -4,12 +4,37 @@
       b-carousel(
         id="carousel-no-animation"
         indicators
-        :interval="4000000"
+        :interval="5000"
         img-width="1024"
         img-height="480"
+        background="rgba(0,0,0,0.5)"
       )
         b-carousel-slide(
           img-src="~/assets/Background.png"
+        )
+          p.wrapper-caption.caption-big
+            strong DECENTRALIZED
+              br
+              span PEOPLE'S AWARDS 2019
+          p.wrapper-caption.caption-description Celebrate your hard work and contribution to the blockchain industry
+          nuxt-link.nominate-btn(to="/nominate")
+            div.white-button
+              strong NOMINATE &nbsp;
+              fa(icon="arrow-right")
+        b-carousel-slide(
+          img-src="~/assets/image/2019-07-31 14.38.38.jpg"
+        )
+          p.wrapper-caption.caption-big
+            strong DECENTRALIZED
+              br
+              span PEOPLE'S AWARDS 2019
+          p.wrapper-caption.caption-description Celebrate your hard work and contribution to the blockchain industry
+          nuxt-link.nominate-btn(to="/nominate")
+            div.white-button
+              strong NOMINATE &nbsp;
+              fa(icon="arrow-right")
+        b-carousel-slide(
+          img-src="~/assets/image/2019-07-31 14.38.48.jpg"
         )
           p.wrapper-caption.caption-big
             strong DECENTRALIZED
@@ -46,8 +71,13 @@ export default {
       margin: 0 auto
   .carousel-item
     .carousel-caption
-      top: 30%
       text-align: center
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      padding: 10% 0 0 0
+      background-color: rgba(0,0,0,0.5)
       .wrapper-caption
         line-height: 1em
       .caption-big

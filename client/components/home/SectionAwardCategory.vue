@@ -30,7 +30,10 @@
             div.white-button
               strong NOMINATE &nbsp;
               fa(icon="arrow-right")
-          nuxt-link(to="/vote")
+          nuxt-link(
+            to="/vote"
+            v-if="false"
+          )
             div.white-button
               strong VOTE &nbsp;
               fa(icon="arrow-right")

@@ -22,8 +22,6 @@
               p.des-date
                 strong DECEMBER 20, 2019 | 16:00 - 21:00
               p.des-text
-                strong DPA
-              p.des-text
                 strong Recognition on chain.
               p.des-text Celebrate your hard work and contribution to the blockchain industry. TokenPost is a leading provider of news on distributed ledger technology and strives to keep readers abreast of the latest trends and technology developments in the blockchain industry. We provide unbiased and up-to-date information from numerous sources to deliver well-balanced and objective news with a creative and novel perspective.
               p.des-text As a vital outlet for information sharing and learning, TokenPost is opening a new chapter in the blockchain media sector by serving the public and enthusiasts, going beyond the limited role of just another news provider in the blockchain sphere.
@@ -64,6 +62,8 @@ export default {
     .wrapper-description
       height: 100%
       background-color: white
+      @media only screen and (max-width: 992px)
+        padding-bottom: 50px
       .wrapper-description-inner
         padding: 30px 50px
         max-width: 50em

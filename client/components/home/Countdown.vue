@@ -99,7 +99,7 @@ export default {
   @media only screen and (max-width: 992px)
     padding: 40px 10px
   @media only screen and (max-width: 768px)
-    padding: 40px
+    padding: 40px 0px
   span
     color: white
   .countdown-header

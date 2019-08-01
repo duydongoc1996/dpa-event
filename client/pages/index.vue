@@ -8,13 +8,15 @@
       SectionLogo
     section.section-intro
       SectionIntro
+    section.section-selectionprocess
+      SectionSelectionProcess
     section.section-schedule
       SectionSchedule
     section.section-awardcategory
       SectionAwardCategory
-    section.section-judges
+    section.section-judges(v-if="false")
       SectionJudges
-    section.section-sponsors
+    section.section-sponsors(v-if="false")
       SectionSponsors
     section.section-partners
       SectionPartners
@@ -29,6 +31,7 @@ import Menu from '~/components/Menu'
 import SectionHeader from '~/components/home/SectionHeader'
 import SectionLogo from '~/components/home/SectionLogo'
 import SectionIntro from '~/components/home/SectionIntro'
+import SectionSelectionProcess from '~/components/home/SectionSelectionProcess'
 import SectionSchedule from '~/components/home/SectionSchedule'
 import SectionAwardCategory from '~/components/home/SectionAwardCategory'
 import SectionJudges from '~/components/home/SectionJudges'
@@ -42,6 +45,7 @@ export default {
     SectionHeader,
     SectionLogo,
     SectionIntro,
+    SectionSelectionProcess,
     SectionSchedule,
     SectionAwardCategory,
     SectionJudges,

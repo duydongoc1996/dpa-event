@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.wrapper-schedule
+  div.wrapper-schedule(
+    v-if="items.length > 0"
+  )
     div.wrapper-schedule-inner
       div.sche-header
         p.sche-heading
@@ -36,7 +38,7 @@ export default {
   name: 'SectionSchedule',
   data() {
     return {
-      items: null
+      items: []
     }
   },
   mounted() {

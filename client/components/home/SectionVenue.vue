@@ -1,7 +1,7 @@
 <template lang="pug">
   div.wrapper-venue
     div.wrapper-venue-inner
-      b-container(fluid)
+      b-container
         b-row
           b-col(
             sm="12"

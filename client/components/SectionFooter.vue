@@ -10,7 +10,11 @@
             order-lg="1"
           )
             div.footer-brand
-              b-img(src="~/assets/DPA_logo.webp", alt="alt")
+              b-img(
+                src="~/assets/logo/DPA logo_white text.png"
+                alt="alt"
+                width="300"
+              )
               p.footer-copyright COPYRIGHT @DPA ALL RIGHTS RESERVED
           b-col.footer-col(
             sm="4"
@@ -57,10 +61,10 @@
                 a(href="#")
                   span.social-icon
                     fa(:icon="['fab', 'twitter']")
-                a(href="#")
+                a(href="https://www.instagram.com/tokenpost.kr/?hl=ko")
                   span.social-icon
                     fa(:icon="['fab', 'instagram']")
-                a(href="#")
+                a(href="https://www.youtube.com/channel/UC5QcOnLK-Ziu2DLhakgQhJw")
                   span.social-icon
                     fa(:icon="['fab', 'youtube']")
 </template>

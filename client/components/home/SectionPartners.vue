@@ -9,15 +9,47 @@
           b-row(
           )
             b-col.part-item-container(
+              cols="6"
               sm="6"
               md="4"
-              lg="3"
-              v-for="x in 8"
-              :key="x"
+              lg="4"
             )
               div.part-item
                 div.part-logo
-                  b-img(src="~/assets/kchain.png", alt="alt")
+                  b-img(
+                    src="~/assets/logo/delegacy logo_03.png"
+                    alt="alt"
+                    fluid-grow
+                    center
+                  )
+            b-col.part-item-container(
+              cols="6"
+              sm="6"
+              md="4"
+              lg="4"
+            )
+              div.part-item
+                div.part-logo
+                  b-img(
+                    src="~/assets/logo/PUBLISH logo.png"
+                    alt="alt"
+                    fluid-grow
+                    center
+                  )
+            b-col.part-item-container(
+              cols="6"
+              sm="6"
+              md="4"
+              lg="4"
+            )
+              div.part-item
+                div.part-logo
+                  b-img(
+                    src="~/assets/logo/Kchain logo.png"
+                    alt="alt"
+                    fluid-grow
+                    center
+                  )
 </template>
 <script>
 export default {
@@ -44,10 +76,17 @@ export default {
         color: #cec230
         font-size: 30px
     .part-body
+      height: 180px
+      position: relative
       .part-item-container
-        padding: 10px
+        height: 180px
+        border: 1px solid #f4f4f4
         .part-item
-          border: 1px solid #2c2c2c
+          margin: 0
+          position: absolute
+          top: 50%
+          -ms-transform: translateY(-50%)
+          transform: translateY(-50%)
           .part-logo
             text-align: center
             padding: 10px

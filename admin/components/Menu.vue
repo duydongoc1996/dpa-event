@@ -3,7 +3,7 @@
       b-container(fluid)
         b-row
           b-col
-            div
+            div.item
               nuxt-link(
                 to="/schedule"
               ) Schedule
