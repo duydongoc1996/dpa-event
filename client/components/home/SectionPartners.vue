@@ -9,8 +9,8 @@
           b-row(
           )
             b-col.part-item-container(
-              cols="6"
-              sm="6"
+              cols="4"
+              sm="4"
               md="4"
               lg="4"
             )
@@ -23,8 +23,8 @@
                     center
                   )
             b-col.part-item-container(
-              cols="6"
-              sm="6"
+              cols="4"
+              sm="4"
               md="4"
               lg="4"
             )
@@ -37,8 +37,8 @@
                     center
                   )
             b-col.part-item-container(
-              cols="6"
-              sm="6"
+              cols="4"
+              sm="4"
               md="4"
               lg="4"
             )

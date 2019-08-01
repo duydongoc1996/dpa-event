@@ -77,7 +77,7 @@ export default {
   .wrapper-process-inner
     .header
       text-align: center
-      padding-top: 50px
+      padding: 50px 0 30px 0
       p
         color: #cec230
         font-size: 30px
@@ -85,6 +85,8 @@ export default {
       position: relative
       padding: 0 10%
       padding-bottom: 50px
+      @media only screen and (max-width: 2000px)
+        padding: 0 10%
       @media only screen and (max-width: 768px)
         padding: 0 5%
       .process-col
@@ -93,7 +95,7 @@ export default {
         .process
           .image
             height: fit-content
-            border: 1px solid #2c2c2c
+            text-align: center
           .content
             padding-top: 10px
             text-align: center

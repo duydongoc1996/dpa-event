@@ -76,7 +76,7 @@ export default {
         .wrapper-button
           .yellow-button
             text-align: center
-            margin-right: 10px
             width: 200px
             float: left
+            margin: 10px 5px
 </style>
