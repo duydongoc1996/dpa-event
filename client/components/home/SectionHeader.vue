@@ -85,7 +85,7 @@ export default {
         @media only screen and (max-width: 992px)
           font-size: 30px
         @media only screen and (max-width: 768px)
-          display: 24px
+          font-size: 20px
       .caption-description
         position: relative
         width: 20em

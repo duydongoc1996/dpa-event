@@ -5,28 +5,40 @@
         align-v="center"
       )
         b-col(
-          cols="4"
+          cols="12"
+          sm="4"
         )
           div.list-logo
             span.text
               strong HOST
-            b-img.logo-tokenpost(src="~/assets/logo/TokenPost logo.png")
+            b-img.logo-tokenpost(
+              src="~/assets/logo/TokenPost logo.png"
+              fluid
+            )
             span &nbsp;
-            b-img.logo-econotimes(src="~/assets/logo/Econotimes logo.png")
+            b-img.logo-econotimes(
+              src="~/assets/logo/Econotimes logo.png"
+              fluid
+            )
         b-col(
-          cols="4"
+          cols="12"
+          sm="4"
         )
           div.list-logo
             span.text
               strong ORGANIZER
-            b-img.logo-purpleswan(src="~/assets/logo/PURPLE SWAN LOGO_gold.png")
+            b-img.logo-purpleswan(
+              src="~/assets/logo/PURPLE SWAN LOGO_gold.png"
+              fluid
+            )
         b-col(
-          cols="4"
+          cols="12"
+          sm="4"
         )
           div.list-logo
             span.text
               strong MARKETER
-            b-img.logo-adel(src="~/assets/logo/Adel_logo_v1.png")
+            b-img.logo-adel(src="~/assets/logo/Adel_logo_v1.png" fluid)
 </template>
 
 <script>

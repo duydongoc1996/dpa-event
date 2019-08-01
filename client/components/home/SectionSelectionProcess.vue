@@ -9,7 +9,8 @@
         b-container(fluid)
           b-row
             b-col.process-col(
-              cols="3"
+              cols="12"
+              sm="3"
             )
               div.process
                 div.image
@@ -23,7 +24,8 @@
                   p.text One can nominate the person he/she wants to nominate. He/she can nominate himself/herself as well.
 
             b-col.process-col(
-              cols="3"
+              cols="12"
+              sm="3"
             )
               div.process
                 div.image
@@ -36,7 +38,8 @@
                   p.date
                   p.text Conduct a large-scale public vote. (Voting power: 50%)
             b-col.process-col(
-              cols="3"
+              cols="12"
+              sm="3"
             )
               div.process
                 div.image
@@ -49,7 +52,8 @@
                   p.date
                   p.text Evaluation process from committee members of the host (voting power: 30%) and related association (voting power: 20%).
             b-col.process-col(
-              cols="3"
+              cols="12"
+              sm="3"
             )
               div.process
                 div.image
@@ -111,4 +115,6 @@ export default {
         top: 80px
         left: 0
         width: 100%
+        @media only screen and (max-width: 576px)
+          display: none
 </style>
