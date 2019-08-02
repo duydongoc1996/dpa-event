@@ -501,7 +501,7 @@ export default {
       } else if (this.selectCategory.lv2 !== null) {
         this.formData.awardCategory = this.selectCategory.lv2
       } else {
-        this.formData.awardCategory = this.selectCategory.lv3
+        this.formData.awardCategory = this.selectCategory.lv1
       }
       // Prepare data to submit
       const formBody = new FormData()

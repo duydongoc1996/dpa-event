@@ -128,6 +128,12 @@ module.exports = class Mailing {
           .big20 {
             font-size: 20px;
           }
+          .white-color {
+            color: white;
+          }
+          .black-color {
+            color: black;
+          }
         </style>
       </head>
       <body>
@@ -148,25 +154,25 @@ module.exports = class Mailing {
             </div>
             <div class="content">
               <p><strong>Dear, ${firstname + lastname}</strong></p><br>
-              <p>Congratulations! You are nominated for<br> Decentralized People's Awards (DPA) 2019!</p>
-              <p>
+              <p class="black-color">Congratulations! You are nominated for<br> Decentralized People's Awards (DPA) 2019!</p>
+              <p class="black-color">
                 The award category you got is as below:<br>
                 ${awardcategory}
               </p>
-              <p>After public voting and assessment process, we are going to finalize the winner of each award category.<br>We will personally contact the winners afterwards.</p>
-              <p>If you have any question, feel free to ask <a href="info@purpleswan.io">info@purpleswan.io</a></p>
-              <p>Thank you!</p>
-              <p class="right"><strong>DPA 2019 Operation office</strong></p>
+              <p class="black-color">After public voting and assessment process, we are going to finalize the winner of each award category.<br>We will personally contact the winners afterwards.</p>
+              <p class="black-color">If you have any question, feel free to ask <a href="info@purpleswan.io">info@purpleswan.io</a></p>
+              <p class="black-color">Thank you!</p>
+              <p class="right black-color"><strong>DPA 2019 Operation office</strong></p>
             </div>
           </div>
           <div class="footer">
             <div class="footer-inner">
                 <p class="big20">Recognition on chain.</p>
-                <p>Celebrate your hard work and contribution to the blockchain industry.</p>
-                <p>TokenPost is a leading provider of news on distributed ledger technology and strives to keep readers abreast of the latest trends and technology developments in the blockchain industry. We provide unbiased and up-to-date information from numerous sources to deliver well-balanced and objective news with a creative and novel perspective. </p>
-                <p>As a vital outlet for information sharing and learning, TokenPost is opening a new chapter in the blockchain media sector by serving the public and enthusiasts, going beyond the limited role of just another news provider in the blockchain sphere. </p>
-                <p>As part of this effort, TokenPost will host Decentralized People’s Awards Korea 2019 (DPA) to celebrate the achievements of companies and individuals who have contributed to the development and innovation of the blockchain technology. As a follow up to Blockchain Open Forum 2018, the largest blockchain conference of 2018 in South Korea, DPA will become a household name for blockchain awards.</p>
-                <p>DPA will focus on identifying and bringing to light individuals and enterprises that have helped advance our society by innovating and implementing the blockchain technology in their fields. Noteworthy projects and pioneers will be selected and voted for by the people as the decentralized voice.  Joined by the most sought after experts and entrepreneurs in the current blockchain scene, Decentralized People’s Award 2019 will also provide a special opportunity to network and promote further discussion into the future of the blockchain technology.</p>
+                <p class="white-color">Celebrate your hard work and contribution to the blockchain industry.</p>
+                <p class="white-color">TokenPost is a leading provider of news on distributed ledger technology and strives to keep readers abreast of the latest trends and technology developments in the blockchain industry. We provide unbiased and up-to-date information from numerous sources to deliver well-balanced and objective news with a creative and novel perspective. </p>
+                <p class="white-color">As a vital outlet for information sharing and learning, TokenPost is opening a new chapter in the blockchain media sector by serving the public and enthusiasts, going beyond the limited role of just another news provider in the blockchain sphere. </p>
+                <p class="white-color">As part of this effort, TokenPost will host Decentralized People’s Awards Korea 2019 (DPA) to celebrate the achievements of companies and individuals who have contributed to the development and innovation of the blockchain technology. As a follow up to Blockchain Open Forum 2018, the largest blockchain conference of 2018 in South Korea, DPA will become a household name for blockchain awards.</p>
+                <p class="white-color">DPA will focus on identifying and bringing to light individuals and enterprises that have helped advance our society by innovating and implementing the blockchain technology in their fields. Noteworthy projects and pioneers will be selected and voted for by the people as the decentralized voice.  Joined by the most sought after experts and entrepreneurs in the current blockchain scene, Decentralized People’s Award 2019 will also provide a special opportunity to network and promote further discussion into the future of the blockchain technology.</p>
                 <a href="https://www.dpawards.org/">
                   <div class="btn btn-white">
                     <div class="text">GO TO DPA WEBSITE &nbsp;</div>
@@ -257,11 +263,19 @@ module.exports = class Mailing {
           .label {
             font-weight: bold;
             margin-top: 1em;
+            color: black;
           }
           .input {
             background-color: white;
             padding: 1em 0 1em 1em;
             margin-top: 0.5em;
+            color: black;
+          }
+          .white-color {
+            color: white;
+          }
+          .black-color {
+            color: black;
           }
         </style>
       </head>
@@ -273,7 +287,7 @@ module.exports = class Mailing {
           <div class="body">
             <div class="welcome">
                 <img src="${process.env.baseUrl}/static/mail/nominatesuccess.png">
-                <p>Thank you for your nomination!</p>
+                <p class="black-color">Thank you for your nomination!</p>
                 <a href="https://www.dpawards.org/">
                   <div class="btn">
                     <div class="text">GO TO DPA WEBSITE &nbsp;</div>
@@ -283,13 +297,13 @@ module.exports = class Mailing {
             </div>
             <div class="content">
               <p><strong>Dear, ${firstname + lastname}</strong></p><br>
-              <p>Thank you for submitting your nomination form for Decentralized People's Awards 2019!</p>
-              <p>Here is the copy of your nominatino application.<br>
+              <p class="black-color">Thank you for submitting your nomination form for Decentralized People's Awards 2019!</p>
+              <p class="black-color">Here is the copy of your nominatino application.<br>
                 Please check if everything is correct.
               </p>
-              <p>If you have any question, feel free to ask <a href="info@purpleswan.io">info@purpleswan.io</a></p>
-              <p>Thank you!</p>
-              <p class="right"><strong>DPA 2019 Operation office</strong></p>
+              <p class="black-color">If you have any question, feel free to ask <a href="info@purpleswan.io">info@purpleswan.io</a></p>
+              <p class="black-color">Thank you!</p>
+              <p class="right black-color"><strong>DPA 2019 Operation office</strong></p>
             </div>
           </div>
           <div class="footer">
