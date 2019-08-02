@@ -272,7 +272,7 @@ module.exports = class Mailing {
           </div>
           <div class="body">
             <div class="welcome">
-                <img src="/static/mail/nominatesuccess.png">
+                <img src="${process.env.baseUrl}/static/mail/nominatesuccess.png">
                 <p>Thank you for your nomination!</p>
                 <a href="https://www.dpawards.org/">
                   <div class="btn">
