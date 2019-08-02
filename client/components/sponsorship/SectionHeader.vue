@@ -4,6 +4,8 @@
       div.nom-header
         p.nom-heading
           strong SPONSORSHIP
+          br
+          span comming soon
 </template>
 
 <script>

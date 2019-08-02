@@ -88,6 +88,7 @@ export default {
     .footer-col
       padding: 10px
       .footer-brand
+        margin-left: 2em
         @media only screen and (max-width: 992px)
           text-align: center
           padding-top: 30px

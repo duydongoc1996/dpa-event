@@ -56,7 +56,7 @@ export default {
 
 <style lang="sass">
 .wrapper-logo
-  background-color: #111
+  background-color: #f5f5f5
   .wrapper-logo-inner
     .row
       min-height: 100px

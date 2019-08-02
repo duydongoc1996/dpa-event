@@ -72,9 +72,12 @@ export default {
       z-index: 2
   .wrapper-menu-inner
     .logo
-      margin-left: 0 !important
+      margin-left: 2em !important
       padding: 10px
+      img
+        width: 200px
       @media only screen and (max-width: 992px)
+        margin-left: 1em !important
         img
           width: 120px
     .navbar
@@ -92,6 +95,7 @@ export default {
             .nuxt-link-exact-active
               border-bottom: 2px solid white
       .insight
+        padding: 20px 5px !important
         a
           border-bottom: none !important
         .insight-btn
@@ -99,8 +103,14 @@ export default {
           border-color: #cec230
           padding: 5px 20px
       .language
+        padding: 20px 5px !important
         margin-left: 0 !important
         margin: auto
+        label
+          @media only screen and (max-width: 1200px)
+            display: none
+          @media only screen and (max-width: 992px)
+            display: initial
         .dd-language
           width: 4em
           border-radius: 2em

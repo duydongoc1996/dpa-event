@@ -1,16 +1,13 @@
 <template lang="pug">
-  div.wrapper-header
-    div.wrapper-header-inner
+  div.wrapper-comming
+    div.wrapper-comming-inner
       div.nom-header
-        p.nom-heading
-          strong ATTEND
-          br
-          span comming soon
+        p.nom-heading comming soon
 </template>
 
 <script>
 export default {
-  name: 'SectionHeader',
+  name: 'CommingSoon',
   data() {
     return {}
   }
@@ -18,20 +15,21 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.wrapper-header
-  background-image: url(~assets/attend-background.png)
-  background-size: cover
-  background-position: center center
-  height: 500px
-  .wrapper-header-inner
+.wrapper-comming
+  background-color: black
+  .wrapper-comming-inner
     width: 100%
     height: 100%
+    position: relative
     background-color: rgba(0,0,0,0.4)
     .nom-header
       position: relative
       text-align: center
-      top: 40%
+      padding-top: 300px
       .nom-heading
         color: white
         font-size: 30px
+      .comming-soon
+        color: white
+        font-size: 24px
 </style>
