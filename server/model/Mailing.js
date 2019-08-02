@@ -133,7 +133,7 @@ module.exports = class Mailing {
       <body>
         <div class="container">
           <div class="header">
-            <img src="${process.env.baseUrl}/static/mail/DPA logo_white text.png">
+            <img src="${process.env.baseUrl}/static/mail/DPAlogo.png">
           </div>
           <div class="body">
             <div class="welcome">
@@ -268,7 +268,7 @@ module.exports = class Mailing {
       <body>
         <div class="container">
           <div class="header">
-            <img src="${process.env.baseUrl}/static/mail/DPA logo_white text.png">
+            <img src="${process.env.baseUrl}/static/mail/DPAlogo.png">
           </div>
           <div class="body">
             <div class="welcome">
