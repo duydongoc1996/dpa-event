@@ -74,12 +74,27 @@ module.exports = class NominateHandler {
       const vote = await Nominate.createNominee(voteInfo)
       if (!vote.success) return Promise.reject(vote.message)
 
+      // get award category name
+      let categoryName = await Nominate.getAwardCategory(voteInfo.awardCategory);
+      if (categoryName.name == 'Others') categoryName = voteInfo.other_category;
+      else categoryName = categoryName.name;
+
       // Response
       res.json(vote)
 
-      //Sendmail 
-      const mailBody = Mailing.getMailTemplate_2('nominate, phone=' + voteInfo.phone);
-      Mailing.sendMail(voteInfo.email, 'Nominate success', mailBody, nominatorInfo.email);
+      //Sendmail to nominator
+      const mailBodyNominator = Mailing.getMailTemplate_Nominator(
+        nominatorInfo.first_name,
+        nominatorInfo.last_name,
+        nominatorInfo.email,
+        nominatorInfo.phone
+      );
+      Mailing.sendMail(nominatorInfo.email, 'DPA 2019 Nomination', mailBodyNominator, '');
+      //Sendmail to nominee
+      const mailBodyNominee = Mailing.getMailTemplate_Nominee(voteInfo.first_name,voteInfo.last_name, categoryName)
+      Mailing.sendMail(voteInfo.email, 'DPA 2019 Nomination', mailBodyNominee, '');
+
+
     })()
       .catch((err) => {
         res.json({
