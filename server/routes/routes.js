@@ -12,6 +12,7 @@ const CodeHandler = require('../core/code')
 const BookingHandler = require('../core/booking')
 const PartnerHandler = require('../core/partner')
 const ScheduleHandler = require('../core/schedule')
+const AdminHandler = require('../core/admin');
 
 module.exports = function (app) {
   // Middleware setup
@@ -31,6 +32,7 @@ module.exports = function (app) {
     })
   })
   app.post('/login', handlers.login)
+  app.post('/register', middleware.checkToken, AdminHandler.register)
 
   // Sponsor Routes
   app.post('/sponsor/create', middleware.uploadImage, SponsorHandler.createSponsor)
