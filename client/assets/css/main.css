@@ -1,0 +1,67 @@
+/* Font: FrankRuhLibre */
+@font-face {
+  font-family: FrankRuhLibre;
+  src: url(~assets/font/FrankRuhlLibre-Light.ttf)
+}
+@font-face {
+  font-family: FrankRuhLibre;
+  src: url(~assets/font/FrankRuhlLibre-Black.ttf);
+  font-weight: bold;
+}
+/* Font: NotoSansCJKkr */
+@font-face {
+  font-family: NotoSansCJKkr;
+  src: url(~assets/font/NotoSansCJKkr-Regular.otf)
+}
+@font-face {
+  font-family: NotoSansCJKkr;
+  src: url(~assets/font/NotoSansCJKkr-Bold.otf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Quark;
+  src: url(~assets/font/Quark-Light.otf);
+}
+@font-face {
+  font-family: Quark;
+  src: url(~assets/font/Quark-Bold.otf);
+  font-weight: bold;
+}
+/* Setup Default font */
+body {
+  font-family: Quark
+}
+a:hover {
+  text-decoration: none
+}
+.btn.disabled, .btn:disabled {
+  cursor: not-allowed;
+}
+a .white-button, a.yellow-button {
+  padding: 5px 20px;
+  text-align: center;
+  max-width: 15em;
+  display: inline-block;
+  
+}
+a .white-button {
+  border: 1px solid white;
+  color: white;
+  border-radius: 3px;
+  background-color: transparent;
+}
+a .yellow-button {
+  background-color: #cec230;
+  border: 1px solid #cec230;
+  color: white;
+  border-radius: 0px;
+  padding: 10px 20px;
+}
+a .white-button:hover {
+  background-color: white;
+  color: black;
+}
+a .yellow-button:hover {
+  background-color: white;
+  color: #cec230;
+}
