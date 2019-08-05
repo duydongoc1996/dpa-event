@@ -1,6 +1,22 @@
 const mysql = require('../store/MySQLService')
 
 module.exports = class Nominate {
+
+  static async getAllNominee() {
+    return await mysql.promise.query(`
+      SELECT * FROM nominee
+    `,[])
+      .then(([rows,fields])=>{
+        return (rows.length > 0) ? rows : [];
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
   static async createNominee(voteInfo) {
     // create vote
     return await mysql.promise.query(`

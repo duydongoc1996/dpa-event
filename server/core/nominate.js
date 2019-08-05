@@ -151,6 +151,19 @@ module.exports = class NominateHandler {
       // response
       res.json(response)
     })()
+      .catch((err) => 
+        res.json({
+          success: false,
+          message: err
+        })
+      )
+  }
+
+  static getAllNominee(req,res) {
+    (async () => {
+      const response = await Nominate.getAllNominee();
+      res.json(response);
+    })()
       .catch((err) => {
         res.json({
           success: false,

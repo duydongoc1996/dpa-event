@@ -5,6 +5,11 @@
           b-col
             div.item
               nuxt-link(
+                to="/nominee"
+              ) Nominee
+          b-col
+            div.item
+              nuxt-link(
                 to="/schedule"
               ) Schedule
           b-col
