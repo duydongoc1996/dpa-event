@@ -432,7 +432,7 @@ export default {
   },
   mounted() {
     const that = this
-    this.$axios.get(process.env.baseUrl + '/nominate/categories')
+    this.$axios.get(process.env.baseUrl + '/api/nominate/categories')
       .then((res) => {
         this.listCategories = res.data
         this.listCategories.forEach(function (cate) {
@@ -528,7 +528,7 @@ export default {
       formBody.append('image', this.formData.avatar)
       this.$axios({
         method: 'post',
-        url: process.env.baseUrl + '/nominate/create',
+        url: process.env.baseUrl + '/api/nominate/create',
         data: formBody,
         headers: {
           'content-type': 'multipart/form-data'
