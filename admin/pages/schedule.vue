@@ -44,7 +44,7 @@ export default {
     // Get list schedule
     this.$axios({
       method: 'get',
-      url: process.env.baseUrl + '/schedules'
+      url: process.env.baseUrl + '/api/schedules'
     }).then((res) => {
       this.schedules = res.data
     }).catch(err => this.$log.debug(err))

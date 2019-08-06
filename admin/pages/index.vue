@@ -16,7 +16,7 @@ export default {
     }
     this.$axios({
       method: 'get',
-      url: process.env.baseUrl + '/',
+      url: process.env.baseUrl + '/api/',
       headers: {
         Authorization: 'Bearer ' + sessionStorage.token
       }

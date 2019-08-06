@@ -45,7 +45,7 @@ export default {
       e.preventDefault()
       this.$log.debug(JSON.stringify(this.form))
       this.$axios({
-        url: process.env.baseUrl + '/login',
+        url: process.env.baseUrl + '/api/login',
         method: 'post',
         data: JSON.stringify(this.form),
         headers: {

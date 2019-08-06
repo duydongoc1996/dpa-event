@@ -273,7 +273,7 @@
               cols="12"
             )
               b-form-group(
-                label="Tell us about the nominee. Why are you nominating this person?"
+                label="Tell us about the nominee. Why are you nominating this person/company/project/service/product as a nominee?"
                 label-for="aboutspeaker"
                 label-class="required-input"
               )

@@ -37,7 +37,7 @@ export default {
     // Get list schedule
     this.$axios({
       method: 'get',
-      url: process.env.baseUrl + '/nominate/categories'
+      url: process.env.baseUrl + '/api/nominate/categories'
     }).then((res) => {
       this.categories = res.data
     }).catch(err => this.$log.debug(err))

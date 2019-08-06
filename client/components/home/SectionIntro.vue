@@ -28,10 +28,10 @@
               p.des-text As part of this effort, TokenPost will host Decentralized People’s Awards Korea 2019 (DPA) to celebrate the achievements of companies and individuals who have contributed to the development and innovation of the blockchain technology. As a follow up to Blockchain Open Forum 2018, the largest blockchain conference of 2018 in South Korea, DPA will become a household name for blockchain awards.
               p.des-text DPA will focus on identifying and bringing to light individuals and enterprises that have helped advance our society by innovating and implementing the blockchain technology in their fields. Noteworthy projects and pioneers will be selected and voted for by the people as the decentralized voice. Joined by the most sought after experts and entrepreneurs in the current blockchain scene, Decentralized People’s Award 2019 will also provide a special opportunity to network and promote further discussion into the future of the blockchain technology.
               div.wrapper-button
-                nuxt-link(to="/attend")
-                  div.yellow-button
-                    strong ATTEND &nbsp;
-                    fa(icon="arrow-right")
+                //- nuxt-link(to="/attend")
+                //-   div.yellow-button
+                //-     strong ATTEND &nbsp;
+                //-     fa(icon="arrow-right")
                 nuxt-link(to="/nominate")
                   div.yellow-button
                     strong NOMINATE &nbsp;

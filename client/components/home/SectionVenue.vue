@@ -12,8 +12,11 @@
                 strong VENUE
               p.ven-location IMPERIAL PALACE HOTEL SEOUL, 7TH FLOOR, SELENA HALL
               p.ven-address Address: 640, Eonuj-ro Nonhyeon 2(1)-Dong, Gangnam-gu, Seoul
-              b-button(squared) GOOGLE MAP &nbsp;
-                fa(icon="arrow-right")
+              div.wrapper-button
+                a(href="https://maps.google.com/maps?ll=37.514021,127.035881&z=13&t=m&hl=en-US&gl=US&mapclient=embed&cid=12122617480018425024")
+                  div.yellow-button
+                    strong GOOGLE MAP &nbsp;
+                    fa(icon="arrow-right")
           b-col(
             sm="12"
             md="8"
@@ -46,8 +49,12 @@ export default {
         font-size: 30px
       .ven-location
       .ven-address
-      button
-        background-color: #cec230
+      .wrapper-button
+        .yellow-button
+          text-align: center
+          width: 200px
+          float: left
+          margin: 10px 5px
     .ven-map
       background-color: white
       width: 100%
