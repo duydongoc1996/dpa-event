@@ -5,7 +5,7 @@
         p.nom-heading
           strong ATTEND
           br
-          span Comming soon
+          span Coming soon
 </template>
 
 <script>

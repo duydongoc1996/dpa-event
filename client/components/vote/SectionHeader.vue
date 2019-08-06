@@ -4,7 +4,7 @@
       div.nom-header
         p.nom-heading
           strong VOTE
-        p.comming-soon Comming soon
+        p.comming-soon Coming soon
 </template>
 
 <script>

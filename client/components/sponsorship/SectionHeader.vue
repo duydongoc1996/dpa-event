@@ -5,7 +5,7 @@
         p.nom-heading
           strong SPONSORSHIP
           br
-          span Comming soon
+          span Coming soon
 </template>
 
 <script>
