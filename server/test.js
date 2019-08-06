@@ -84,3 +84,10 @@
 // const categoryName = 'war war'
 // const sanitizeName = categoryName.replace(/( .)|(\b.)/gi, x => x.toUpperCase())
 // console.log(sanitizeName)
+
+const Nominate = require('./model/Nominate');
+Nominate.getAwardCategory(115)
+  .then(data=>{
+    console.log(data.name);
+  })
+  .catch(console.log)

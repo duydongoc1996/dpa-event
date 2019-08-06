@@ -75,7 +75,7 @@ module.exports = class NominateHandler {
       if (!vote.success) return Promise.reject(vote.message)
 
       // get award category name
-      let categoryName = await Nominate.getAwardCategory(voteInfo.awardCategory);
+      let categoryName = await Nominate.getAwardCategory(parseInt(voteInfo.fk_award_category));
       if (categoryName.name == 'Others') categoryName = voteInfo.other_category;
       else categoryName = categoryName.name;
 
