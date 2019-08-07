@@ -7,6 +7,8 @@
       :items="items"
       per-page="10"
       :current-page="page"
+      sort-by="id"
+      sort-desc="true"
     )
       template(slot="show_details" slot-scope="row")
         b-button(
@@ -27,6 +29,11 @@
               b-img(
                 :src="imgSrc + row.item.avatar"
               )
+          b-row
+            b-col.text-center(
+              cols="3"
+            ) Prefix
+            b-col {{ row.item.prefix }}
           b-row
             b-col.text-center(
               cols="3"

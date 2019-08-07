@@ -301,6 +301,53 @@ module.exports = class Nominate {
       })
   }
 
+  static async updateNominee(nominee) {
+    return await mysql.promise.query(`
+      UPDATE nominee SET
+        about_speaker=?,
+        links_media=?,
+        avatar=?,
+        prefix=?,
+        first_name=?,
+        last_name=?,
+        company_name=?,
+        company_website=?,
+        job_title=?,
+        phone=?,
+        email=?,
+        nationality=?,
+        other_category=?
+      WHERE id = ?
+    `,[
+      nominee.about_speaker,
+      nominee.links_media,
+      nominee.avatar,
+      nominee.prefix,
+      nominee.first_name,
+      nominee.last_name,
+      nominee.company_name,
+      nominee.company_website,
+      nominee.job_title,
+      nominee.phone,
+      nominee.email,
+      nominee.nationality,
+      nominee.other_category,
+      nominee.id
+    ])
+      .then(([rows,fields])=>{
+        return {
+          success: true,
+          message: 'Update success'
+        }
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
   /**
    * Parse links media, links articles to array
    * @param {String} links

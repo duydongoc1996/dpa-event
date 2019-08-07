@@ -185,4 +185,31 @@ module.exports = class NominateHandler {
         })
       })
   }
+
+  static updateNominee(req,res) {
+    (async () => {
+      const data = req.body;
+      if (data.about_speaker == null) return Promise.reject('Missing description')
+      if (data.links_media == null) return Promise.reject('Missing links media')
+      if (data.avatar == null) return Promise.reject('Missing avatar');
+      if (data.prefix == null) return Promise.reject('Missing prefix');
+      if (data.first_name == null) return Promise.reject('Missing first name');
+      if (data.last_name == null) return Promise.reject('Missing last name');
+      if (data.company_name == null) return Promise.reject('Missing company name');
+      if (data.company_website == null) return Promise.reject('Missing company website');
+      if (data.job_title == null) return Promise.reject('Missing job title');
+      if (data.phone == null) return Promise.reject('Missing phone');
+      if (data.email == null) return Promise.reject('Missing email');
+      if (data.nationality == null) return Promise.reject('Missing nationality');
+      if (data.id == null ) return Promise.reject('Missing id');
+
+      res.json(await Nominate.updateNominee(data))
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
 }

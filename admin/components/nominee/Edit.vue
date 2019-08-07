@@ -13,6 +13,10 @@
           :src="imgSrc + form.avatar"
           fluid
         )
+      p Prefix:
+        b-input(
+          v-model="form.prefix"
+        )
       p First name:
         b-input(
           v-model="form.first_name"
@@ -82,8 +86,19 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-
+    onSubmit(e) {
+      e.preventDefault()
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/nominate/nominee/update',
+        data: JSON.stringify(this.form),
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'Content-Type': 'application/json'
+        }
+      }).then((res) => {
+        if (!alert(res.data.message)) window.location.reload()
+      }).catch(err => this.$log.debug(err))
     },
     onReset(e) {
       e.preventDefault()
