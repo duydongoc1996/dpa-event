@@ -4,17 +4,35 @@
     hr
     b-container(fluid)
       b-row
-        b-col
-          List
+        b-col(cols="8")
+          List(
+            :editId="editId"
+            @update:editId="editRow"
+          )
+        b-col(cols="4")
+          Edit(
+            :form="editData"
+          )
 </template>
 <script>
 import List from '~/components/nominee/List'
+import Edit from '~/components/nominee/Edit'
 export default {
   components: {
-    List
+    List,
+    Edit
   },
   data() {
-    return {}
+    return {
+      editId: null,
+      editData: null
+    }
+  },
+  methods: {
+    editRow(e) {
+      this.editData = Object.assign({}, e)
+      // this.$log.debug(this.editData)
+    }
   }
 }
 </script>

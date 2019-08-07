@@ -171,4 +171,18 @@ module.exports = class NominateHandler {
         })
       })
   }
+
+  static getNomineeById(req,res) {
+    (async () => {
+      if (!req.body.nomineeId) return Promise.reject('Missing nominee id');
+      const response = await Nominate.getNomineeById(parseInt(req.body.nomineeId));
+      res.json(response);
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
 }

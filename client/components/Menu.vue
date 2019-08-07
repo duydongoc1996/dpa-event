@@ -16,20 +16,20 @@ div.wrapper-menu
       b-collapse(id="nav-collapse" is-nav)
         b-navbar-nav.mx-auto
           b-nav-item
-            nuxt-link(to="/")
-              strong Home
+            nuxt-link(:to="localePath('index')")
+              strong {{ $t('menu.home') }}
           b-nav-item
-            nuxt-link(to="/sponsorship")
-              strong Sponsorship
+            nuxt-link(:to="localePath('sponsorship')")
+              strong {{ $t('menu.sponsorship') }}
           b-nav-item
-            nuxt-link(to="/attend")
-              strong Attend
+            nuxt-link(:to="localePath('attend')")
+              strong {{ $t('menu.attend') }}
           b-nav-item
-            nuxt-link(to="/nominate")
-              strong Nominate
+            nuxt-link(:to="localePath('nominate')")
+              strong {{ $t('menu.nominate') }}
           b-nav-item
-            nuxt-link(to="/vote")
-              strong Vote
+            nuxt-link(:to="localePath('vote')")
+              strong {{ $t('menu.vote') }}
         b-navbar-nav.ml-auto
           b-nav-item.insight(
             :href="(language == 'en') ? 'https://tokenpost.com/insights' : 'https://www.tokenpost.kr/insights'"

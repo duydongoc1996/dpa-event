@@ -32,6 +32,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/i18n.js'}
   ],
   /*
   ** Nuxt.js modules
@@ -58,6 +59,25 @@ export default {
           icons: ['fab']
         }
       ]
+    }],
+    ['nuxt-i18n', {
+      locales: [
+        {
+          name: 'EN',
+          code: 'en',
+          iso: 'en-US',
+          file: 'en.js'
+        },
+        {
+          name: 'KOR',
+          code: 'kor',
+          iso: 'kor-KR',
+          file: 'kor.js'
+        }
+      ],
+      lazy: true,
+      langDir: 'lang/',
+      defaultLocale: 'en'
     }]
   ],
   axios: {

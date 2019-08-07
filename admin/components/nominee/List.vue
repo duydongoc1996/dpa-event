@@ -13,6 +13,10 @@
           @click="row.toggleDetails"
           variant="info"
         ) {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+        b-button(
+          @click="$emit('update:editId', row.item)"
+          variant="success"
+        ) Edit
       template(slot="row-details" slot-scope="row")
         b-card
           b-row
@@ -101,6 +105,12 @@
 <script>
 export default {
   name: 'List',
+  props: {
+    editId: {
+      type: Object,
+      default: null
+    }
+  },
   data() {
     return {
       fields: ['id', 'first_name', 'last_name', 'phone', 'email', 'show_details'],

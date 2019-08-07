@@ -17,6 +17,24 @@ module.exports = class Nominate {
       })
   }
 
+  static async getNomineeById(id) {
+    return await mysql.promise.query(`
+      SELECT * FROM nominee WHERE id = ?
+    `,[id])
+      .then(([rows,fields])=>{
+        return (rows.length > 0) ? rows[0] : {
+          success: false,
+          message: 'Invalid nominee Id'
+        };
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
   static async createNominee(voteInfo) {
     // create vote
     return await mysql.promise.query(`

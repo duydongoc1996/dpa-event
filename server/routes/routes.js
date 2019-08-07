@@ -83,9 +83,14 @@ module.exports = function (app) {
     req.body.categoryId = value
     next()
   })
+  app.param(['nomineeId'], (req,res,next,value) => {
+    req.body.nomineeId = value
+    next()
+  })
   app.post('/api/nominate/category/create', middleware.checkToken, NominateHandler.createAwardCategory)
   app.post('/api/nominate/category/remove/:categoryId', middleware.checkToken, NominateHandler.deleteAwardCategory)
   app.get('/api/nominate/nominees', middleware.checkToken, NominateHandler.getAllNominee)
+  app.get('/api/nominate/nominee/:nomineeId', middleware.checkToken, NominateHandler.getNomineeById)
 
   //Schedule
   app.get('/api/schedules', ScheduleHandler.getAllSchedule)
