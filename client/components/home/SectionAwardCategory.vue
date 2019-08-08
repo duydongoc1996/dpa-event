@@ -122,7 +122,7 @@ export default {
             width: 20%
     .award-btn-container
       .white-button
-        width: 200px
+        width: 250px
         margin-left: 10px
         border-radius: 0
 </style>

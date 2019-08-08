@@ -28,10 +28,10 @@
             strong DECENTRALIZED
               br
               span PEOPLE'S AWARDS 2019
-          p.wrapper-caption.caption-description Celebrate your hard work and contribution to the blockchain industry
+          p.wrapper-caption.caption-description {{ $t('homePage.header.celebrate') }}
           nuxt-link.nominate-btn(to="/nominate")
             div.white-button
-              strong NOMINATE &nbsp;
+              strong {{ $t('homePage.header.nominate') }} &nbsp;
               fa(icon="arrow-right")
         b-carousel-slide(
           img-src="~/assets/image/2019-07-31 14.38.48.jpg"
@@ -40,10 +40,10 @@
             strong DECENTRALIZED
               br
               span PEOPLE'S AWARDS 2019
-          p.wrapper-caption.caption-description Celebrate your hard work and contribution to the blockchain industry
+          p.wrapper-caption.caption-description {{ $t('homePage.header.celebrate') }}
           nuxt-link.nominate-btn(to="/nominate")
             div.white-button
-              strong NOMINATE &nbsp;
+              strong {{ $t('homePage.header.nominate') }} &nbsp;
               fa(icon="arrow-right")
       div.scroll
         div.icon-scroll
