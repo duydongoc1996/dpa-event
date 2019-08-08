@@ -10,7 +10,7 @@
         )
           div.list-logo
             p.text
-              strong HOST
+              strong {{ $t('homePage.logo.host') }}
             div.logo-double
               a(href="http://tokenpost.com/")
                 b-img.logo-tokenpost(
@@ -27,7 +27,7 @@
         )
           div.list-logo
             p.text
-              strong ORGANIZER
+              strong {{ $t('homePage.logo.organizer') }}
             div.logo-single
               a(href="https://purpleswan.io/")
                 b-img.logo-purpleswan(
@@ -39,7 +39,7 @@
         )
           div.list-logo
             p.text
-              strong MARKETER
+              strong {{ $t('homePage.logo.marketer') }}
             div.logo-single
               a(href="https://www.adelcompany.com/")
                 b-img.logo-adel(src="~/assets/logo/Adel_logo_v1.png")

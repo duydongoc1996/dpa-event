@@ -5,7 +5,7 @@
     div.wrapper-schedule-inner
       div.sche-header
         p.sche-heading
-          strong SCHEDULE
+          strong {{ $t('homePage.schedule.heading') }}
         p.sche-date December 20th, 2019 19:00 - 22:00
       div.sche-list
         div.sche-item(

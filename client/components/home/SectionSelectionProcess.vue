@@ -3,7 +3,7 @@
     div.wrapper-process-inner
       div.header
         p
-          strong DPA WINNER SELECTION PROCESS
+          strong {{ $t('homePage.dpa.heading') }}
       div.body
         div.line
         b-container(fluid)
@@ -21,7 +21,7 @@
                 div.content
                   p.title Nominate
                   p.date
-                  p.text One can nominate the person he/she wants to nominate. He/she can nominate himself/herself as well.
+                  p.text {{ $t('homePage.dpa.description.d1') }}
 
             b-col.process-col(
               cols="12"
@@ -36,7 +36,7 @@
                 div.content
                   p.title Vote
                   p.date
-                  p.text Conduct a large-scale public vote. (Voting power: 50%)
+                  p.text {{ $t('homePage.dpa.description.d2') }}
             b-col.process-col(
               cols="12"
               sm="3"
@@ -50,7 +50,7 @@
                 div.content
                   p.title Evaluation
                   p.date
-                  p.text Evaluation process from committee members of the host (voting power: 30%) and related association (voting power: 20%).
+                  p.text {{ $t('homePage.dpa.description.d3') }}
             b-col.process-col(
               cols="12"
               sm="3"
@@ -64,7 +64,7 @@
                 div.content
                   p.title Announcement
                   p.date
-                  p.text Announce the award winners synthesizing the result of the public vote and the evaluation result from committee members of the host organization and related association.
+                  p.text {{ $t('homePage.dpa.description.d4') }}
 </template>
 <script>
 export default {

@@ -3,7 +3,7 @@
     div.wrapper-partner-inner
       div.part-header
         p.part-heading
-          strong PARTNERS
+          strong {{ $t('homePage.partners.heading') }}
       div.part-body
         b-container(fluid)
           b-row(

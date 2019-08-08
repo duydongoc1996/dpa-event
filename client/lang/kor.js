@@ -4,6 +4,7 @@ export default {
     sponsorship: '스폰서쉽',
     attend: '참석신청',
     nominate: '후보 지명 및 등록',
-    vote: '투표'
+    vote: '투표',
+    insight: '인사이트'
   }
 }

@@ -4,8 +4,8 @@
       div.wrapper-award-inner
         div.award-header
           p.award-heading
-            strong AWARDS CATEGORY
-          p.award-description All of the winners will be granted the exclusive right to use the DPA mark on their marketing materials such as websites, publications, products and so on.
+            strong {{ $t('homePage.awards.heading') }}
+          p.award-description {{ $t('homePage.awards.description') }}
         div.award-list
           b-container(fluid)
             b-row()
@@ -28,14 +28,14 @@
         div.award-btn-container
           nuxt-link(to="/nominate")
             div.white-button
-              strong NOMINATE &nbsp;
+              strong {{ $t('homePage.awards.nominate') }} &nbsp;
               fa(icon="arrow-right")
           nuxt-link(
             to="/vote"
             v-if="false"
           )
             div.white-button
-              strong VOTE &nbsp;
+              strong {{ $t('homePage.awards.vote') }} &nbsp;
               fa(icon="arrow-right")
 </template>
 

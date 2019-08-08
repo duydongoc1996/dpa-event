@@ -24,7 +24,7 @@
           )
             div.footer-contact
               p
-                strong CONTACT US
+                strong {{ $t('footer.contactus') }}
               p info@purpleswan.io
           b-col.footer-col(
             sm="4"
@@ -34,17 +34,17 @@
           )
             div.footer-sitemap
               p
-                strong SITE MAP
+                strong {{ $t('footer.sitemap') }}
               p
-                nuxt-link(to="/") Home
+                nuxt-link(to="/") {{ $t('footer.home') }}
               p
-                nuxt-link(to="/sponsorship") Sponsorship
+                nuxt-link(to="/sponsorship") {{ $t('footer.sponsorship') }}
               p
-                nuxt-link(to="/attend") Attend
+                nuxt-link(to="/attend") {{ $t('footer.attend') }}
               p
-                nuxt-link(to="/nominate") Nominate
+                nuxt-link(to="/nominate") {{ $t('footer.nominate') }}
               p
-                nuxt-link(to="/vote") Vote
+                nuxt-link(to="/vote") {{ $t('footer.vote') }}
           b-col.footer-col(
             sm="4"
             lg="2"
@@ -53,7 +53,7 @@
           )
             div.footer-social
               p
-                strong SOCIALS
+                strong {{ $t('footer.socials') }}
               div
                 a(href="#")
                   span.social-icon

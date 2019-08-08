@@ -35,15 +35,23 @@ div.wrapper-menu
             :href="(language == 'en') ? 'https://tokenpost.com/insights' : 'https://www.tokenpost.kr/insights'"
           )
               div.insight-btn
-                strong Insight
+                strong {{ $t('menu.insight') }}
           b-nav-item.language
             label(for="dd-language") LANGUAGE &nbsp;
-            b-form-select.dd-language(
-              id="dd-language"
+            b-dropdown(
+              id="languageDropdown"
+              :text="currentLanguage.toUpperCase()"
+              rounded
               variant="outline-light"
-              :options="optionsLanguage"
-              v-model="language"
             )
+              b-dropdown-item(
+                v-for="locale in availableLocales"
+                :key="locale.code"
+              )
+                nuxt-link(
+                  :to="switchLocalePath(locale.code)"
+                ) {{ locale.name }}
+
 </template>
 
 <script>
@@ -52,10 +60,17 @@ export default {
   data() {
     return {
       language: 'en',
-      optionsLanguage: [
-        { value: 'en', text: 'EN' },
-        { value: 'kr', text: 'KR' }
-      ]
+      availableLocales: this.$i18n.locales,
+      currentLanguage: this.$i18n.locale
+    }
+  },
+  mounted() {
+    this.$log.debug(this.$i18n.locales)
+  },
+  methods: {
+    changeLanguage(e) {
+      // window.location.href = e.toLowerCase()
+      this.$log.debug(this.$i18n.localePath('EN'))
     }
   }
 }
@@ -111,15 +126,12 @@ export default {
             display: none
           @media only screen and (max-width: 992px)
             display: initial
-        .dd-language
-          width: 4em
-          border-radius: 2em
-          background-color: transparent
-          color: white
-          background: url(~assets/angledown.png) no-repeat right 0.75rem center/8px 10px
-          option
-            color: black
-          &:focus
-            border-color: #cec230
-            box-shadow: 0 0 0 0.2rem rgba(206, 194, 48, 0.25)
+        #languageDropdown
+          .btn
+            border-radius: 2em
+          .dropdown-menu
+            min-width: 4em
+            text-align: center
+            a
+              color: black
 </style>

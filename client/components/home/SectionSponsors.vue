@@ -3,7 +3,7 @@
     div.wrapper-sponsor-inner
       div.spo-header
         p.spo-heading
-          strong SPONSORS
+          strong {{ $t('homePage.sponsors.heading') }}
       div.spo-body
         b-container(fluid)
           b-row(
