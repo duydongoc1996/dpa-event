@@ -125,12 +125,31 @@ module.exports = class NominateHandler {
       if (!data.level) return Promise.reject('Missing award category level')
       if (data.parent == null) data.parent = 0;
       if (!data.description) data.description = '';
-      console.log(data)
       // create
       const response = await Nominate.createAwardCategory(data.categoryName, parseInt(data.level),parseInt(data.parent),data.description)
       if (!response.success) return Promise.reject(response.message)
       // response
       res.json(response)
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static updateAwardCategory(req,res) {
+    (async () => {
+      const data = req.body;
+      if (data.id == null) return Promise.reject('Missing id');
+      if (data.name == null) return Promise.reject('Missing name');
+      if (data.description == null) data.description = '';
+      //update
+      const response = await Nominate.updateAwardCategory(data)
+      if (response.success === false) return Promise.reject(response.message);
+      //response
+      resj.json(response);
     })()
       .catch((err) => {
         res.json({

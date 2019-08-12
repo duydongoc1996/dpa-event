@@ -199,6 +199,31 @@ module.exports = class Nominate {
       })
   }
 
+  static async updateAwardCategory(category) {
+    return await mysql.promise.query(`
+      UPDATE award_category SET
+        name = ?,
+        description = ?
+      WHERE id = ?
+    `,[
+      category.name,
+      category.description,
+      parseInt(category.id)
+    ])
+      .then(([rows, fields]) => {
+        return {
+          success: true,
+          message: 'Updated award category successful'
+        }
+      })
+      .catch((err) => {
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
   static async updateStatusAwardCategory(categoryId, status) {
     return await mysql.promise.query(`
       UPDATE award_category SET
