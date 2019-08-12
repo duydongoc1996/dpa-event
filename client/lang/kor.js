@@ -68,5 +68,39 @@ export default {
       address: '주소: 서울시 강남구 언주로 640, 논현 2동',
       googlemap: '구글지도 보기'
     }
+  },
+  nominatePage: {
+    header: {
+      heading: '후보 지명 및 등록'
+    },
+    aboutYou: {
+      heading: '후보 등록(추천)자 정보',
+      firstName: '이름',
+      lastName: '성',
+      email: '이메일 주소',
+      phone: '휴대폰 번호'
+    },
+    aboutNominee: {
+      heading: '수상 후보 정보',
+      self: '본인을 수상 후보로 지명(등록)합니다.',
+      prefix: '호칭',
+      select: '선택',
+      firstName: '이름',
+      lastName: '성',
+      companyName: '회사명',
+      jobTitle: '직책',
+      companyWebsite: '회사 웹사이트 주소',
+      phone: '휴대폰 번호',
+      email: '이메일 주소',
+      nationality: '국가',
+      category: '시상 카테고리 선택',
+      about: '수상 후보에 대해 좀 더 자세히 적어주시기 바랍니다. 수상 후보를 지명/추천하는 이유는?',
+      linkMedia: '수상 후보와 관련된 영상, 오디오 등의 각종 링크 업로드',
+      avatar: '수상 후보의 고화질 사진파일 업로드(헤드샷/로고)',
+      know: `수상 후보(인물 또는 프로젝트)와 개인적으로 아는 사이입니까? 그렇지 않다고 해도 괜찮습니다.`,
+      yes: '네',
+      no: '아니오',
+      submit: '제출하기'
+    }
   }
 }

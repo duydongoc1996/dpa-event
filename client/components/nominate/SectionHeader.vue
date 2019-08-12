@@ -3,13 +3,14 @@
     div.wrapper-header-inner
       div.nom-header
         p.nom-heading
-          strong NOMINATE
+          strong {{ $t('nominatePage.header.heading') }}
 </template>
 <script>
 export default {
   name: 'SectionHeader',
   data() {
-    return {}
+    return {
+    }
   }
 }
 </script>
