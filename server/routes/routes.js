@@ -92,6 +92,7 @@ module.exports = function (app) {
   app.get('/api/nominate/nominees', middleware.checkToken, NominateHandler.getAllNominee)
   app.get('/api/nominate/nominee/:nomineeId', middleware.checkToken, NominateHandler.getNomineeById)
   app.post('/api/nominate/nominee/update',middleware.checkToken, NominateHandler.updateNominee)
+  app.post('/api/nominate/category/update', middleware.checkToken, NominateHandler.updateAwardCategory)
 
   //Schedule
   app.get('/api/schedules', ScheduleHandler.getAllSchedule)
