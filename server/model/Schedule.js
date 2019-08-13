@@ -78,4 +78,27 @@ module.exports = class Schedule {
       }
     })
   }
+
+  static async updateAllSchedules(schedules) {
+    const clearSchedule = await mysql.promise.query(`
+      DELETE FROM schedule;
+    `);
+    const resetId = await mysql.promise.query(`
+      ALTER TABLE schedule AUTO_INCREMENT = 1;
+    `);
+    schedules.map(async (schedule) => {
+      const updateSchedule = await mysql.promise.query(`
+        INSERT INTO schedule (time,title,event,speaker) VALUES (?,?,?,?)
+      `,[
+        schedule.time,
+        schedule.title,
+        schedule.subtitle,
+        schedule.content
+      ])
+    });
+    return {
+      success: true,
+      message: 'Update schedule successful'
+    }
+  }
 }

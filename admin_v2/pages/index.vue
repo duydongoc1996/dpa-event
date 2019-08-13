@@ -48,6 +48,23 @@ export default {
   },
   data() {
     return {}
+  },
+  mounted() {
+    if (sessionStorage.token === null) {
+      window.location.href = '/login'
+      return
+    }
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/',
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.token
+      }
+    }).then((res) => {
+      if (!res.data.success) {
+        window.location.href = '/login'
+      }
+    }).catch(err => this.$log.debug(err))
   }
 }
 </script>

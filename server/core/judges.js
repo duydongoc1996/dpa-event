@@ -38,29 +38,21 @@ module.exports = class JudgesHandler {
   static createJudge(req, res) {
     (async () => {
       const judge = req.body
-      if (!judge.fullName) return Promise.reject('Missing full name')
-      if (!judge.jobTitle) return Promise.reject('Missing job title')
-      if (!judge.links) return Promise.reject('Missing links')
-
-      const links = judge.links.split(',')
-      judge.link_1 = links[0]
-      judge.link_2 = links[1]
-      judge.link_3 = links[2]
-
+      if (!judge.name) return Promise.reject('Missing full name')
+      if (!judge.job_title) return Promise.reject('Missing job title')
+      if (!judge.company) return Promise.reject('Missing company')
       // Handle upload image
       judge.avatar = req.body.fileName
       // --end handle upload image
 
       const response = await Judges.createJudge(judge)
       res.json(response)
-      res.end()
     })()
       .catch((err) => {
         res.json({
           success: false,
           message: err
         })
-        res.end()
       })
   }
 

@@ -5,18 +5,23 @@
         p
           strong Event information
       div.body
-        b-form
+        b-form(@submit="onSubmit")
           b-form-group(
             label="Title"
           )
-            b-form-input()
+            b-form-input(v-model="form.title")
           b-form-group(
             label="Date"
           )
-            b-form-input()
-          b-form-textarea(
-            rows="5"
+            b-form-input(v-model="form.date")
+          b-form-group(
+            label="Content"
           )
+            b-form-textarea(
+              rows="5"
+              max-rows="10"
+              v-model="form.content"
+            )
           div.center
             b-button(
               type="submit"
@@ -30,7 +35,39 @@
 export default {
   name: 'EventInformation',
   data() {
-    return {}
+    return {
+      form: {
+        title: null,
+        date: null,
+        content: null
+      }
+    }
+  },
+  mounted() {
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/eventinfo'
+    }).then((response) => {
+      if (response.data.success === false) {
+        this.$log.debug(response.data.message)
+      } else {
+        this.form = Object.assign({}, response.data)
+      }
+    })
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/eventinfo/create',
+        data: JSON.stringify(this.form),
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'Content-Type': 'application/json'
+        }
+      })
+    }
   }
 }
 </script>

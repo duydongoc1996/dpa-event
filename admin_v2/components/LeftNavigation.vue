@@ -7,7 +7,9 @@
           span  ADMIN
         nuxt-link.header-btn(to="/")
           span HOME
-        nuxt-link.header-btn(to="/logout")
+        span.header-btn(
+          @click="logout"
+        )
           span LOGOUT
       div.navigation
         nuxt-link.navigation-item(to="/")
@@ -41,6 +43,13 @@ export default {
   name: 'LeftNavigation',
   data() {
     return {
+    }
+  },
+  methods: {
+    logout(e) {
+      e.preventDefault()
+      sessionStorage.token = null
+      window.location.href = '/login'
     }
   }
 }

@@ -13,6 +13,7 @@ const BookingHandler = require('../core/booking')
 const PartnerHandler = require('../core/partner')
 const ScheduleHandler = require('../core/schedule')
 const AdminHandler = require('../core/admin');
+const EventInfoHandler = require('../core/eventinfo');
 
 module.exports = function (app) {
   // Middleware setup
@@ -103,4 +104,9 @@ module.exports = function (app) {
   })
   app.post('/api/schedule/remove/:scheduleId', middleware.checkToken, ScheduleHandler.deleteSchedule)
   app.post('/api/schedule/order/:scheduleId', middleware.checkToken, ScheduleHandler.orderSchedule)
+  app.post('/api/schedules/update', middleware.checkToken, ScheduleHandler.updateSchedules)
+
+  //Event information
+  app.get('/api/eventinfo', EventInfoHandler.get);
+  app.post('/api/eventinfo/create', middleware.checkToken, EventInfoHandler.create);
 }

@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted() {
-    this.$log.debug(this.$i18n.locales)
+    // this.$log.debug(this.$i18n.locales)
   },
   methods: {
     changeLanguage(e) {

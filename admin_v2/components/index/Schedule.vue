@@ -5,19 +5,34 @@
         p
           strong Schedule
       div.body
-        b-form
+        b-form(@submit="onSubmit")
           div.schedule-item(
             v-for="(item,index) in form"
+            :key="index"
           )
             hr(v-if="index !== 0")
             b-form-group(label="Time")
-              b-form-input()
+              b-form-input(
+                v-model="form[index].time"
+              )
             b-form-group(label="Title")
-              b-form-input()
+              b-form-input(
+                v-model="form[index].title"
+              )
             b-form-group(label="Subtitle")
-              b-form-input()
+              b-form-input(
+                v-model="form[index].subtitle"
+              )
             b-form-group(label="Content")
-              b-form-input()
+              b-form-input(
+                v-model="form[index].content"
+              )
+            div.remove-schedule
+              b-button(
+                squared
+                variant="outline-danger"
+                @click="removeSchedule(index)"
+              ) Delete schedule
           div.add-schedule
             b-button(
               squared
@@ -38,6 +53,7 @@ export default {
   name: 'Schedule',
   data() {
     return {
+      schedules: null,
       default: {
         time: null,
         title: null,
@@ -45,19 +61,51 @@ export default {
         content: null
       },
       form: [
-        {
-          time: null,
-          title: null,
-          subtitle: null,
-          content: null
-        }
       ]
     }
+  },
+  mounted() {
+    // Get list schedule
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/schedules'
+    }).then((res) => {
+      if (res.data.length === 0) {
+        this.form = []
+      } else {
+        res.data.forEach((element) => {
+          this.form.push({
+            time: element.time,
+            title: element.title,
+            subtitle: element.event,
+            content: element.speaker
+          })
+        })
+      }
+    }).catch(err => this.$log.debug(err))
   },
   methods: {
     addSchedule() {
       const newSchedule = Object.assign({}, this.default)
       this.form.push(newSchedule)
+    },
+    removeSchedule(index) {
+      this.form.splice(index, 1)
+    },
+    onSubmit(e) {
+      e.preventDefault()
+      this.$log.debug(this.form)
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/schedules/update',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(this.form)
+      }).then((res) => {
+        if (!alert(res.data.message)) window.location.reload()
+      }).catch(err => this.$log.debug(err))
     }
   }
 }
@@ -82,4 +130,6 @@ export default {
         .btn
           color: #d1c531
           border-color: #d1c531
+      .remove-schedule
+        text-align: center
 </style>

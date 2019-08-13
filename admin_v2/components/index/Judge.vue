@@ -5,15 +5,15 @@
         p
           strong Judges
       div.body
-        b-form
+        b-form(@submit="onSubmit")
           b-form-group(label="Name")
-            b-form-input()
+            b-form-input(v-model="form.name")
           b-form-group(label="Job title")
-            b-form-input()
+            b-form-input(v-model="form.job_title")
           b-form-group(label="Organization/association/company name")
-            b-form-input()
+            b-form-input(v-model="form.company")
           b-form-group(label="Headshot image file of the judge")
-            b-form-file()
+            b-form-file(v-model="form.image")
           div.center
             b-button(
               type="submit"
@@ -25,7 +25,35 @@
 export default {
   name: 'Judge',
   data() {
-    return {}
+    return {
+      form: {
+        name: null,
+        job_title: null,
+        company: null,
+        image: null
+      }
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
+      const formBody = new FormData()
+      formBody.set('name', this.form.name)
+      formBody.set('job_title', this.form.job_title)
+      formBody.set('company', this.form.company)
+      formBody.append('image', this.form.image)
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/judge/create',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'content-type': 'multipart/form-data'
+        },
+        data: formBody
+      }).then((response) => {
+        if (!alert(response.data.message)) window.location.reload()
+      }).catch(err => this.$log.debug(err))
+    }
   }
 }
 </script>
