@@ -83,4 +83,22 @@ module.exports = class JudgesHandler {
           })
       })
   }
+
+  static updateJudge(req,res) {
+    (async ()=> {
+      const data = req.body;
+      if (data.name == null) return Promise.reject('Missing name');
+      if (data.job_title == null) return Promise.reject('Missing job title');
+      if (data.company == null) return Promise.reject('Missing company');
+      if (data.id == null) return Promise.reject('Missing id');
+      //update
+      res.json(await Judges.updateJudge(data))
+    })()
+      .catch(err=>{
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
 }

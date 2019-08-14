@@ -7,13 +7,13 @@
       div.body
         b-form(@submit="onSubmit")
           b-form-group(label="Name")
-            b-form-input(v-model="form.name")
+            b-form-input(v-model="form.name" required)
           b-form-group(label="Job title")
-            b-form-input(v-model="form.job_title")
+            b-form-input(v-model="form.job_title" required)
           b-form-group(label="Organization/association/company name")
-            b-form-input(v-model="form.company")
+            b-form-input(v-model="form.company" required)
           b-form-group(label="Headshot image file of the judge")
-            b-form-file(v-model="form.image")
+            b-form-file(v-model="form.image" required)
           div.center
             b-button(
               type="submit"

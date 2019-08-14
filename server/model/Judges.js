@@ -89,4 +89,31 @@ module.exports = class Judges {
         }
       })
   }
+
+  static async updateJudge(data) {
+    return await mysql.promise.query(`
+      UPDATE judges SET
+        name = ?,
+        job_title = ?,
+        company = ?
+      WHERE id = ?
+    `,[
+      data.name,
+      data.job_title,
+      data.company,
+      data.id
+    ])
+      .then(([rows,fields])=>{
+        return {
+          success: true,
+          message: 'Update judge successful'
+        }
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
 }

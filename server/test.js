@@ -95,4 +95,4 @@
 
 const EventInfo = require('./model/EventInfo');
 
-EventInfo.getEventInfo().then(console.log).catch(console.log);
+EventInfo.get().then(console.log).catch(console.log)

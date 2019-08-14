@@ -54,6 +54,7 @@ module.exports = function (app) {
   app.get('/api/judge/:judgeId', JudgesHandler.getJudgeInfo)
   app.post('/api/judge/create', middleware.checkToken, middleware.uploadImage, JudgesHandler.createJudge)
   app.post('/api/judge/remove/:judgeId', middleware.checkToken, JudgesHandler.removeJudge)
+  app.post('/api/judge/update', middleware.checkToken, JudgesHandler.updateJudge)
 
   // Booking Routes
   app.post('/api/code', CodeHandler.validateCode)

@@ -12,9 +12,25 @@
             )
               fa(icon="trash-alt")
             b-button.round-icon(
-              @click="edit(x.id, index)"
+              v-b-toggle="`updatejudge-${index}`"
             )
               fa(icon="cog")
+          b-collapse(
+            :id="'updatejudge-' + index"
+          )
+            b-form
+              b-form-group(label="Name")
+                b-form-input(v-model="x.name")
+              b-form-group(label="Job title")
+                b-form-input(v-model="x.job_title")
+              b-form-group(label="Organization/association/company name")
+                b-form-input(v-model="x.company")
+              div.save-btn
+                b-button(
+                  squared
+                  variant="success"
+                  @click="updateJudge(x)"
+                ) Save
         div.more-btn
           b-button(
             squared
@@ -55,10 +71,23 @@ export default {
           'Content-Type': 'application/json'
         }
       }).then((response) => {
-        this.judges.splice(index, 1)
+        if (!alert(response.data.message)) {
+          this.judges.splice(index, 1)
+        }
       }).catch(err => this.$log.debug(err))
     },
-    edit(id, index) {
+    updateJudge(judge) {
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/judge/update',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(judge)
+      }).then((response) => {
+        if (!alert(response.data.message)) {}
+      }).catch(err => this.$log.debug(err))
     }
   }
 }
@@ -68,16 +97,21 @@ export default {
   .inner
     .header
     .body
+      position: relative
       .judge-item
+        position: relative
         margin: 1em 0
         background-color: white
         padding: 20px 20px
-        height: 80px
         border-radius: 10px
+        height: fit-content
         .left
-          float: left
+          position: relative
         .right
-          float: right
+          text-align: right
+          position: absolute
+          right: 1em
+          top: 1em
           .round-icon
             border-radius: 50%
             background-color: grey

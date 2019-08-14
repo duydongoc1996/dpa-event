@@ -14,18 +14,22 @@
             b-form-group(label="Time")
               b-form-input(
                 v-model="form[index].time"
+                required
               )
             b-form-group(label="Title")
               b-form-input(
                 v-model="form[index].title"
+                required
               )
             b-form-group(label="Subtitle")
               b-form-input(
                 v-model="form[index].subtitle"
+                required
               )
             b-form-group(label="Content")
               b-form-input(
                 v-model="form[index].content"
+                required
               )
             div.remove-schedule
               b-button(
