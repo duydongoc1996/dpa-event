@@ -93,6 +93,8 @@
 //   .catch(console.log)
 
 
-const EventInfo = require('./model/EventInfo');
+// const EventInfo = require('./model/EventInfo');
 
-EventInfo.get().then(console.log).catch(console.log)
+// EventInfo.get().then(console.log).catch(console.log)
+const Nominate = require('./model/Nominate')
+Nominate.countNominees().then(console.log).catch(console.log);

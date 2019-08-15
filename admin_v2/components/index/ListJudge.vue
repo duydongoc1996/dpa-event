@@ -15,22 +15,23 @@
               v-b-toggle="`updatejudge-${index}`"
             )
               fa(icon="cog")
-          b-collapse(
-            :id="'updatejudge-' + index"
-          )
-            b-form
-              b-form-group(label="Name")
-                b-form-input(v-model="x.name")
-              b-form-group(label="Job title")
-                b-form-input(v-model="x.job_title")
-              b-form-group(label="Organization/association/company name")
-                b-form-input(v-model="x.company")
-              div.save-btn
-                b-button(
-                  squared
-                  variant="success"
-                  @click="updateJudge(x)"
-                ) Save
+          div.update
+            b-collapse(
+              :id="'updatejudge-' + index"
+            )
+              b-form
+                b-form-group(label="Name")
+                  b-form-input(v-model="x.name")
+                b-form-group(label="Job title")
+                  b-form-input(v-model="x.job_title")
+                b-form-group(label="Organization/association/company name")
+                  b-form-input(v-model="x.company")
+                div.save-btn
+                  b-button(
+                    squared
+                    variant="success"
+                    @click="updateJudge(x)"
+                  ) Save
         div.more-btn
           b-button(
             squared
@@ -116,6 +117,11 @@ export default {
             border-radius: 50%
             background-color: grey
             color: white
+        .update
+          background-color: #f4f4f4
+          .collapse
+            padding: 1em
+            margin-top: 2em
       .more-btn
         text-align: center
         .btn

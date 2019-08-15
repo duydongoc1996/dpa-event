@@ -1,10 +1,10 @@
 <template lang="pug">
   div
-    b-container(fluid)
+    b-container.no-padding(fluid)
       b-row(no-gutters)
-        b-col(cols="2")
+        b-col(cols="3")
           LeftNavigation
-        b-col(cols="10")
+        b-col(cols="9")
           div.outter
             div.inner
               nuxt
@@ -18,8 +18,11 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.no-padding
+  padding: 0
 .outter
   background-color: #f4f4f4
   padding: 3em 5em
+  min-height: 100vh
   .inner
 </style>

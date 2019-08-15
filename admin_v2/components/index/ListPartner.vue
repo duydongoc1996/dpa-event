@@ -3,14 +3,33 @@
     div.inner
       div.header
       div.body
-        div.partner-item(v-for="x in 4")
+        div.partner-item(v-for="(x, index) in partners")
           div.left
-            span Delegacy
+            span {{ x.company_name }}
           div.right
-            span.round-icon
+            b-button.round-icon(
+              @click="remove(x.id, index)"
+            )
               fa(icon="trash-alt")
-            span.round-icon
+            b-button.round-icon(
+              v-b-toggle="`updatepartner-${index}`"
+            )
               fa(icon="cog")
+          div.update
+            b-collapse(
+              :id="'updatepartner-' + index"
+            )
+              b-form
+                b-form-group(label="Company name")
+                  b-form-input(v-model="x.company_name")
+                b-form-group(label="Company website")
+                  b-form-input(v-model="x.company_website")
+                div.save-btn
+                  b-button(
+                    squared
+                    variant="success"
+                    @click="updatePartner(x)"
+                  ) Save
         div.more-btn
           b-button(
             squared
@@ -21,7 +40,53 @@
 export default {
   name: 'ListPartner',
   data() {
-    return {}
+    return {
+      partners: []
+    }
+  },
+  mounted() {
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/partners'
+    }).then((response) => {
+      if (response.data.length === 0) {
+        this.partners = []
+      } else {
+        response.data.forEach((element) => {
+          this.partners.push(element)
+        })
+        this.$log.debug(this.partners)
+      }
+    })
+  },
+  methods: {
+    remove(id, index) {
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/partner/remove/' + id,
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => {
+        if (!alert(response.data.message)) {
+          this.partners.splice(index, 1)
+        }
+      }).catch(err => this.$log.debug(err))
+    },
+    updatePartner(partner) {
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/partner/update',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(partner)
+      }).then((response) => {
+        if (!alert(response.data.message)) {}
+      }).catch(err => this.$log.debug(err))
+    }
   }
 }
 </script>
@@ -30,21 +95,30 @@ export default {
   .inner
     .header
     .body
+      position: relative
       .partner-item
+        position: relative
         margin: 1em 0
         background-color: white
         padding: 20px 20px
-        height: 60px
         border-radius: 10px
+        height: fit-content
         .left
-          float: left
+          position: relative
         .right
-          float: right
+          text-align: right
+          position: absolute
+          right: 1em
+          top: 1em
           .round-icon
-            border-radius: 20px
+            border-radius: 50%
             background-color: grey
             color: white
-            padding: 10px
+        .update
+          background-color: #f4f4f4
+          .collapse
+            padding: 1em
+            margin-top: 2em
       .more-btn
         text-align: center
         .btn

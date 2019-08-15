@@ -231,4 +231,59 @@ module.exports = class NominateHandler {
         })
       })
   }
+
+  static countNominator(req,res) {
+    (async ()=>{
+      res.json(await Nominate.countNominators())
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static getAllNominator(req,res) {
+    (async()=>{
+      res.json(await Nominate.getAllNominators())
+    })()
+    .catch((err) => {
+      res.json({
+        success: false,
+        message: err
+      })
+    })
+  }
+
+  static updateNominator(req,res) {
+    (async ()=>{
+      const data = req.body;
+      if (data.first_name == null) return Promise.reject('Missing first name');
+      if (data.last_name == null) return Promise.reject('Missing last name');
+      if (data.email == null) return Promise.reject('Missing email');
+      if (data.phone == null) return Promise.reject('Missing phone');
+      if (data.id == null) return Promise.reject('Missing id');
+      //ok
+      res.json(await Nominate.updateNominator(data));
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static countNominee(req,res) {
+    (async ()=>{
+      res.json(await Nominate.countNominees())
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
 }

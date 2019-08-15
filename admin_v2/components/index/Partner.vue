@@ -5,11 +5,17 @@
         p
           strong Partners
       div.body
-        b-form
+        b-form(@submit="onSubmit")
           b-form-group(label="Company name")
-            b-form-input()
+            b-form-input(
+              v-model="form.company_name"
+              required
+            )
           b-form-group(label="Company logo")
-            b-form-file()
+            b-form-file(
+              v-model="form.logo"
+              required
+            )
           div.center
             b-button(
               type="submit"
@@ -17,6 +23,39 @@
               squared
             ) ADD PARTNER
 </template>
+<script>
+export default {
+  name: 'Partner',
+  data() {
+    return {
+      form: {
+        company_name: null,
+        logo: null
+      }
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
+      const formBody = new FormData()
+      formBody.set('company_name', this.form.company_name)
+      formBody.append('image', this.form.logo)
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/partner/create',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.token,
+          'content-type': 'multipart/form-data'
+        },
+        data: formBody
+      }).then((response) => {
+        if (!alert(response.data.message)) window.location.reload()
+      }).catch(err => this.$log.debug(err))
+    }
+  }
+
+}
+</script>
 <style lang="sass" scoped>
 .partner
   .inner

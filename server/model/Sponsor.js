@@ -61,7 +61,7 @@ module.exports = class Sponsor {
       ) VALUES (
         ?,?,?,?,?,?,?,?,?,?
       )`, [
-      sponsor.companyName,
+      sponsor.company_name,
       sponsor.fullName,
       sponsor.websiteAddress,
       sponsor.email,
@@ -138,5 +138,57 @@ module.exports = class Sponsor {
         message: err.message
       }
     })
+  }
+
+  static async updateSponsor(data) {
+    return await mysql.promise.query(`
+      UPDATE sponsor SET
+        company_name = ?,
+        full_name = ?,
+        website_address = ?,
+        email = ?,
+        telegram_id = ?,
+        job_title = ?,
+        description = ?,
+        type = ?,
+        timestamp = ?
+    `,[
+      data.company_name,
+      data.full_name,
+      data.website_address,
+      data.email,
+      data.telegram_id,
+      data.job_title,
+      data.description,
+      data.type,
+      +new Date()
+    ]).then(([rows, fields]) => {
+      return {
+        success: true,
+        message: 'Update sponsor success'
+      }
+    }).catch((err) => {
+      return {
+        success: false,
+        message: err.message
+      }
+    })
+  }
+
+  static async deleteSponsor(id) {
+    return await mysql.promise.query(`
+      DELETE FROM sponsor WHERE id = ?
+    `, [id])
+      .then(([rows, fields]) => {
+        return {
+          success: true,
+          message: 'Delete sponsor success'
+        }
+      }).catch((err) => {
+        return {
+          success: false,
+          message: err.message
+        }
+      })
   }
 }

@@ -373,6 +373,7 @@ module.exports = class Nominate {
       })
   }
 
+
   /**
    * Parse links media, links articles to array
    * @param {String} links
@@ -387,5 +388,80 @@ module.exports = class Nominate {
    */
   static joinLinks(arr) {
     return arr.join(',')
+  }
+
+
+  static async getAllNominators() {
+    return await mysql.promise.query(`
+      SELECT * FROM nominator
+    `)
+      .then(([rows,fields])=>{
+        return rows;
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
+  static async countNominators() {
+    return await mysql.promise.query(`
+      SELECT COUNT(*) as count FROM nominator
+    `)
+      .then(([rows,fields])=>{
+        return rows[0];
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  }
+
+  static async updateNominator(data) {
+    return await mysql.promise.query(`
+      UPDATE nominator SET
+        first_name = ?,
+        last_name = ?,
+        email = ?,
+        phone = ?
+      WHERE id = ?
+    `,[
+      data.first_name,
+      data.last_name,
+      data.email,
+      data.phone,
+      data.id
+    ])
+      .then(([rows,fields])=>{
+        return {
+          success: true,
+          message: 'Update nominator success'
+        }
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
+  } 
+
+  static async countNominees() {
+    return await mysql.promise.query(`
+      SELECT COUNT(*) as count FROM nominee
+    `)
+      .then(([rows,fields])=>{
+        return rows[0];
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
+        }
+      })
   }
 }
