@@ -50,7 +50,7 @@ module.exports = class Partner {
         company_website
       ) VALUES (?,?,?)
     `, [
-      partner.companyName,
+      partner.company_name,
       partner.logo,
       partner.companyWebsite
     ])
@@ -90,6 +90,31 @@ module.exports = class Partner {
         return {
           success: false,
           message: err
+        }
+      })
+  }
+
+  static async updatePartner(data) {
+    return await mysql.promise.query(`
+      UPDATE partners SET
+        company_name = ?,
+        company_website = ?
+      WHERE id = ?
+    `, [
+      data.company_name,
+      data.company_website,
+      data.id
+    ])
+      .then(([rows,fields])=>{
+        return {
+          success: true,
+          message: 'Update partner successful'
+        }
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
         }
       })
   }

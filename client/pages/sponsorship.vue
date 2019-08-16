@@ -4,35 +4,29 @@
       Menu
     section.section-header
       SectionHeader
-    //- div(
-    //-   v-if="!showSubmit"
-    //- )
-    //-   section.section-info
-    //-     SectionInfo
-    //-   section.section-price-table(
-    //-     v-if="!showSelection"
-    //-   )
-    //-     SectionPriceTable(
-    //-       :checked.sync="sponsorType"
-    //-       @update:checked="changeView"
-    //-     )
-    //-   section.section-price-selection(
-    //-     v-if="showSelection"
-    //-   )
-    //-     SectionPriceSelection(
-    //-       :checked="sponsorType"
-    //-     )
-    //-   section.section-sponsorship-form(
-    //-     v-if="showSelection"
-    //-   )
-    //-     SectionSponsorshipForm(
-    //-       @update:submitted="changeSubmitView"
-    //-       :sponsorshipType="sponsorType"
-    //-     )
-    //- section.section-submit-success(
-    //-   v-if="showSubmit"
-    //- )
-    //-   SectionSubmitSuccess
+    div(
+      v-if="!showSubmit"
+    )
+      section.section-info
+        SectionInfo
+      section.section-price-table(
+        v-if="!showSelection"
+      )
+        SectionPriceTable(
+          :checked.sync="sponsorType"
+          @update:checked="changeView"
+        )
+      section.section-sponsorship-form(
+        v-if="showSelection"
+      )
+        SectionSponsorshipForm(
+          @update:submitted="changeSubmitView"
+          :sponsorshipType="sponsorType"
+        )
+    section.section-submit-success(
+      v-if="showSubmit"
+    )
+      SectionSubmitSuccess
     section.section-footer
       SectionFooter
 </template>

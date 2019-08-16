@@ -13,6 +13,7 @@ const BookingHandler = require('../core/booking')
 const PartnerHandler = require('../core/partner')
 const ScheduleHandler = require('../core/schedule')
 const AdminHandler = require('../core/admin');
+const EventInfoHandler = require('../core/eventinfo');
 
 module.exports = function (app) {
   // Middleware setup
@@ -43,6 +44,8 @@ module.exports = function (app) {
   })
   app.get('/api/sponsor/:sponsorId', SponsorHandler.getSponsor)
   app.get('/api/sponsors', SponsorHandler.getAllSponsors)
+  app.post('/api/sponsor/update', middleware.checkToken, SponsorHandler.updateSponsor)
+  app.post('/api/sponsor/remove/:sponsorId', middleware.checkToken, SponsorHandler.removeSponsor)
 
   // Judges Routes
   app.get('/api/judges', JudgesHandler.getAllJudges)
@@ -53,6 +56,7 @@ module.exports = function (app) {
   app.get('/api/judge/:judgeId', JudgesHandler.getJudgeInfo)
   app.post('/api/judge/create', middleware.checkToken, middleware.uploadImage, JudgesHandler.createJudge)
   app.post('/api/judge/remove/:judgeId', middleware.checkToken, JudgesHandler.removeJudge)
+  app.post('/api/judge/update', middleware.checkToken, JudgesHandler.updateJudge)
 
   // Booking Routes
   app.post('/api/code', CodeHandler.validateCode)
@@ -75,6 +79,7 @@ module.exports = function (app) {
   app.get('/api/partner/:partnerId', PartnerHandler.getPartner)
   app.post('/api/partner/create', middleware.checkToken, middleware.uploadImage, PartnerHandler.createPartner)
   app.post('/api/partner/remove/:partnerId', middleware.checkToken, PartnerHandler.removePartner)
+  app.post('/api/partner/update', middleware.checkToken, PartnerHandler.updatePartner)
 
   // Nominate Routes
   app.post('/api/nominate/create', middleware.uploadImage, NominateHandler.createNominate)
@@ -90,8 +95,14 @@ module.exports = function (app) {
   app.post('/api/nominate/category/create', middleware.checkToken, NominateHandler.createAwardCategory)
   app.post('/api/nominate/category/remove/:categoryId', middleware.checkToken, NominateHandler.deleteAwardCategory)
   app.get('/api/nominate/nominees', middleware.checkToken, NominateHandler.getAllNominee)
-  app.get('/api/nominate/nominee/:nomineeId', middleware.checkToken, NominateHandler.getNomineeById)
   app.post('/api/nominate/nominee/update',middleware.checkToken, NominateHandler.updateNominee)
+  app.get('/api/nominate/nominee/:nomineeId', middleware.checkToken, NominateHandler.getNomineeById)
+  app.post('/api/nominate/category/update', middleware.checkToken, NominateHandler.updateAwardCategory)
+  app.get('/api/nominate/count/nominator', middleware.checkToken, NominateHandler.countNominator)
+  app.get('/api/nominate/nominators', middleware.checkToken, NominateHandler.getAllNominator)
+  app.post('/api/nominate/nominator/update',middleware.checkToken, NominateHandler.updateNominator)
+  app.get('/api/nominate/count/nominee', middleware.checkToken, NominateHandler.countNominee)
+  app.post('/api/nominate/category/full', NominateHandler.getFullPathAwardCategories)
 
   //Schedule
   app.get('/api/schedules', ScheduleHandler.getAllSchedule)
@@ -102,4 +113,9 @@ module.exports = function (app) {
   })
   app.post('/api/schedule/remove/:scheduleId', middleware.checkToken, ScheduleHandler.deleteSchedule)
   app.post('/api/schedule/order/:scheduleId', middleware.checkToken, ScheduleHandler.orderSchedule)
+  app.post('/api/schedules/update', middleware.checkToken, ScheduleHandler.updateSchedules)
+
+  //Event information
+  app.get('/api/eventinfo', EventInfoHandler.get);
+  app.post('/api/eventinfo/create', middleware.checkToken, EventInfoHandler.create);
 }

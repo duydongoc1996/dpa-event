@@ -5,15 +5,9 @@ module.exports = class SponsorHandler {
     // Validate
     const sponsor = req.body;
     (async () => {
-      if (!sponsor.companyName) return Promise.reject('Missing company name')
-      if (!sponsor.fullName) return Promise.reject('Missing full name')
-      if (!sponsor.websiteAddress) return Promise.reject('Missing website address')
-      if (!sponsor.email) return Promise.reject('Missing email')
-      if (!sponsor.telegramId) return Promise.reject('Missing telegram id')
-      if (!sponsor.jobTitle) return Promise.reject('Missing job title')
-      if (!sponsor.description) return Promise.reject('Missing description')
-      if (!sponsor.type) return Promise.reject('Missing sponsorship type')
-
+      if (sponsor.company_name == null || sponsor.company_name == 'null') return Promise.reject('Missing company name')
+      if (sponsor.type == null || sponsor.type == 'null') return Promise.reject('Missing sponsorship type')
+      console.log(sponsor)
       // Handle upload image
       sponsor.logo = req.body.fileName
       // --end handle upload image
@@ -77,6 +71,52 @@ module.exports = class SponsorHandler {
       .catch((err) => {
         res.json(err)
         res.end()
+      })
+  }
+
+  static updateSponsor(req,res) {
+    (async ()=>{
+      const data = req.body;
+      console.log(req.body)
+      if (data.company_name == null) return Promise.reject('Missing company name');
+      if (data.type == null) return Promise.reject('Missing sponsorship category');
+      if (data.id == null) return Promise.reject('Missing id');
+      //ok
+      res.json(await Sponsor.updateSponsor(data));
+    })()
+      .catch(err=>{
+        res.json({
+          success: false,
+          message: err
+        })
+      });
+  }
+
+  static removeSponsor(req, res) {
+    let imageName = '';
+    (async () => {
+      if (!req.body.sponsorId) return Promise.reject('Missing sponsor id')
+
+      // get image name
+      const info = await Sponsor.getSponsor(req.body.sponsorId)
+      imageName = info.logo
+
+      // Delete data
+      const response = await Sponsor.deleteSponsor(req.body.sponsorId);
+      res.json(response)
+    })()
+      .catch((err) => {
+        res.json({
+          success: true,
+          message: err
+        })
+      })
+      .finally(() => {
+        // Delete image
+        FileService.deleteImage(imageName)
+          .catch((err) => {
+            console.error(err)
+          })
       })
   }
 }

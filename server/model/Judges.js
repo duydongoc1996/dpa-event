@@ -42,21 +42,17 @@ module.exports = class Judges {
   static async createJudge(judge) {
     return await mysql.promise.query(`
       INSERT INTO judges(
-        full_name,
+        name,
         job_title,
-        link_1,
-        link_2,
-        link_3,
+        company,
         avatar
       ) VALUES (
-        ?,?,?,?,?,?
+        ?,?,?,?
       )
     `, [
-      judge.fullName,
-      judge.jobTitle,
-      judge.link_1,
-      judge.link_2,
-      judge.link_3,
+      judge.name,
+      judge.job_title,
+      judge.company,
       judge.avatar
     ]).then(([rows, fields]) => {
       return {
@@ -90,6 +86,33 @@ module.exports = class Judges {
         return {
           success: false,
           message: err
+        }
+      })
+  }
+
+  static async updateJudge(data) {
+    return await mysql.promise.query(`
+      UPDATE judges SET
+        name = ?,
+        job_title = ?,
+        company = ?
+      WHERE id = ?
+    `,[
+      data.name,
+      data.job_title,
+      data.company,
+      data.id
+    ])
+      .then(([rows,fields])=>{
+        return {
+          success: true,
+          message: 'Update judge successful'
+        }
+      })
+      .catch(err=>{
+        return {
+          success: false,
+          message: err.message
         }
       })
   }

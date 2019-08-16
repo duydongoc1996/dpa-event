@@ -85,9 +85,17 @@
 // const sanitizeName = categoryName.replace(/( .)|(\b.)/gi, x => x.toUpperCase())
 // console.log(sanitizeName)
 
-const Nominate = require('./model/Nominate');
-Nominate.getAwardCategory(115)
-  .then(data=>{
-    console.log(data.name);
-  })
-  .catch(console.log)
+// const Nominate = require('./model/Nominate');
+// Nominate.getAwardCategory(115)
+//   .then(data=>{
+//     console.log(data.name);
+//   })
+//   .catch(console.log)
+
+
+// const EventInfo = require('./model/EventInfo');
+
+// EventInfo.get().then(console.log).catch(console.log)
+const Nominate = require('./model/Nominate')
+// Nominate.countNominees().then(console.log).catch(console.log);
+// Nominate.getAllNominee(5,1).then(console.log).catch(console.log);

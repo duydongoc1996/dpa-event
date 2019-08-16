@@ -10,12 +10,12 @@
               cols="12"
             )
               p.form-title
-                strong ABOUT YOU (THE NOMINATOR)
+                strong {{ $t('nominatePage.aboutYou.heading') }}
             b-col(
               cols="6"
             )
               b-form-group(
-                label="First name"
+                :label="$t('nominatePage.aboutYou.firstName')"
                 label-for="by_firstname"
                 label-class="required-input"
               )
@@ -29,7 +29,7 @@
               cols="6"
             )
               b-form-group(
-                label="Last name"
+                :label="$t('nominatePage.aboutYou.lastName')"
                 label-for="by_lastname"
                 label-class="required-input"
               )
@@ -43,7 +43,7 @@
               cols="6"
             )
               b-form-group(
-                label="Email address"
+                :label="$t('nominatePage.aboutYou.email')"
                 label-for="by_email"
                 label-class="required-input"
               )
@@ -57,7 +57,7 @@
               cols="6"
             )
               b-form-group(
-                label="Cell phone"
+                :label="$t('nominatePage.aboutYou.phone')"
                 label-for="by_phone"
                 label-class="required-input"
               )
@@ -72,12 +72,12 @@
               cols="12"
             )
               p.form-title
-                strong.test ABOUT THE NOMINEE
+                strong.test {{ $t('nominatePage.aboutNominee.heading') }}
             b-col(
               cols="6"
             )
               b-form-group(
-                label="I am nominating myself."
+                :label="$t('nominatePage.aboutNominee.self')"
                 label-for="self"
               )
                 b-form-checkbox(
@@ -89,12 +89,12 @@
                   @change="beforeChangeIsSelf"
                 )
                   fa(icon="check-circle")
-                  span &nbsp; I am nominating myself
+                  span &nbsp; {{ $t('nominatePage.aboutNominee.self') }}
             b-col(
               cols="6"
             )
               b-form-group(
-                label="Prefix"
+                :label="$t('nominatePage.aboutNominee.prefix')"
                 label-for="prefix"
                 label-class="required-input"
               )
@@ -109,7 +109,7 @@
               cols="6"
             )
               b-form-group(
-                label="First name"
+                :label="$t('nominatePage.aboutNominee.firstName')"
                 label-for="firstname"
                 label-class="required-input"
               )
@@ -123,7 +123,7 @@
               cols="6"
             )
               b-form-group(
-                label="Last name"
+                :label="$t('nominatePage.aboutNominee.lastName')"
                 label-for="lastname"
                 label-class="required-input"
               )
@@ -137,7 +137,7 @@
               cols="6"
             )
               b-form-group(
-                label="Company name"
+                :label="$t('nominatePage.aboutNominee.companyName')"
                 label-for="companyname"
                 label-class="required-input"
               )
@@ -151,7 +151,7 @@
               cols="6"
             )
               b-form-group(
-                label="Job title"
+                :label="$t('nominatePage.aboutNominee.jobTitle')"
                 label-for="jobtitle"
                 label-class="required-input"
               )
@@ -165,7 +165,7 @@
               cols="6"
             )
               b-form-group(
-                label="Company website address"
+                :label="$t('nominatePage.aboutNominee.companyWebsite')"
                 label-for="companywebsite"
                 label-class="required-input"
               )
@@ -179,7 +179,7 @@
               cols="6"
             )
               b-form-group(
-                label="Cell phone"
+                :label="$t('nominatePage.aboutNominee.phone')"
                 label-for="phone"
                 :label-class="(this.formData.isSelf) ? 'required-input' : 'none-required'"
               )
@@ -193,7 +193,7 @@
               cols="6"
             )
               b-form-group(
-                label="Email address"
+                :label="$t('nominatePage.aboutNominee.email')"
                 label-for="email"
                 label-class="required-input"
               )
@@ -207,7 +207,7 @@
               cols="6"
             )
               b-form-group(
-                label="Nationality"
+                :label="$t('nominatePage.aboutNominee.nationality')"
                 label-for="nationality"
                 label-class="required-input"
               )
@@ -221,7 +221,7 @@
               cols="12"
             )
               b-form-group(
-                label="Award category"
+                :label="$t('nominatePage.aboutNominee.category')"
                 label-for="awardcategroy"
                 label-class="required-input"
               )
@@ -273,7 +273,7 @@
               cols="12"
             )
               b-form-group(
-                label="Tell us about the nominee. Why are you nominating this person/company/project/service/product as a nominee?"
+                :label="$t('nominatePage.aboutNominee.about')"
                 label-for="aboutspeaker"
                 label-class="required-input"
               )
@@ -287,7 +287,7 @@
               cols="12"
             )
               b-form-group(
-                label="Please provide links to online video or audio featuring the nominee."
+                :label="$t('nominatePage.aboutNominee.linkMedia')"
                 label-class="required-input"
               )
                 div.linkmedia-container(
@@ -314,7 +314,7 @@
               cols="12"
             )
               b-form-group(
-                label="Please upload a high quality headshot of the nominee."
+                :label="$t('nominatePage.aboutNominee.avatar')"
                 label-for="image"
                 label-class="required-input"
               )
@@ -331,7 +331,7 @@
               cols="12"
             )
               b-form-group(
-                label="Do you know this person personally? - It's okay even if you do not"
+                :label="$t('nominatePage.aboutNominee.know')"
               )
                 b-form-checkbox(
                   v-model="formData.isKnow"
@@ -340,7 +340,7 @@
                   :class="formData.isKnow ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
                 )
                   fa(icon="check-circle")
-                  span &nbsp; Yes
+                  span &nbsp; {{ $t('nominatePage.aboutNominee.yes') }}
                 b-form-checkbox(
                   v-model="formData.isKnow"
                   button
@@ -348,7 +348,7 @@
                   :class="(!formData.isKnow) ? 'checkbox-isknow isknow-checked' : 'checkbox-isknow'"
                 )
                   fa(icon="check-circle")
-                  span &nbsp; No
+                  span &nbsp; {{ $t('nominatePage.aboutNominee.no') }}
             b-col(
               cols="12"
             )
@@ -356,7 +356,7 @@
                 b-button(
                   squared
                   type="submit"
-                ) SUBMIT &nbsp;
+                ) {{ $t('nominatePage.aboutNominee.submit') }} &nbsp;
                   fa(icon="arrow-right")
 </template>
 <script>
@@ -394,7 +394,7 @@ export default {
       },
       linksMediaArray: [null],
       optionsPrefix: [
-        { value: null, text: '-select-' },
+        { value: null, text: '-' + this.$t('nominatePage.aboutNominee.select') + '-' },
         { value: 'Mr', text: 'Mr' },
         { value: 'Ms', text: 'Ms' }
       ],
@@ -406,19 +406,19 @@ export default {
         'Afghan', 'Albanian', 'Algerian', 'American', 'Andorran', 'Angolan', 'Antiguans', 'Argentinean', 'Armenian', 'Australian', 'Austrian', 'Azerbaijani', 'Bahamian', 'Bahraini', 'Bangladeshi', 'Barbadian', 'Barbudans', 'Batswana', 'Belarusian', 'Belgian', 'Belizean', 'Beninese', 'Bhutanese', 'Bolivian', 'Bosnian', 'Brazilian', 'British', 'Bruneian', 'Bulgarian', 'Burkinabe', 'Burmese', 'Burundian', 'Cambodian', 'Cameroonian', 'Canadian', 'Cape Verdean', 'Central African', 'Chadian', 'Chilean', 'Chinese', 'Colombian', 'Comoran', 'Congolese', 'Costa Rican', 'Croatian', 'Cuban', 'Cypriot', 'Czech', 'Danish', 'Djibouti', 'Dominican', 'Dutch', 'East Timorese', 'Ecuadorean', 'Egyptian', 'Emirian', 'Equatorial Guinean', 'Eritrean', 'Estonian', 'Ethiopian', 'Fijian', 'Filipino', 'Finnish', 'French', 'Gabonese', 'Gambian', 'Georgian', 'German', 'Ghanaian', 'Greek', 'Grenadian', 'Guatemalan', 'Guinea-Bissauan', 'Guinean', 'Guyanese', 'Haitian', 'Herzegovinian', 'Honduran', 'Hungarian', 'I-Kiribati', 'Icelander', 'Indian', 'Indonesian', 'Iranian', 'Iraqi', 'Irish', 'Israeli', 'Italian', 'Ivorian', 'Jamaican', 'Japanese', 'Jordanian', 'Kazakhstani', 'Kenyan', 'Kittian and Nevisian', 'Kuwaiti', 'Kyrgyz', 'Laotian', 'Latvian', 'Lebanese', 'Liberian', 'Libyan', 'Liechtensteiner', 'Lithuanian', 'Luxembourger', 'Macedonian', 'Malagasy', 'Malawian', 'Malaysian', 'Maldivan', 'Malian', 'Maltese', 'Marshallese', 'Mauritanian', 'Mauritian', 'Mexican', 'Micronesian', 'Moldovan', 'Monacan', 'Mongolian', 'Moroccan', 'Mosotho', 'Motswana', 'Mozambican', 'Namibian', 'Nauruan', 'Nepalese', 'New Zealander', 'Nicaraguan', 'Nigerian', 'Nigerien', 'North Korean', 'Northern Irish', 'Norwegian', 'Omani', 'Pakistani', 'Palauan', 'Panamanian', 'Papua New Guinean', 'Paraguayan', 'Peruvian', 'Polish', 'Portuguese', 'Qatari', 'Romanian', 'Russian', 'Rwandan', 'Saint Lucian', 'Salvadoran', 'Samoan', 'San Marinese', 'Sao Tomean', 'Saudi', 'Scottish', 'Senegalese', 'Serbian', 'Seychellois', 'Sierra Leonean', 'Singaporean', 'Slovakian', 'Slovenian', 'Solomon Islander', 'Somali', 'South African', 'South Korean', 'Spanish', 'Sri Lankan', 'Sudanese', 'Surinamer', 'Swazi', 'Swedish', 'Swiss', 'Syrian', 'Taiwanese', 'Tajik', 'Tanzanian', 'Thai', 'Togolese', 'Tongan', 'Trinidadian/Tobagonian', 'Tunisian', 'Turkish', 'Tuvaluan', 'Ugandan', 'Ukrainian', 'Uruguayan', 'Uzbekistani', 'Venezuelan', 'Vietnamese', 'Welsh', 'Yemenite', 'Zambian', 'Zimbabwean'
       ],
       optionsNationality: [
-        { value: null, text: '-select-' }
+        { value: null, text: '-' + this.$t('nominatePage.aboutNominee.select') + '-' }
       ],
       optionsAwardCategoryLv1: [
-        { value: null, text: '-select-' }
+        { value: null, text: '-' + this.$t('nominatePage.aboutNominee.select') + '-' }
       ],
       optionsAwardCategoryLv2: [
-        { value: null, text: '-select-' }
+        { value: null, text: '-' + this.$t('nominatePage.aboutNominee.select') + '-' }
       ],
       optionsAwardCategoryLv3: [
-        { value: null, text: '-select-' }
+        { value: null, text: '-' + this.$t('nominatePage.aboutNominee.select') + '-' }
       ],
       defaultOptions: [
-        { value: null, text: '-select-' }
+        { value: null, text: '-' + this.$t('nominatePage.aboutNominee.select') + '-' }
       ],
       numLinkMedia: 1,
       listCategories: null,
@@ -452,7 +452,7 @@ export default {
     // Prepare nationality
     this.listNationality.forEach((x) => {
       this.optionsNationality.push(
-        { value: x.toLowerCase(), text: x }
+        { value: x, text: x }
       )
     })
   },

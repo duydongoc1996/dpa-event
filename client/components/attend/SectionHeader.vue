@@ -4,8 +4,8 @@
       div.nom-header
         p.nom-heading
           strong ATTEND
-          br
-          span Coming soon
+          //- br
+          //- span Coming soon
 </template>
 
 <script>

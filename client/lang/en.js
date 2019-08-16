@@ -25,7 +25,7 @@ export default {
     logo: {
       host: 'Host',
       organizer: 'Organizer',
-      marketer: 'Marketer'
+      marketer: 'Marketing'
     },
     intro: {
       date: 'December 20, 2019',
@@ -67,6 +67,40 @@ export default {
       location: 'IMPERIAL PALACE HOTEL SEOUL, 7TH FLOOR, SELENA HALL',
       address: 'Address: 640, Eonju-ro Nonhyeon 2-dong, Gangnam-gu, Seoul',
       googlemap: 'GOOGLE MAP'
+    }
+  },
+  nominatePage: {
+    header: {
+      heading: 'NOMINATE'
+    },
+    aboutYou: {
+      heading: 'ABOUT YOU (THE NOMINATOR)',
+      firstName: 'First name',
+      lastName: 'Last name',
+      email: 'Email address',
+      phone: 'Cell phone'
+    },
+    aboutNominee: {
+      heading: 'ABOUT THE NOMINEE',
+      self: 'I am nominating myself.',
+      prefix: 'Prefix',
+      select: 'select',
+      firstName: 'First name',
+      lastName: 'Last name',
+      companyName: 'Company name',
+      jobTitle: 'Job title',
+      companyWebsite: 'Company website address',
+      phone: 'Cell phone',
+      email: 'Email address',
+      nationality: 'Nationality',
+      category: 'Award category',
+      about: 'Tell us about the nominee. Why are you nominating this person/company/project/service/product as a nominee?',
+      linkMedia: 'Please provide links to online video or audio featuring the nominee.',
+      avatar: 'Please upload a high quality headshot of the nominee.',
+      know: `Do you know this person personally? - It's okay even if you do not`,
+      yes: 'Yes',
+      no: 'No',
+      submit: 'SUBMIT'
     }
   }
 }

@@ -65,4 +65,28 @@ module.exports = class ScheduleHandler {
         })
       });
   }
+
+  static updateSchedules(req,res) {
+    (async() => {
+      const data = req.body;
+      if (data.length > 0) {
+        const validate = data.map((x)=> {
+          if (x.time == null) return 1;
+          if (x.title == null) return 1;
+          if (x.subtitle == null) return 1;
+          if (x.content == null) return 1;
+          return 0;
+        });
+        if (validate.indexOf(1) > -1) return Promise.reject('Invalid schedules data');
+      }
+      //ok
+      res.json(await Schedule.updateAllSchedules(data));
+    })()
+      .catch(err=>{
+        res.json({
+          success: false,
+          message: err
+        });
+      })
+  }
 }

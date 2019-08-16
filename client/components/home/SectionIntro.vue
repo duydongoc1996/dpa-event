@@ -46,7 +46,18 @@ export default {
     Countdown
   },
   data() {
-    return {}
+    return {
+      intro: null
+    }
+  },
+  mounted() {
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/eventinfo'
+    }).then((response) => {
+      this.intro = response.data
+      this.$log.debug(this.intro)
+    })
   }
 }
 </script>

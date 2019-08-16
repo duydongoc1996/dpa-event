@@ -75,10 +75,16 @@ module.exports = class NominateHandler {
       if (!vote.success) return Promise.reject(vote.message)
 
       // get award category name
-      let categoryName = await Nominate.getAwardCategory(parseInt(voteInfo.fk_award_category));
-      if (categoryName.name == 'Others') categoryName = voteInfo.other_category;
-      else categoryName = categoryName.name;
-
+      let categoryName = '';
+      const fullPath = await Nominate.getFullPathAwardCategory([voteInfo.fk_award_category]);
+      const fullPathCategory = fullPath[0].join(' > ');
+      let currentCategory = await Nominate.getAwardCategory(parseInt(voteInfo.fk_award_category));
+      if (currentCategory.name == 'Others') {
+        const otherCategory = voteInfo.other_category;
+        categoryName = fullPathCategory + ' > ' + otherCategory;
+      } else {
+        categoryName = fullPathCategory;
+      }
       // Response
       res.json(vote)
 
@@ -125,12 +131,31 @@ module.exports = class NominateHandler {
       if (!data.level) return Promise.reject('Missing award category level')
       if (data.parent == null) data.parent = 0;
       if (!data.description) data.description = '';
-      console.log(data)
       // create
       const response = await Nominate.createAwardCategory(data.categoryName, parseInt(data.level),parseInt(data.parent),data.description)
       if (!response.success) return Promise.reject(response.message)
       // response
       res.json(response)
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static updateAwardCategory(req,res) {
+    (async () => {
+      const data = req.body;
+      if (data.id == null) return Promise.reject('Missing id');
+      if (data.name == null) return Promise.reject('Missing name');
+      if (data.description == null) data.description = '';
+      //update
+      const response = await Nominate.updateAwardCategory(data)
+      if (response.success === false) return Promise.reject(response.message);
+      //response
+      resj.json(response);
     })()
       .catch((err) => {
         res.json({
@@ -161,6 +186,10 @@ module.exports = class NominateHandler {
 
   static getAllNominee(req,res) {
     (async () => {
+      const data = req.query;
+      console.log(data)
+      if (data.offset == null) data.offset = 1;
+      if (data.limit == null) data.limit = 20; 
       const response = await Nominate.getAllNominee();
       res.json(response);
     })()
@@ -211,5 +240,77 @@ module.exports = class NominateHandler {
           message: err
         })
       })
+  }
+
+  static countNominator(req,res) {
+    (async ()=>{
+      res.json(await Nominate.countNominators())
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static getAllNominator(req,res) {
+    (async()=>{
+      res.json(await Nominate.getAllNominators())
+    })()
+    .catch((err) => {
+      res.json({
+        success: false,
+        message: err
+      })
+    })
+  }
+
+  static updateNominator(req,res) {
+    (async ()=>{
+      const data = req.body;
+      if (data.first_name == null) return Promise.reject('Missing first name');
+      if (data.last_name == null) return Promise.reject('Missing last name');
+      if (data.email == null) return Promise.reject('Missing email');
+      if (data.phone == null) return Promise.reject('Missing phone');
+      if (data.id == null) return Promise.reject('Missing id');
+      //ok
+      res.json(await Nominate.updateNominator(data));
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static countNominee(req,res) {
+    (async ()=>{
+      res.json(await Nominate.countNominees())
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
+      })
+  }
+
+  static getFullPathAwardCategories(req,res) {
+    (async()=>{
+      const listCategory = req.body.list.split(',');
+      if (listCategory == null || listCategory.length == 0) return Promise.reject('Missing id');
+      //ok
+      const list = await Nominate.getFullPathAwardCategory(listCategory)
+      const response = list.map(x=>x.join(' > '));
+      res.json(response);
+    })()
+    .catch((err) => {
+      res.json({
+        success: false,
+        message: err
+      })
+    })
   }
 }

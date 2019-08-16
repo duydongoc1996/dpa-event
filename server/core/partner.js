@@ -12,7 +12,6 @@ module.exports = class PartnerHandler {
           success: false,
           message: err
         })
-        res.end()
       })
   }
 
@@ -29,7 +28,6 @@ module.exports = class PartnerHandler {
           success: false,
           message: err
         })
-        res.end()
       })
   }
 
@@ -37,8 +35,7 @@ module.exports = class PartnerHandler {
     (async () => {
       const partner = req.body
       // validate
-      if (!req.body.companyName) return Promise.reject('Missing company name')
-      if (!req.body.companyWebsite) return Promise.reject('Missing company website')
+      if (!req.body.company_name) return Promise.reject('Missing company name')
       if (Object.keys(req.files).length == 0) return Promise.reject('Missing avatar')
       // Handle upload image
       partner.logo = req.body.fileName
@@ -52,7 +49,6 @@ module.exports = class PartnerHandler {
           success: false,
           message: err
         })
-        res.end()
       })
   }
 
@@ -80,6 +76,22 @@ module.exports = class PartnerHandler {
           .catch((err) => {
             console.error(err)
           })
+      })
+  }
+
+  static updatePartner(req,res) {
+    (async ()=>{
+      const data = req.body;
+      if (data.company_name == null) return Promise.reject('Missing company name');
+      if (data.id == null) return Promise.reject('Missing id')
+      //ok
+      res.json(await Partner.updatePartner(data))
+    })()
+      .catch((err) => {
+        res.json({
+          success: false,
+          message: err
+        })
       })
   }
 }
