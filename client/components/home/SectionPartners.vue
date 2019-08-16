@@ -13,51 +13,37 @@
               sm="12"
               md="4"
               lg="4"
+              v-for="(x, index) in partners"
+              :key="index"
             )
               div.part-item
                 div.part-logo
                   b-img(
-                    src="~/assets/logo/delegacy logo_03.png"
+                    :src="imageAddress + x.logo"
                     alt="alt"
                     fluid-grow
                     center
                   )
-            b-col.part-item-container(
-              cols="12"
-              sm="12"
-              md="4"
-              lg="4"
-            )
-              div.part-item
-                div.part-logo
-                  a(href="https://publishsoft.io/")
-                    b-img(
-                      src="~/assets/logo/PUBLISH logo.png"
-                      alt="alt"
-                      fluid-grow
-                      center
-                    )
-            b-col.part-item-container(
-              cols="12"
-              sm="12"
-              md="4"
-              lg="4"
-            )
-              div.part-item
-                div.part-logo
-                  a(href="https://www.kchain.kr/")
-                    b-img(
-                      src="~/assets/logo/Kchain logo.png"
-                      alt="alt"
-                      fluid-grow
-                      center
-                    )
 </template>
 <script>
 export default {
   name: 'SectionPartners',
   data() {
-    return {}
+    return {
+      partners: [],
+      imageAddress: process.env.baseUrl + '/static/'
+    }
+  },
+  mounted() {
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/partners'
+    }).then((response) => {
+      if (response.data.success !== false) {
+        this.partners = response.data
+        this.$log.debug(this.partners)
+      }
+    })
   }
 }
 </script>

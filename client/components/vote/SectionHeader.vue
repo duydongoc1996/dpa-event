@@ -4,6 +4,8 @@
       div.nom-header
         p.nom-heading
           strong VOTE
+          br
+          span Coming soon
 </template>
 
 <script>
@@ -35,6 +37,7 @@ export default {
       justify-content: center
       align-items: center
       .nom-heading
+        text-align: center
         color: #fefefe
-        font-size: 34pt
+        font-size: 30px
 </style>

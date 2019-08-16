@@ -4,8 +4,8 @@
       div.nom-header
         p.nom-heading
           strong ATTEND
-          //- br
-          //- span Coming soon
+          br
+          span Coming soon
 </template>
 
 <script>
@@ -32,6 +32,7 @@ export default {
       text-align: center
       top: 40%
       .nom-heading
+        text-align: center
         color: white
         font-size: 30px
 </style>
