@@ -1,18 +1,45 @@
 <template lang="pug">
-  div.wrapper-sponsor-form
-    div.wrapper-sponsor-form-inner
-      div.form-header
-        p.form-heading
-          strong Sponsorship participation application
-        p.form-description This is a sponsorship application for the Decentralized People's Awards Korea 2019 held by Token Post from Dec.20th in Seoul, South Korea
-        p.form-description This infomation you provide in this form will be used to better serve you throughout the event.
-        p.form-description Please review your response for any typos, spelling errors and unintended misinfomation
-        p.form-description BEFORE submitting your application. The event organizers are not obligated to correct the errors,
-        p.form-description and what is submitted here will be what goes on every material releases and distributed during the event.
-      div.form-body
-        b-form(
-          @submit="onSubmit"
+div.sponsor-form
+  b-form(
+    @submit="onSubmit"
+  )
+    div.wrapper-selection()
+      div.wrapper-selection-inner
+        div.select-type-box(
+          v-for="content in selectContent"
         )
+          div.select-header
+            b-form-checkbox(
+              v-model="form.type"
+              name="formSelect"
+              :value="content.key"
+              class="price-select"
+            )
+              div.select-checkbox
+                div.select-checkbox-checked(
+                  v-if="form.type === content.key"
+                )
+              div.select-content
+                strong {{ content.title }} &nbsp;
+                span {{ content.price }}
+                div.updown-angle
+                  fa(:icon="(form.type === content.key) ? 'angle-up' : 'angle-down'")
+          b-collapse(id="premier-collapse" :visible="(form.type == content.key)")
+            ul
+              li(v-for="benefit in content.benefits") {{ benefit }}
+        div.select-type-alert(v-if="showSelectAlert && !validateType(form.type)")
+          p Please select at least one sponsorship type!
+    div.wrapper-sponsor-form
+      div.wrapper-sponsor-form-inner
+        div.form-header
+          p.form-heading
+            strong Sponsorship participation application
+          p.form-description This is a sponsorship application for the Decentralized People's Awards Korea 2019 held by Token Post from Dec.20th in Seoul, South Korea
+          p.form-description This infomation you provide in this form will be used to better serve you throughout the event.
+          p.form-description Please review your response for any typos, spelling errors and unintended misinfomation
+          p.form-description BEFORE submitting your application. The event organizers are not obligated to correct the errors,
+          p.form-description and what is submitted here will be what goes on every material releases and distributed during the event.
+        div.form-body
           b-container(fluid)
             b-row
               b-col(
@@ -179,20 +206,144 @@ export default {
         companyDescription: null,
         companyLogo: null
       },
-      agree: false
+      agree: false,
+      showSelectAlert: false,
+      listType: ['premier', 'gold', 'partnership', 'nomination'],
+      selectContent: [
+        {
+          key: 'premier',
+          title: 'Premier sponsorship',
+          price: 'USD 126,800 (VAT included)',
+          benefits: [
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company'
+          ]
+        },
+        {
+          key: 'gold',
+          title: 'Gold sponsorship',
+          price: 'USD 17,000 (VAT included)',
+          benefits: [
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company'
+          ]
+        },
+        {
+          key: 'partnership',
+          title: 'Partnership Package',
+          price: 'USD 4,200 (VAT included)',
+          benefits: [
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company'
+          ]
+        },
+        {
+          key: 'nomination',
+          title: 'Nomination Sponsorship',
+          price: 'USD 420 (VAT included)',
+          benefits: [
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company',
+            'Play the advertising video of the sponsor company'
+          ]
+        }
+      ]
     }
   },
   methods: {
+    validateType(type) {
+      return (this.listType.indexOf(type) > -1)
+    },
     onSubmit(e) {
       e.preventDefault()
       this.$log.debug(this.form)
-      this.$emit('update:submitted', true)
+      if (!this.validateType(this.form.type)) {
+        this.showSelectAlert = true
+        document.getElementById('select-type').scrollIntoView()
+        return
+      }
+      const formBody = new FormData()
+      formBody.set('company_name', this.form.companyName)
+      formBody.set('fullName', this.form.companyName)
+      formBody.set('websiteAddress', this.form.companyWebsite)
+      formBody.set('email', this.form.email)
+      formBody.set('telegramId', this.form.telegramId)
+      formBody.set('description', this.form.companyDescription)
+      formBody.append('image', this.form.companyLogo)
+      formBody.set('type', this.form.type)
+      formBody.set('jobTitle', this.form.jobTitle)
+      this.$axios({
+        method: 'post',
+        url: process.env.baseUrl + '/api/sponsor/create',
+        data: formBody,
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }).then((x) => {
+        this.$log.debug(x)
+        if (x.data.success) this.$emit('update:submitted', true)
+      }).catch(x => this.$log.debug(x))
     }
   }
 }
 </script>
 
 <style lang="sass">
+.wrapper-selection
+  background-color: white
+  .wrapper-selection-inner
+    width: 992px
+    margin: 0 auto
+    border-top: 2px solid #cec230
+    @media only screen and (max-width: 992px)
+      width: 100%
+    .select-type-alert
+      text-align: center
+      color: red
+    .select-type-box
+      border-top: 1px solid #e2e2e2
+      border-bottom: 1px solid #e2e2e2
+      .select-header
+        padding: 10px
+        background-color: #f2f2f2
+        .select-checkbox
+          position: absolute
+          left: 0
+          top: 0
+          width: 1.1rem
+          height: 1.1rem
+          border: 1px solid #d2d2d2
+          border-radius: 4px
+          .select-checkbox-checked
+            background-color: #cec230
+            border-color: #cec230
+            border-radius: 3px
+            width: 0.8rem
+            height: 0.8rem
+            margin: 0.1rem
+        .price-select
+          padding: 0
+          .custom-control-label
+            padding-left: 2rem
+            width: 100%
+            &:before
+              display: none
+            &:after
+              display: none
+            .select-content
+              width: 100%
+              .updown-angle
+                position: absolute
+                right: 0
+                top: 0
+                color: grey
 .wrapper-sponsor-form
   background-color: white
   .wrapper-sponsor-form-inner

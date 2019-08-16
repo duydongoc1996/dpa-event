@@ -1,6 +1,6 @@
 <template lang="pug">
   div.wrapper-info
-    div.wrapper-info-inner
+    div.wrapper-info-inner(id="select-type")
       div.info-header
         p.info-heading
           strong Sponsorship oppotunities

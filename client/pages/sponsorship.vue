@@ -16,12 +16,6 @@
           :checked.sync="sponsorType"
           @update:checked="changeView"
         )
-      section.section-price-selection(
-        v-if="showSelection"
-      )
-        SectionPriceSelection(
-          :checked="sponsorType"
-        )
       section.section-sponsorship-form(
         v-if="showSelection"
       )

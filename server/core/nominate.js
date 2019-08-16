@@ -75,10 +75,16 @@ module.exports = class NominateHandler {
       if (!vote.success) return Promise.reject(vote.message)
 
       // get award category name
-      let categoryName = await Nominate.getAwardCategory(parseInt(voteInfo.fk_award_category));
-      if (categoryName.name == 'Others') categoryName = voteInfo.other_category;
-      else categoryName = categoryName.name;
-
+      let categoryName = '';
+      const fullPath = await Nominate.getFullPathAwardCategory([voteInfo.fk_award_category]);
+      const fullPathCategory = fullPath[0].join(' > ');
+      let currentCategory = await Nominate.getAwardCategory(parseInt(voteInfo.fk_award_category));
+      if (currentCategory.name == 'Others') {
+        const otherCategory = voteInfo.other_category;
+        categoryName = fullPathCategory + ' > ' + otherCategory;
+      } else {
+        categoryName = fullPathCategory;
+      }
       // Response
       res.json(vote)
 
@@ -180,6 +186,10 @@ module.exports = class NominateHandler {
 
   static getAllNominee(req,res) {
     (async () => {
+      const data = req.query;
+      console.log(data)
+      if (data.offset == null) data.offset = 1;
+      if (data.limit == null) data.limit = 20; 
       const response = await Nominate.getAllNominee();
       res.json(response);
     })()
@@ -285,5 +295,22 @@ module.exports = class NominateHandler {
           message: err
         })
       })
+  }
+
+  static getFullPathAwardCategories(req,res) {
+    (async()=>{
+      const listCategory = req.body.list.split(',');
+      if (listCategory == null || listCategory.length == 0) return Promise.reject('Missing id');
+      //ok
+      const list = await Nominate.getFullPathAwardCategory(listCategory)
+      const response = list.map(x=>x.join(' > '));
+      res.json(response);
+    })()
+    .catch((err) => {
+      res.json({
+        success: false,
+        message: err
+      })
+    })
   }
 }

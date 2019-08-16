@@ -5,9 +5,9 @@ module.exports = class SponsorHandler {
     // Validate
     const sponsor = req.body;
     (async () => {
-      if (!sponsor.company_name) return Promise.reject('Missing company name')
-      if (!sponsor.type) return Promise.reject('Missing sponsorship type')
-
+      if (sponsor.company_name == null || sponsor.company_name == 'null') return Promise.reject('Missing company name')
+      if (sponsor.type == null || sponsor.type == 'null') return Promise.reject('Missing sponsorship type')
+      console.log(sponsor)
       // Handle upload image
       sponsor.logo = req.body.fileName
       // --end handle upload image

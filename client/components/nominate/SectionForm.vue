@@ -452,7 +452,7 @@ export default {
     // Prepare nationality
     this.listNationality.forEach((x) => {
       this.optionsNationality.push(
-        { value: x.toLowerCase(), text: x }
+        { value: x, text: x }
       )
     })
   },

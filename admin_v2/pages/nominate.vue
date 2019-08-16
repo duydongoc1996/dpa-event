@@ -7,16 +7,20 @@
         NominatorInfo
       section
         NomineeStatus
+      section
+        NomineeInfo
 </template>
 <script>
 import NominatorStatus from '~/components/nominate/NominatorStatus'
 import NominatorInfo from '~/components/nominate/NominatorInfo'
 import NomineeStatus from '~/components/nominate/NomineeStatus'
+import NomineeInfo from '~/components/nominate/NomineeInfo'
 export default {
   components: {
     NominatorStatus,
     NominatorInfo,
-    NomineeStatus
+    NomineeStatus,
+    NomineeInfo
   },
   data() {
     return {}

@@ -15,7 +15,7 @@
             strong Nationality of nominators
           b-container.no-padding(fluid)
             b-row()
-              b-col.col-item(cols="3" v-for="x in 10")
+              b-col.col-item(cols="3" v-for="x in 10" :key="x")
                 div.item
                   p.text Korea
                   p.number 10

@@ -4,7 +4,7 @@ module.exports = class Nominate {
 
   static async getAllNominee() {
     return await mysql.promise.query(`
-      SELECT * FROM nominee
+      SELECT * FROM nominee ORDER BY id DESC
     `,[])
       .then(([rows,fields])=>{
         return (rows.length > 0) ? rows : [];
@@ -187,7 +187,7 @@ module.exports = class Nominate {
   static async getAwardCategory(id) {
     return await mysql.promise.query(`
       SELECT * FROM award_category WHERE id = ?
-    `, [id])
+    `, [parseInt(id)])
       .then(([rows, fields]) => {
         return (rows.length > 0) ? rows[0] : {}
       })
@@ -463,5 +463,23 @@ module.exports = class Nominate {
           message: err.message
         }
       })
+  }
+
+  static async getFullPathAwardCategory(listCategory) {
+    return await Promise.all(listCategory.map(async (categoryId)=>{
+      let result = [];
+      let current = await this.getAwardCategory(categoryId);
+      result.push(current.name);
+      if (current.level == 3) {
+        current = await this.getAwardCategory(current.parent);
+        result.push(current.name);
+      }
+      if (current.level == 2) {
+        current = await this.getAwardCategory(current.parent);
+        result.push(current.name);
+      }
+      // console.log(result.reverse())
+      return (result.reverse());
+    }));
   }
 }

@@ -15,17 +15,19 @@
             strong Nationality of nominees
           b-container.no-padding(fluid)
             b-row()
-              b-col.col-item(cols="3" v-for="x in 10")
+              b-col.col-item(cols="3" v-for="(x, index) in country" :key="index")
                 div.item
-                  p.text Korea
-                  p.number 10
+                  p.text {{ index }}
+                  p.number {{ x }}
 </template>
 <script>
 export default {
   name: 'NomineeStatus',
   data() {
     return {
-      count: 0
+      count: 0,
+      nominees: [],
+      country: {}
     }
   },
   mounted() {
@@ -37,9 +39,29 @@ export default {
         'Content-Type': 'application/json'
       }
     }).then((response) => {
-      this.$log.debug(response.data)
       if (response.data.count !== null) {
         this.count = response.data.count
+      }
+    })
+
+    this.$axios({
+      method: 'get',
+      url: process.env.baseUrl + '/api/nominate/nominees',
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.token,
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      if (response.data.length > 0) {
+        this.nominees = response.data
+        this.country = this.nominees.reduce((y, x) => {
+          if (y[x.nationality] === undefined) {
+            y[x.nationality] = 1
+          } else {
+            y[x.nationality]++
+          }
+          return y
+        }, {})
       }
     })
   }

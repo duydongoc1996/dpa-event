@@ -97,4 +97,5 @@
 
 // EventInfo.get().then(console.log).catch(console.log)
 const Nominate = require('./model/Nominate')
-Nominate.countNominees().then(console.log).catch(console.log);
+// Nominate.countNominees().then(console.log).catch(console.log);
+// Nominate.getAllNominee(5,1).then(console.log).catch(console.log);

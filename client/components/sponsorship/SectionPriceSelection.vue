@@ -13,13 +13,13 @@
           )
             div.select-checkbox
               div.select-checkbox-checked(
-                v-if="check == content.key"
+                v-if="check === content.key"
               )
             div.select-content
               strong {{ content.title }} &nbsp;
               span {{ content.price }}
               div.updown-angle
-                fa(:icon="(check == content.key) ? 'angle-up' : 'angle-down'")
+                fa(:icon="(check === content.key) ? 'angle-up' : 'angle-down'")
         b-collapse(id="premier-collapse" :visible="(check == content.key)")
           ul
             li(v-for="benefit in content.benefits") {{ benefit }}

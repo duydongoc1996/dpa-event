@@ -95,13 +95,14 @@ module.exports = function (app) {
   app.post('/api/nominate/category/create', middleware.checkToken, NominateHandler.createAwardCategory)
   app.post('/api/nominate/category/remove/:categoryId', middleware.checkToken, NominateHandler.deleteAwardCategory)
   app.get('/api/nominate/nominees', middleware.checkToken, NominateHandler.getAllNominee)
-  app.get('/api/nominate/nominee/:nomineeId', middleware.checkToken, NominateHandler.getNomineeById)
   app.post('/api/nominate/nominee/update',middleware.checkToken, NominateHandler.updateNominee)
+  app.get('/api/nominate/nominee/:nomineeId', middleware.checkToken, NominateHandler.getNomineeById)
   app.post('/api/nominate/category/update', middleware.checkToken, NominateHandler.updateAwardCategory)
   app.get('/api/nominate/count/nominator', middleware.checkToken, NominateHandler.countNominator)
   app.get('/api/nominate/nominators', middleware.checkToken, NominateHandler.getAllNominator)
   app.post('/api/nominate/nominator/update',middleware.checkToken, NominateHandler.updateNominator)
   app.get('/api/nominate/count/nominee', middleware.checkToken, NominateHandler.countNominee)
+  app.post('/api/nominate/category/full', NominateHandler.getFullPathAwardCategories)
 
   //Schedule
   app.get('/api/schedules', ScheduleHandler.getAllSchedule)
