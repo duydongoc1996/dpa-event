@@ -1,8 +1,8 @@
 {
-  "name": "Decentralized People’s Awards",
+  "name": "dpawards.org",
   "version": "1.0.0",
   "description": "Recognition on chain. Celebrate your hard work and contribution to the blockchain industry.",
-  "author": "DPA",
+  "author": "Decentralized People’s Awards",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
