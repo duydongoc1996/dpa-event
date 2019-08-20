@@ -40,17 +40,17 @@ export default {
       url: process.env.baseUrl + '/api/partners'
     }).then((response) => {
       if (response.data.success !== false) {
-        this.partners = response.data
+        this.partners = this.sortordinal(response.data)
         // this.$log.debug(this.partners)
       }
     })
   },
   methods: {
-    sortOrder(list) {
-      return this.sort((a, b) => {
-        if (a.order > b.order) return 1
-        if (a.order < b.order) return -1
-        if (a.order === b.order) return 0
+    sortordinal(list) {
+      return list.sort((a, b) => {
+        if (a.ordinal > b.ordinal) return 1
+        if (a.ordinal < b.ordinal) return -1
+        if (a.ordinal === b.ordinal) return 0
       })
     }
   }
@@ -76,7 +76,7 @@ export default {
       position: relative
       .part-item-container
         height: 150px
-        border: 1px solid #f4f4f4
+        bordinal: 1px solid #f4f4f4
         .part-item
           height: 100%
           .part-logo
