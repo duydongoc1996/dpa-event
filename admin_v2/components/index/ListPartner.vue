@@ -24,6 +24,8 @@
                   b-form-input(v-model="x.company_name")
                 b-form-group(label="Company website")
                   b-form-input(v-model="x.company_website")
+                b-form-group(label="Order")
+                  b-form-input(v-model="x.ordinal")
                 div.save-btn
                   b-button(
                     squared
@@ -52,9 +54,7 @@ export default {
       if (response.data.length === 0) {
         this.partners = []
       } else {
-        response.data.forEach((element) => {
-          this.partners.push(element)
-        })
+        this.partners = this.sortOrder(response.data)
         this.$log.debug(this.partners)
       }
     })
@@ -84,8 +84,15 @@ export default {
         },
         data: JSON.stringify(partner)
       }).then((response) => {
-        if (!alert(response.data.message)) {}
+        if (!alert(response.data.message)) { window.location.reload() }
       }).catch(err => this.$log.debug(err))
+    },
+    sortOrder(list) {
+      return list.sort((a, b) => {
+        if (a.ordinal > b.ordinal) return 1
+        if (a.ordinal < b.ordinal) return -1
+        if (a.ordinal === b.ordinal) return 0
+      })
     }
   }
 }

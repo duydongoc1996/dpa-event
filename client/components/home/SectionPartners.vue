@@ -44,6 +44,15 @@ export default {
         this.$log.debug(this.partners)
       }
     })
+  },
+  methods: {
+    sortOrder(list) {
+      return this.sort((a, b) => {
+        if (a.order > b.order) return 1
+        if (a.order < b.order) return -1
+        if (a.order === b.order) return 0
+      })
+    }
   }
 }
 </script>

@@ -47,12 +47,14 @@ module.exports = class Partner {
       INSERT INTO partners(
         company_name,
         logo,
-        company_website
-      ) VALUES (?,?,?)
+        company_website,
+        order
+      ) VALUES (?,?,?,?)
     `, [
       partner.company_name,
       partner.logo,
-      partner.companyWebsite
+      partner.companyWebsite,
+      partner.order
     ])
       .then(([rows, fields]) => {
         return (rows.affectedRows > 0) ? {
@@ -95,15 +97,19 @@ module.exports = class Partner {
   }
 
   static async updatePartner(data) {
+    const parse = parseInt(data.ordinal);
+    const order = (parse != NaN) ? parse : null;
     return await mysql.promise.query(`
       UPDATE partners SET
         company_name = ?,
-        company_website = ?
+        company_website = ?,
+        ordinal = ?
       WHERE id = ?
     `, [
       data.company_name,
       data.company_website,
-      data.id
+      order,
+      parseInt(data.id)
     ])
       .then(([rows,fields])=>{
         return {
