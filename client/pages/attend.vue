@@ -2,27 +2,27 @@
   div.page-attend
     section.section-menu
       Menu
-    section.section-header
-      SectionHeader
-    section.section-invitation-code(
-      v-if="!viewForm && !submitted"
-    )
-      SectionInvitationCode(
-        :code.sync="code"
-        @update:code="changeViewForm"
-      )
-    section.section-attend-form(
-      v-if="viewForm && !submitted"
-    )
-      SectionAttendForm(
-        :code.sync="code"
-        :submitted.sync="submitted"
-        @update:submitted="changeViewSubmit"
-      )
-    section.section-submit-success(
-      v-if="submitted"
-    )
-      SectionSubmitSuccess
+    //- section.section-header
+    //-   SectionHeader
+    //- section.section-invitation-code(
+    //-   v-if="!viewForm && !submitted"
+    //- )
+    //-   SectionInvitationCode(
+    //-     :code.sync="code"
+    //-     @update:code="changeViewForm"
+    //-   )
+    //- section.section-attend-form(
+    //-   v-if="viewForm && !submitted"
+    //- )
+    //-   SectionAttendForm(
+    //-     :code.sync="code"
+    //-     :submitted.sync="submitted"
+    //-     @update:submitted="changeViewSubmit"
+    //-   )
+    //- section.section-submit-success(
+    //-   v-if="submitted"
+    //- )
+    //-   SectionSubmitSuccess
     section.section-footer
       SectionFooter
 </template>

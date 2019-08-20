@@ -2,12 +2,12 @@
   div.page
     section.section-menu
       Menu
-    section.section-header
-      SectionHeader
-    section.section-sms
-      SectionSmsVerification
-    section.section-list-members
-      SectionListMembers
+    //- section.section-header
+    //-   SectionHeader
+    //- section.section-sms
+    //-   SectionSmsVerification
+    //- section.section-list-members
+    //-   SectionListMembers
     section.section-footer
       SectionFooter
 </template>
