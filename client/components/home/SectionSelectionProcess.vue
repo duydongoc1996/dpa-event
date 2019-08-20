@@ -15,7 +15,7 @@
               div.process
                 div.image
                   b-img(
-                    src="~/assets/image/process1.png"
+                    src="/image/thumbs up.png"
                     fluid
                   )
                 div.content
@@ -30,7 +30,7 @@
               div.process
                 div.image
                   b-img(
-                    src="~/assets/image/process2.png"
+                    src="/image/vote_transparent.png"
                     fluid
                   )
                 div.content
@@ -44,7 +44,7 @@
               div.process
                 div.image
                   b-img(
-                    src="~/assets/image/process3.png"
+                    src="/image/evaluation.png"
                     fluid
                   )
                 div.content
@@ -58,7 +58,7 @@
               div.process
                 div.image
                   b-img(
-                    src="~/assets/image/process4.png"
+                    src="/image/trophy.png"
                     fluid
                   )
                 div.content
@@ -77,7 +77,7 @@ export default {
 
 <style lang="sass" scoped>
 .wrapper-process
-  background-color: black
+  background-color: white
   .wrapper-process-inner
     .header
       text-align: center
@@ -98,23 +98,17 @@ export default {
           padding: 0 5px
         .process
           .image
-            height: fit-content
+            height: 200px
             text-align: center
+            display: flex
+            justify-content: center
           .content
             padding-top: 10px
             text-align: center
-            color: white
+            color: black
             .title
               font-weight: bold
               font-size: 20px
             .date
             .text
-      .line
-        position: absolute
-        border: 5px solid #447095
-        top: 80px
-        left: 0
-        width: 100%
-        @media only screen and (max-width: 576px)
-          display: none
 </style>

@@ -95,11 +95,11 @@ export default {
   height: 200px
   width: fit-content
   background-color: rgba(1,1,1,0.5)
-  padding: 40px
+  padding: 30px 10px
   @media only screen and (max-width: 992px)
-    padding: 40px 10px
+    padding: 30px 10px
   @media only screen and (max-width: 768px)
-    padding: 40px 0px
+    padding: 30px 0px
   span
     color: white
   .countdown-header

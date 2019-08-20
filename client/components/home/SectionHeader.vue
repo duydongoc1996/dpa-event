@@ -22,7 +22,7 @@
               strong {{ $t('homePage.header.nominate') }} &nbsp;
               fa(icon="arrow-right")
         b-carousel-slide(
-          img-src="~/assets/image/2019-07-31 14.38.38.jpg"
+          img-src="~/assets/image/DSC00937.png"
         )
           p.wrapper-caption.caption-big
             strong DECENTRALIZED

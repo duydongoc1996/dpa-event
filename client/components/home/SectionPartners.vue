@@ -21,7 +21,7 @@
                   b-img(
                     :src="imageAddress + x.logo"
                     alt="alt"
-                    fluid-grow
+                    fluid
                     center
                   )
 </template>
@@ -41,7 +41,7 @@ export default {
     }).then((response) => {
       if (response.data.success !== false) {
         this.partners = response.data
-        this.$log.debug(this.partners)
+        // this.$log.debug(this.partners)
       }
     })
   },
@@ -82,7 +82,6 @@ export default {
           .part-logo
             height: 100%
             text-align: center
-            padding: 10px
             display: flex
             align-items: center
             justify-content: center

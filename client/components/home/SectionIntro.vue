@@ -9,7 +9,9 @@
         )
           div.wrapper-countdown
             div.countdown
-              Countdown
+              Countdown(
+                :eventTime="countdown"
+              )
         b-col(
           sm="12"
           md="12"
@@ -18,15 +20,14 @@
           div.wrapper-description
             div.wrapper-description-inner
               p.des-heading
-                strong DECENTRALIZED PEOPLE'S AWARDS 2019
+                strong {{ intro.title }}
               p.des-date
-                strong {{ $t('homePage.intro.date') }} | 16:00 - 21:00
-              p.des-text
-                strong Recognition on chain.
-              p.des-text {{ $t('homePage.intro.description.p1') }}
-              p.des-text {{ $t('homePage.intro.description.p2') }}
-              p.des-text {{ $t('homePage.intro.description.p3') }}
-              p.des-text {{ $t('homePage.intro.description.p4') }}
+                strong {{ intro.date }}
+              p.des-text(
+                v-for="(item, index) in intro.content"
+              )
+                span {{ item }}
+                br
               div.wrapper-button
                 //- nuxt-link(to="/attend")
                 //-   div.yellow-button
@@ -47,7 +48,12 @@ export default {
   },
   data() {
     return {
-      intro: null
+      intro: {
+        title: null,
+        date: null,
+        content: null
+      },
+      countdown: 'December 20, 2019 16:00:00'
     }
   },
   mounted() {
@@ -56,7 +62,9 @@ export default {
       url: process.env.baseUrl + '/api/eventinfo'
     }).then((response) => {
       this.intro = response.data
-      this.$log.debug(this.intro)
+      this.intro.content = this.intro.content.split('\n\n')
+      const t = this.intro.date.split(' | ')
+      this.countdown = (t[0] + ' ' + t[1].substr(0, 5) + ':00')
     })
   }
 }
