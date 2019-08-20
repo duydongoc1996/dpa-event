@@ -2,8 +2,8 @@
   div.page-attend
     section.section-menu
       Menu
-    //- section.section-header
-    //-   SectionHeader
+    section.section-header
+      SectionHeader
     //- section.section-invitation-code(
     //-   v-if="!viewForm && !submitted"
     //- )

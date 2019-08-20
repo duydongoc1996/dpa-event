@@ -2,8 +2,8 @@
   div.page-sponsorship
     section.section-menu
       Menu
-    //- section.section-header
-    //-   SectionHeader
+    section.section-header
+      SectionHeader
     //- div(
     //-   v-if="!showSubmit"
     //- )
