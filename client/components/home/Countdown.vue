@@ -93,11 +93,11 @@ export default {
   transform: translate(-50%,-50%)
   position: absolute
   height: 200px
-  width: fit-content
+  width: 280px
   background-color: rgba(1,1,1,0.5)
-  padding: 30px 10px
+  padding: 30px 0px
   @media only screen and (max-width: 992px)
-    padding: 30px 10px
+    padding: 30px 0px
   @media only screen and (max-width: 768px)
     padding: 30px 0px
   span
@@ -106,7 +106,7 @@ export default {
     text-align: center
   .countdown-box
     position: relative
-    display: inline-block
+    display: block
     float: left
     margin: 0
     text-align: center
@@ -114,15 +114,14 @@ export default {
       background-color: transparent
       color: white
       width: 70px
-      height: 70px
-      border-radius: 5px
+      // height: 70px
+      // border-radius: 5px
       vertical-align: middle
       line-height: 70px
       font-size: 30px
       font-weight: 400
       @media only screen and (max-width: 330px)
         font-size: 26px
-        width: 50px
   .colon::after
     position: absolute
     font-weight: 700

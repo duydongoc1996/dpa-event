@@ -50,7 +50,7 @@
               squared
             )
               fa(icon="edit")
-              span  EDIT
+              span  SAVE
 </template>
 <script>
 export default {
