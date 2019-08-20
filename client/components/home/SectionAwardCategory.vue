@@ -8,23 +8,18 @@
           p.award-description {{ $t('homePage.awards.description') }}
         div.award-list
           b-container(fluid)
-            b-row()
-              b-col.award-item(
-                sm="6"
-                md="6"
-                lg="4"
-                v-for="x in listCategory"
-                :key="x.id"
+            b-row.seven-cols
+              b-col.col-md-1(
+                v-for="(x, index) in listCategory"
+                v-if="x.name.toLowerCase() !== 'others'"
               )
-                div.award-item-container
-                  div.award-decoration-left
-                    b-img(src="~/assets/award-decoration-left.png")
-                  div.award-detail
-                    p.award-name
-                      strong {{ x.name }}
-                    p.award-description {{ x.description }}
-                  div.award-decoration-right
-                    b-img(src="~/assets/award-decoration-right.png")
+                div.item
+                  b-img(
+                    fluid
+                    :src="'/image/Asset ' + (index + 1) + '.png'"
+                  )
+                  p
+                    strong {{ x.name }}
         div.award-btn-container
           nuxt-link(to="/nominate")
             div.white-button
@@ -61,12 +56,11 @@ export default {
 <style lang="sass">
 .wrapper-award
   position: relative
-  background-image: url('~assets/3.png')
+  background-image: url('/image/award-background.png')
   background-repeat: no-repeat
   background-size: cover
   width: 100%
   .gradient-background
-    background-color: rgba(0,0,0,0.5)
     width: 100%
     height: 100%
   .wrapper-award-inner
@@ -89,38 +83,22 @@ export default {
         max-width: 40em
         margin-bottom: 50px
     .award-list
-      .award-item
-        padding: 5px
-        .award-item-container
-          background-color: rgba(1,1,1,0.4)
-          padding: 20px 0
-          height: 160px
-          border-radius: 10px
-          .award-detail
-            display: block
-            float: left
-            height: fit-content
-            width: 60%
-            padding-top: 30px
-            .award-name
-              color: #cec230
-              font-family: FrankRuhLibre
-              font-size: 20px
-              margin: 0
-            .award-description
-              color: white
-              margin: 0
-          .award-decoration-left
-            display: block
-            float: left
-            height: fit-content
-            width: 20%
-          .award-decoration-right
-            display: block
-            float: left
-            height: fit-content
-            width: 20%
+      background-color: rgba(0, 0, 0, 0.2)
+      padding: 3em 0
+      border-radius: 1em
+      .seven-cols
+        color: white
+        .col-md-1
+          flex: 0 0 14.285714285714285714285714285714%
+          max-width: unset
+          padding: 0 5px
+        @media only screen and (max-width: 992px)
+          .col-md-1
+            flex: 0 0 50%
+            max-width: unset
+            padding: 0 5px
     .award-btn-container
+      margin-top: 2em
       .white-button
         width: 250px
         margin-left: 10px

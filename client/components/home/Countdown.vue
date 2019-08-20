@@ -120,6 +120,9 @@ export default {
       line-height: 70px
       font-size: 30px
       font-weight: 400
+      @media only screen and (max-width: 330px)
+        font-size: 26px
+        width: 50px
   .colon::after
     position: absolute
     font-weight: 700
