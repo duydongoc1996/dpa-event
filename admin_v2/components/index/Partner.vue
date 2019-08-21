@@ -49,7 +49,8 @@ export default {
         },
         data: formBody
       }).then((response) => {
-        if (!alert(response.data.message)) window.location.reload()
+        // this.$log.debug(response.data)
+        if (!alert(response.data.message)) { window.location.reload() }
       }).catch(err => this.$log.debug(err))
     }
   }

@@ -48,13 +48,13 @@ module.exports = class Partner {
         company_name,
         logo,
         company_website,
-        order
+        ordinal
       ) VALUES (?,?,?,?)
     `, [
       partner.company_name,
       partner.logo,
       partner.companyWebsite,
-      partner.order
+      partner.ordinal
     ])
       .then(([rows, fields]) => {
         return (rows.affectedRows > 0) ? {

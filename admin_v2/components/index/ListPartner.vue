@@ -2,8 +2,16 @@
   div.list-partner
     div.inner
       div.header
-      div.body
-        div.partner-item(v-for="(x, index) in partners")
+      div.body(
+        @drop="drop"
+        @dragover="dragover"
+      )
+        div.partner-item(
+          v-for="(x, index) in partners"
+          draggable="true"
+          @dragstart="drag"
+          :id="'partner-' + index"
+        )
           div.left
             span {{ x.company_name }}
           div.right
@@ -93,6 +101,20 @@ export default {
         if (a.ordinal < b.ordinal) return -1
         if (a.ordinal === b.ordinal) return 0
       })
+    },
+    drag(ev) {
+      const id = ev.target.id.replace('partner-', '')
+      this.$log.debug(id)
+      ev.dataTransfer.setData('text', ev.target.id)
+    },
+    dragover(ev) {
+      ev.preventDefault()
+    },
+    drop(ev) {
+      ev.preventDefault()
+      this.$log.debug(ev.toElement.parentNode)
+      // const current = ev.target.id
+      // const after = ev.toElement.id
     }
   }
 }

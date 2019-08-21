@@ -87,4 +87,5 @@ export default {
             justify-content: center
             img
               max-width: 300px
+              max-height: 100%
 </style>
