@@ -49,7 +49,7 @@ export default {
         },
         data: formBody
       }).then((response) => {
-        // this.$log.debug(response.data)
+        this.$log.debug(response.data)
         if (!alert(response.data.message)) { window.location.reload() }
       }).catch(err => this.$log.debug(err))
     }
